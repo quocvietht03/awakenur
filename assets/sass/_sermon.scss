@@ -1,0 +1,323 @@
+.__bt-sermon-style-default {
+    .bt-post {
+        background: $color-surface;
+        &--thumbnail {
+            position: relative;
+            .bt-play-video {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: flex;
+                width: 60px;
+                height: 60px;
+                align-items: center;
+                justify-content: center;
+                color: $color-accent;
+                background: $color-secondary;
+                border-radius: 100px;
+                transform: translate(-50%, -50%);
+                transition: all .3s;
+                &:hover {
+                    color: $color-primary;
+                    background: $color-accent;
+                }
+            }
+        }
+        &--content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 24px;
+        }
+        &--term > a {
+            display: inline-flex;
+            position: relative;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 20px;
+            text-transform: uppercase;
+            color: $color-surface;
+            background: $color-secondary;
+            padding: 4px 10px 4px 38px;
+            svg {
+                position: absolute;
+                top: 3.5px;
+                left: 10px;
+            }
+        }
+        &--title {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+        &--meta {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            li {
+                position: relative;
+                font-size: 14px;
+                line-height: 22px;
+                padding-left: 28px;
+                svg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
+        &--action {
+            position: relative;
+            padding-left: 52px;
+            margin-top: 12px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            > a,
+            a.bt-share-link {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                color: $color-primary;
+                background: $color-surface;
+                border: 1px solid $color-primary;
+                border-radius: 100px;
+                &:hover{
+                    color: #FFFFFF;
+                    background: $color-primary;
+                }
+                &.bt-play-audio {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
+            > a {
+                position: relative;
+                &:hover {
+                    .bt-text-infor {
+                        opacity: 1;
+                        visibility: visible;
+                    } 
+                }
+                .bt-text-infor {
+                    position: absolute;
+                    top: -100%;
+                    left: 50%;
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 20px;
+                    white-space: nowrap;
+                    color: $color-surface;
+                    background: $color-secondary;
+                    padding: 4px 10px;
+                    transform: translateX(-50%);
+                    transition: all .3s;
+                    opacity: 0;
+                    visibility: hidden;
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        bottom: -4px;
+                        left: 50%;
+                        width: 8px;
+                        height: 8px;
+                        background: $color-secondary;
+                        transform: translateX(-50%) rotate(45deg);
+                    }
+                }
+            }
+            .bt-social-share {
+                position: relative;
+                &:hover {
+                    .bt-share-list {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+                .bt-share-list {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    position: absolute;
+                    top: -100%;
+                    left: 50%;
+                    color: $color-surface;
+                    background: $color-secondary;
+                    padding: 4px 10px;
+                    transform: translateX(-50%);
+                    transition: all .3s;
+                    opacity: 0;
+                    visibility: hidden;
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        bottom: -4px;
+                        left: 50%;
+                        width: 8px;
+                        height: 8px;
+                        background: $color-secondary;
+                        transform: translateX(-50%) rotate(45deg);
+                    }
+                    li {
+                        line-height: 0;
+                    }
+                    span {
+                        font-size: 14px;
+                        font-weight: 600;
+                        line-height: 20px;
+                    }
+                    a {
+                        display: inline-flex;
+                        font-size: 14px;
+                        color: inherit;
+                    }
+                    svg {
+                        fill: currentColor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bt-sermon-popup {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+    @media(max-width: $break-xs) {
+        padding: 12px;
+    }
+    .mfp-close {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        font-size: 0;
+        opacity: 1;
+        color: #FFFFFF;
+        @media(max-width: $break-xs) {
+            top: -12px;
+            right: -2px;
+        }
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            top: 11px;
+            left: 4px;
+            width: 18px;
+            height: 2px;
+            background-color: #FFFFFF;
+            transform: rotate(45deg);
+        }
+        &:after {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.post-type-archive-sermon {
+    .bt-filter-bar {
+        margin-bottom: 30px;
+    }
+    .bt-filter-form {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        &--left {
+            width: 400px;
+        }
+        &--right {
+            display: flex;
+            gap: 20px;
+        }
+        .bt-field-type-search {
+            position: relative;
+            display: flex;
+            z-index: 1;
+            input {
+                width: 100%;
+                background-color: transparent;
+                padding-right: 42px;
+            }
+            svg {
+                position: absolute;
+                top: 12px;
+                right: 14px;
+                z-index: -1;
+            }
+        }
+        .bt-field-type-select {
+            position: relative;
+            z-index: 1;
+            select {
+                min-width: 210px;
+                background-color: transparent;
+                padding-left: 42px;
+            }
+            svg {
+                position: absolute;
+                top: 13px;
+                left: 14px;
+                z-index: -1;
+            }
+        }
+        @media(max-width: $break-sm) {
+            flex-direction: column;
+            &--left {
+                width: 100%;
+            }
+            .bt-field-type-select {
+                width: 50%;
+                select {
+                    min-width: 100%;
+                }
+            }
+        }
+        @media(max-width: $break-xs) {
+            flex-direction: column;
+            &--right {
+                flex-direction: column;
+            }
+            .bt-field-type-select {
+                width: 100%;
+            }
+        }
+    }
+    .bt-filter-results {
+        position: relative;
+        &.loading {
+            min-height: 660px;
+            .bt-loading-wave {
+                display: block;
+            }
+        }
+        .bt-loading-wave {
+            display: none;
+        }
+    }
+    .bt-grid-post {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px 30px;
+        @extend .__bt-sermon-style-default;
+        .bt-post {
+            width: calc(33.33% - 20px);
+            @media(max-width: $break-tl) {
+                width: calc(50% - 15px);
+            }
+            @media(max-width: $break-sm) {
+                width: 100%;
+            }
+        }
+    }
+}
