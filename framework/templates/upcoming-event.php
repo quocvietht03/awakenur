@@ -50,7 +50,7 @@ $event = $args['event'];
       <div class="bt-countdown bt-countdown-js" data-time="<?php echo tribe_get_start_date( $event->ID, true, 'Y-m-d H:m:s' ); ?>">
         <div class="bt-countdown--item">
           <?php
-            echo '<span class="bt-countdown--digits bt-countdown-days">--</span>';
+            echo '<span class="bt-countdown--digits bt-countdown-days">--</span>'; 
             echo '<span class="bt-countdown--label">' . __('Days', 'awakenur') . '</span>';
           ?>
         </div>
