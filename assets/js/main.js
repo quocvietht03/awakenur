@@ -112,7 +112,7 @@
 
 	}
 
-	
+
 
 	/* Sermon Filter */
 	function AwakenurSermonFilter() {
@@ -127,7 +127,7 @@
 
 		// Magnific Popup
 		$('.bt-magnific-popup-js').magnificPopup({
-			type:'inline',
+			type: 'inline',
 			midClick: true
 		});
 
@@ -177,10 +177,10 @@
 					param_out.push(param);
 					param_ajax[param_key] = param_val.replace(/%2C/g, ',');
 
-					if(param_key == 'search_keyword') {
+					if (param_key == 'search_keyword') {
 						param_ajax[param_key] = param_val.replace(/%20/g, ' ');
 					}
-					
+
 				}
 			});
 
@@ -216,26 +216,27 @@
 							$('.bt-grid-post').html(response.data['items']).fadeIn('slow');
 							$('.bt-pagination-wrap').html(response.data['pagination']).fadeIn('slow');
 							$('.bt-filter-results').removeClass('loading');
-							
+
 							// Callback
 							$('.bt-magnific-popup-js').magnificPopup({
-								type:'inline',
+								type: 'inline',
 								midClick: true
 							});
+							AwakenurAudioCustom();
 						}, 1000);
 
 						// Pagination
 						$('.bt-sermon-pagination a').on('click', function (e) {
 							e.preventDefault();
-				
+
 							var current_page = $(this).data('page');
-				
+
 							if (1 < current_page) {
 								$('.bt-sermon-filter-js .bt-current-page').val(current_page);
 							} else {
 								$('.bt-sermon-filter-js .bt-current-page').val('');
 							}
-				
+
 							$('.bt-sermon-filter-js').submit();
 						});
 					} else {
@@ -253,18 +254,18 @@
 
 	/* Pastor QuickView */
 	function AwakenurPastorQuickView() {
-		if (!$('body').hasClass('post-type-archive-pastor')) {
-			return;
-		}
+		// if (!$('body').hasClass('post-type-archive-pastor')) {
+		// 	return;
+		// }
 
 		// Magnific Popup
 		$('.bt-magnific-popup-js').magnificPopup({
-			type:'inline',
+			type: 'inline',
 			midClick: true
 		});
 	}
-	
-	
+
+
 	/* Give Progress Bar Animation */
 	function AwakenurGiveProgressBar() {
 		const progressBar = document.querySelectorAll('.give-progress-bar');
@@ -277,15 +278,169 @@
 				}
 			})
 		}, { threshold: 0.5 });
-		
+
 		for (let i = 0; i < progressBar.length; i++) {
 			const elements = progressBar[i];
 			elements.querySelector('span').style.width = '0%';
 			observer.observe(elements);
 		}
 	};
+	function AwakenurgetTimeCodeFromNum(num) {
+		let seconds = parseInt(num);
+		let minutes = parseInt(seconds / 60);
+		seconds -= minutes * 60;
+		const hours = parseInt(minutes / 60);
+		minutes -= hours * 60;
 
-	
+		if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+		return `${String(hours).padStart(2, 0)}:${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+	}
+	function AwakenurResetIframe(iframeSelector) {
+		$(iframeSelector).each(function () {
+			var iframe = $(this);
+			var currentSrc = iframe.attr('src');
+			iframe.attr('src', '');
+			setTimeout(function () {
+				iframe.attr('src', currentSrc);
+			}, 500);
+		});
+	}
+	function AwakenurAudioCustom() {
+		$(document).on('click', '.bt-play-audio', function (e) {
+			e.preventDefault();
+			if (!$(this).hasClass('active')) {
+				$('.bt-play-audio').removeClass('active');
+				$(this).addClass('active');
+				$('.bt-sermon-audio').removeClass('active');
+				$('audio').each(function () {
+					this.pause();
+					this.currentTime = 0;
+				});
+				var post = $(this).parents('.bt-post');
+				var audioPlayer = post.find('.bt-audio-player');
+				post.find('.bt-sermon-audio').addClass('active');
+				if (audioPlayer.length) {
+					var audio = audioPlayer.find('.audio')[0];
+					audio.play();
+					audioPlayer.find('.bt-toggle-play').addClass('pause');
+
+					AwakenurResetIframe('.bt-soundcloud iframe');
+				}
+			} else {
+				$('.bt-play-audio').removeClass('active');
+				$('.bt-sermon-audio').removeClass('active');
+				$('audio').each(function () {
+					this.pause();
+					this.currentTime = 0;
+				});
+				AwakenurResetIframe('.bt-soundcloud iframe');
+			}
+		});
+		$(document).on('click', '.bt-audio-close', function (e) {
+			e.preventDefault();
+			$('.bt-play-audio').removeClass('active');
+			$('.bt-sermon-audio').removeClass('active');
+			$('audio').each(function () {
+				this.pause();
+				this.currentTime = 0;
+			});
+			AwakenurResetIframe('.bt-soundcloud iframe');
+		});
+		$('.bt-audio-player').each(function () {
+			const audioPlayer = $(this);
+			const audio = audioPlayer.find('.audio')[0];
+			setTimeout(function () {
+				audioPlayer.find('.bt-time .length').text(AwakenurgetTimeCodeFromNum(audio.duration));
+				audio.volume = 0.75;
+			}, 1000);
+			audioPlayer.find('.bt-timeline').on('click', function (e) {
+				const timelineWidth = $(this).width();
+				const timeToSeek = e.offsetX / timelineWidth * audio.duration;
+				audio.currentTime = timeToSeek;
+			});
+
+			audioPlayer.find('.bt-volume-slider').on('click', function (e) {
+				const sliderWidth = $(this).width();
+				const newVolume = e.offsetX / sliderWidth;
+				audio.volume = newVolume;
+				audioPlayer.find('.bt-volume-percentage').width(newVolume * 100 + '%');
+			});
+
+			setInterval(function () {
+				const progressBar = audioPlayer.find('.bt-progress');
+				progressBar.width(audio.currentTime / audio.duration * 100 + '%');
+				audioPlayer.find('.bt-time .current').text(AwakenurgetTimeCodeFromNum(audio.currentTime));
+			}, 500);
+
+			audioPlayer.find('.bt-toggle-play').on('click', function () {
+				if (audio.paused) {
+					$(this).removeClass('play').addClass('pause');
+					audio.play();
+				} else {
+					$(this).removeClass('pause').addClass('play');
+					audio.pause();
+				}
+			});
+
+			audioPlayer.find('.bt-volume-button').on('click', function () {
+				const volumeEl = audioPlayer.find('.bt-volume');
+				audio.muted = !audio.muted;
+				if (audio.muted) {
+					volumeEl.removeClass('volumeMedium').addClass('volumeMute');
+				} else {
+					volumeEl.addClass('volumeMedium').removeClass('volumeMute');
+				}
+			});
+		});
+
+
+	}
+	function AwakenurVideoCustom() {
+		$(document).on('click', '.bt-play-video', function (e) {
+			var mfpvideo = $('.mfp-content');
+			var videoPlayer = mfpvideo.find('.bt-cover-video');
+			if (videoPlayer.length) {
+				var video = videoPlayer.find('.video')[0];
+				video.play();
+			} else {
+				var videoiframe = mfpvideo.find('.bt-video-wrap iframe');
+				var videoiframeSrc = videoiframe.attr('src');
+				setTimeout(function () {
+					videoiframe.attr('src', videoiframeSrc + '&autoplay=1');
+				}, 500);
+			}
+			$('.bt-sermon-audio').removeClass('active');
+			$('audio').each(function () {
+				this.pause();
+				this.currentTime = 0;
+			});
+			AwakenurResetIframe('.bt-soundcloud iframe');
+		});
+		$(document).on('click', '.mfp-close', function (e) {
+			$('.bt-video-wrap iframe').each(function () {
+				var videoPlayer = $(this);
+				var videoPlayerSrc = videoPlayer.attr('src');
+				var cleanedSrc = videoPlayerSrc.replace(/[?&]autoplay=1/, '');
+				videoPlayer.attr('src', cleanedSrc);
+			});
+			$('video').each(function () {
+				this.pause();
+				this.currentTime = 0;
+			});
+		});
+		$(document).on('click', '.mfp-content', function (e) {
+			$('.bt-video-wrap iframe').each(function () {
+				var videoPlayer = $(this);
+				var videoPlayerSrc = videoPlayer.attr('src');
+				var cleanedSrc = videoPlayerSrc.replace(/[?&]autoplay=1/, '');
+				videoPlayer.attr('src', cleanedSrc);
+			});
+			$('video').each(function () {
+				this.pause();
+				this.currentTime = 0;
+			});
+		});
+	}
 
 	jQuery(document).ready(function ($) {
 		AwakenurSubmenuAuto();
@@ -298,7 +453,8 @@
 		AwakenurSermonFilter();
 		AwakenurPastorQuickView();
 		AwakenurGiveProgressBar();
-
+		AwakenurAudioCustom();
+		AwakenurVideoCustom();
 	});
 
 	jQuery(window).on('resize', function () {

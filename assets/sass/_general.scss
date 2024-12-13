@@ -141,13 +141,18 @@
   background: #cdcdcd;
   padding-bottom: 56.25%;
   &.bt-soundcloud {
-    padding-bottom: 61%;
+    iframe{
+      height: 130px !important;
+      @media(max-width:$break-sm){
+        height: 111px !important;
+      }
+    }
   }
   iframe {
     @extend .bt-image-absolute;
+    
   }
 }
-
 .bt-cover-video {
   position: relative;
   overflow: hidden;

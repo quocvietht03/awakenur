@@ -16,7 +16,7 @@
                 background: $color-secondary;
                 border-radius: 100px;
                 transform: translate(-50%, -50%);
-                transition: all .3s;
+                transition: all 0.3s;
                 &:hover {
                     color: $color-primary;
                     background: $color-accent;
@@ -87,14 +87,18 @@
                 background: $color-surface;
                 border: 1px solid $color-primary;
                 border-radius: 100px;
-                &:hover{
-                    color: #FFFFFF;
+                &:hover {
+                    color: #ffffff;
                     background: $color-primary;
                 }
                 &.bt-play-audio {
                     position: absolute;
                     top: 0;
                     left: 0;
+                    &.active {
+                        color: #ffffff;
+                        background: $color-primary;
+                    }
                 }
             }
             > a {
@@ -103,7 +107,7 @@
                     .bt-text-infor {
                         opacity: 1;
                         visibility: visible;
-                    } 
+                    }
                 }
                 .bt-text-infor {
                     position: absolute;
@@ -117,7 +121,7 @@
                     background: $color-secondary;
                     padding: 4px 10px;
                     transform: translateX(-50%);
-                    transition: all .3s;
+                    transition: all 0.3s;
                     opacity: 0;
                     visibility: hidden;
                     &:after {
@@ -153,8 +157,9 @@
                     color: $color-surface;
                     background: $color-secondary;
                     padding: 4px 10px;
+                    min-width: 142px;
                     transform: translateX(-50%);
-                    transition: all .3s;
+                    transition: all 0.3s;
                     opacity: 0;
                     visibility: hidden;
                     &:after {
@@ -188,13 +193,226 @@
         }
     }
 }
+.bt-sermon-audio {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 99;
+    height: 86px;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    transform: translateY(86px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .bt-audio-wrap {
+        box-shadow: -1px -8px 16px rgba(0, 0, 0, 0.1);
+        .bt-audio-close {
+            position: absolute;
+            right: 10px;
+            background: $color-primary;
+            top: -30px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+            svg {
+                width: 25px;
+                height: 25px;
+                position: relative;
+                top: -3px;
+                path {
+                    stroke: #fff;
+                }
+            }
+        }
+    }
+    audio {
+        display: none;
+    }
+    .bt-audio-player {
+        background: $color-primary;
+        color: white;
+        overflow: hidden;
+        display: grid;
+        grid-template-rows: 12px auto;
+        .bt-timeline {
+            background: $color-secondary;
+            width: 100%;
+            position: relative;
+            cursor: pointer;
+            .bt-progress {
+                background: $color-surface;
+                width: 0%;
+                height: 100%;
+                transition: 0.25s;
+            }
+        }
+        .bt-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            padding: 20px;
 
+            > * {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .bt-audio-inner {
+                gap: 30px;
+            }
+            .bt-toggle-play {
+                height: 35px;
+                width: 35px;
+                cursor: pointer;
+                position: relative;
+                svg {
+                    height: 35px;
+                    width: 35px;
+                }
+                &.pause {
+                    svg {
+                        display: none;
+                    }
+                    &:before {
+                        position: absolute;
+                        top: 7px;
+                        left: 7px;
+                        background: #fff;
+                        content: "";
+                        height: 22px;
+                        width: 5px;
+                    }
+                    &:after {
+                        position: absolute;
+                        top: 7px;
+                        right: 8px;
+                        background: #fff;
+                        content: "";
+                        height: 22px;
+                        width: 5px;
+                    }
+                }
+            }
+            .bt-time {
+                display: flex;
+                width: 138px;
+                > * {
+                    padding: 2px;
+                }
+            }
+            .bt-volume-container {
+                cursor: pointer;
+                .bt-volume-button {
+                    display: flex;
+                    align-items: center;
+                    .bt-volume {
+                        width: 32px;
+                        height: 32px;
+                        svg {
+                            font-size: 29px;
+                            width: 30px;
+                            height: 30px;
+                            font-family: dashicons;
+                            display: inline-block;
+                            line-height: 1;
+                            font-weight: 400;
+                            font-style: normal;
+                            &.volumeoff {
+                                display: none;
+                            }
+                        }
+                        &.volumeMute {
+                            svg {
+                                display: none;
+                                &.volumeoff {
+                                    display: flex;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                position: relative;
+                z-index: 2;
+                .bt-volume-slider {
+                    position: absolute;
+                    left: 100%;
+                    top: 9px;
+                    z-index: -1;
+                    width: 0;
+                    height: 15px;
+                    background: white;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6666666667);
+                    transition: 0.25s;
+                    border-radius: 10px;
+                    .bt-volume-percentage {
+                        background: $color-accent;
+                        height: 100%;
+                        width: 75%;
+                        border-radius: 10px;
+                    }
+                }
+                &:hover {
+                    .bt-volume-slider {
+                        width: 120px;
+                    }
+                }
+            }
+        }
+    }
+    @keyframes bt-text-scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    @media (max-width: $break-sm) {
+        height: 67px;
+        .bt-audio-player {
+            .bt-controls {
+                padding: 10px;
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+                .bt-audio-inner {
+                    width: 50%;
+                    gap: 10px;
+                }
+                .bt-name {
+                    width: 50%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    box-sizing: border-box;
+                    span {
+                        display: inline-block;
+                        padding-left: 100%;
+                        animation: bt-text-scroll 10s linear infinite;
+                    }
+                }
+            }
+        }
+    }
+}
 .bt-sermon-popup {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
     padding: 24px;
-    @media(max-width: $break-xs) {
+    @media (max-width: $break-xs) {
         padding: 12px;
     }
     .mfp-close {
@@ -203,8 +421,8 @@
         height: 24px;
         font-size: 0;
         opacity: 1;
-        color: #FFFFFF;
-        @media(max-width: $break-xs) {
+        color: #ffffff;
+        @media (max-width: $break-xs) {
             top: -12px;
             right: -2px;
         }
@@ -216,7 +434,7 @@
             left: 4px;
             width: 18px;
             height: 2px;
-            background-color: #FFFFFF;
+            background-color: #ffffff;
             transform: rotate(45deg);
         }
         &:after {
@@ -271,7 +489,7 @@
                 z-index: -1;
             }
         }
-        @media(max-width: $break-sm) {
+        @media (max-width: $break-sm) {
             flex-direction: column;
             &--left {
                 width: 100%;
@@ -283,7 +501,7 @@
                 }
             }
         }
-        @media(max-width: $break-xs) {
+        @media (max-width: $break-xs) {
             flex-direction: column;
             &--right {
                 flex-direction: column;
@@ -312,10 +530,10 @@
         @extend .__bt-sermon-style-default;
         .bt-post {
             width: calc(33.33% - 20px);
-            @media(max-width: $break-tl) {
+            @media (max-width: $break-tl) {
                 width: calc(50% - 15px);
             }
-            @media(max-width: $break-sm) {
+            @media (max-width: $break-sm) {
                 width: 100%;
             }
         }

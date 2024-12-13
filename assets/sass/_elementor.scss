@@ -44,6 +44,12 @@
     margin: 0 0 16px;
   }
 }
+.elementor-widget-button {
+  .elementor-button-icon svg {
+    width: auto;
+    fill: currentColor;
+  }
+}
 .elementor-widget-icon {
   line-height: 0;
 }
@@ -382,7 +388,11 @@
     @extend .__bt-post-style-default;
   }
 }
-
+.bt-elwg-sermon-loop-item{
+  &--default{
+    @extend .__bt-sermon-style-default;
+  }
+}
 .bt-elwg-upcoming-event {
   .bt-tribe-event {
     &--inner {

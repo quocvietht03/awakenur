@@ -50,25 +50,21 @@ class ElementorWidgets
 			'site-social',
 			'site-copyright',
 			'site-opening',
-			
 			'page-breadcrumb',
 			'post-loop-item',
-			
 			'highlighted-heading',
 			'pricing-item',
 			'therapist-loop-item',
 			'service-loop-item',
 			'page-title-bar',
-
 			'orbit-circle',
 			'pattern-background',
 			'buble-background',
-
 			'upcoming-event',
-
 			'give-form',
+			'sermon-loop-item'
 		);
-		
+
 		return $this->widgets;
 	}
 
@@ -173,9 +169,9 @@ class ElementorWidgets
 
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\UpcomingEvent\Widget_UpcomingEvent());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SermonLoopItem\Widget_SermonLoopItem());
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\GiveForm\Widget_GiveForm());
-		
 	}
 
 	/**

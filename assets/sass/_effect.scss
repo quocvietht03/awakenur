@@ -638,63 +638,80 @@ body {
 	}
 }
 
+@keyframes criss-cross-left {
+	0% {
+		left: -20px;
+	}
+	50% {
+		left: 50%;
+		width: 20px;
+		height: 20px;
+	}
+	100% {
+		left: 50%;
+		width: 375px;
+		height: 375px;
+	}
+}
+
+@keyframes criss-cross-right {
+	0% {
+		right: -20px;
+	}
+	50% {
+		right: 50%;
+		width: 20px;
+		height: 20px;
+	}
+	100% {
+		right: 50%;
+		width: 375px;
+		height: 375px;
+	}
+}
 .bt-button-hover-enable {
-	.elementor-widget-button {
-		.elementor-button-wrapper {
-			overflow: hidden;
-		}
-		.elementor-button {
+	.bt-button-hover {
+		a {
+			display: inline-flex;
 			position: relative;
-			z-index: 1;
-			transition: all 0.2s ease-in-out;
-			.elementor-button-text {
-				transition: all 0.2s ease-in-out;
-			}
-			&::before {
+			overflow: hidden;
+			&::before,
+			&::after {
 				content: "";
 				position: absolute;
-				width: 300%;
-				height: 0%;
-				left: 50%;
-				top: 50%;
-				background-color: rgba(255, 255, 255, 0.2);
-				transform: translate(-50%, -50%) rotate(-45deg);
-				z-index: 1;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				box-sizing: border-box;
+				transition: 0.3s ease-in-out;
+			}
+			&::before {
+				right: -50px;
+				border-right: 50px solid transparent;
+				border-bottom: 80px solid $color-primary;
+				transform: translateX(-100%);
+			}
+			&::after {
+				left: -50px;
+				border-left: 50px solid transparent;
+				border-top: 80px solid $color-primary;
+				transform: translateX(100%);
 			}
 			&:hover {
+				color: $color-accent;
+				fill: $color-accent;
+				transition: 0.5s ease-in-out;
 				&::before {
-					height: 250%;
-					transition: all 600ms linear !important;
-					background-color: transparent;
+					transform: translateX(-49%);
+				}
+				&::after {
+					transform: translateX(49%);
 				}
 			}
-		}
-	}
-	.gform_footer,
-	.bt-button-effect {
-		overflow: hidden;
-		position: relative;
-		z-index: 1;
-		input {
-			position: relative;
-			z-index: 2;
-		}
-		&::before {
-			content: "";
-			position: absolute;
-			width: 300%;
-			height: 0%;
-			left: 50%;
-			top: 50%;
-			background-color: rgba(255, 255, 255, 0.2);
-			transform: translate(-50%, -50%) rotate(-45deg);
-			z-index: 1;
-		}
-		&:hover {
-			&::before {
-				height: 250%;
-				transition: all 600ms linear !important;
-				background-color: transparent;
+			> * {
+				position: relative;
+				z-index: 1;
 			}
 		}
 	}

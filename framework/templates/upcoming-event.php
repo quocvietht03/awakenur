@@ -74,7 +74,7 @@ $event = $args['event'];
         </div>
       </div>
     </div>
-    <div class="bt-tribe-event--button">
+    <div class="bt-tribe-event--button bt-button-hover">
       <a href="/events">
         <?php echo '<span>' . __('All Event', 'awakenur') . '</span>'; ?>
         <svg width="32" height="20" viewBox="0 0 32 20" fill="none" xmlns="http://www.w3.org/2000/svg">
