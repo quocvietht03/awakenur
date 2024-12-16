@@ -393,6 +393,11 @@
     @extend .__bt-sermon-style-default;
   }
 }
+.bt-elwg-pastor-loop-item{
+  &--default{
+    @extend .__bt-pastor-style-default;
+  }
+}
 .bt-elwg-upcoming-event {
   .bt-tribe-event {
     &--inner {

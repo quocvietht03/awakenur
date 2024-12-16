@@ -62,7 +62,8 @@ class ElementorWidgets
 			'buble-background',
 			'upcoming-event',
 			'give-form',
-			'sermon-loop-item'
+			'sermon-loop-item',
+			'pastor-loop-item'
 		);
 
 		return $this->widgets;
@@ -170,6 +171,7 @@ class ElementorWidgets
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\UpcomingEvent\Widget_UpcomingEvent());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SermonLoopItem\Widget_SermonLoopItem());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PastorLoopItem\Widget_PastorLoopItem());
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\GiveForm\Widget_GiveForm());
 	}

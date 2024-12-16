@@ -286,6 +286,9 @@
 		}
 	};
 	function AwakenurgetTimeCodeFromNum(num) {
+		if (typeof num !== 'number' || isNaN(num)) {
+			return '00:00';
+		}
 		let seconds = parseInt(num);
 		let minutes = parseInt(seconds / 60);
 		seconds -= minutes * 60;
@@ -323,7 +326,7 @@
 					var audio = audioPlayer.find('.audio')[0];
 					audio.play();
 					audioPlayer.find('.bt-toggle-play').addClass('pause');
-
+					audioPlayer.find('.bt-time .length').text(AwakenurgetTimeCodeFromNum(audio.duration));
 					AwakenurResetIframe('.bt-soundcloud iframe');
 				}
 			} else {
@@ -349,22 +352,40 @@
 		$('.bt-audio-player').each(function () {
 			const audioPlayer = $(this);
 			const audio = audioPlayer.find('.audio')[0];
+
 			setTimeout(function () {
 				audioPlayer.find('.bt-time .length').text(AwakenurgetTimeCodeFromNum(audio.duration));
 				audio.volume = 0.75;
-			}, 1000);
-			audioPlayer.find('.bt-timeline').on('click', function (e) {
-				const timelineWidth = $(this).width();
-				const timeToSeek = e.offsetX / timelineWidth * audio.duration;
-				audio.currentTime = timeToSeek;
+			}, 2000);
+
+			let isDraggingTimeline = false;
+
+			const timeline = audioPlayer.find('.bt-timeline');
+			timeline.on('mousedown', function (e) {
+				isDraggingTimeline = true;
+				updateTimeline(e, $(this));
 			});
 
-			audioPlayer.find('.bt-volume-slider').on('click', function (e) {
-				const sliderWidth = $(this).width();
-				const newVolume = e.offsetX / sliderWidth;
-				audio.volume = newVolume;
-				audioPlayer.find('.bt-volume-percentage').width(newVolume * 100 + '%');
+			$(document).on('mousemove', function (e) {
+				if (isDraggingTimeline) {
+					updateTimeline(e, timeline);
+				}
 			});
+
+			$(document).on('mouseup', function () {
+				isDraggingTimeline = false;
+			});
+
+			function updateTimeline(e, timeline) {
+				const timelineWidth = timeline.width();
+				const offsetX = e.pageX - timeline.offset().left;
+				let newTime = offsetX / timelineWidth * audio.duration;
+
+				newTime = Math.max(0, Math.min(audio.duration, newTime));
+				audio.currentTime = newTime;
+				audioPlayer.find('.bt-progress').width((audio.currentTime / audio.duration) * 100 + '%');
+				audioPlayer.find('.bt-time .current').text(AwakenurgetTimeCodeFromNum(audio.currentTime));
+			}
 
 			setInterval(function () {
 				const progressBar = audioPlayer.find('.bt-progress');
@@ -381,6 +402,30 @@
 					audio.pause();
 				}
 			});
+			let isDragging = false;
+			const volumeSlider = audioPlayer.find('.bt-volume-slider');
+			volumeSlider.on('mousedown', function (e) {
+				isDragging = true;
+				updateVolume(e, volumeSlider);
+			});
+
+			$(document).on('mousemove', function (e) {
+				if (isDragging) {
+					updateVolume(e, volumeSlider);
+				}
+			});
+
+			$(document).on('mouseup', function () {
+				isDragging = false;
+			});
+			function updateVolume(e, slider) {
+				const sliderWidth = slider.width();
+				const offsetX = e.pageX - slider.offset().left;
+				let newVolume = offsetX / sliderWidth;
+				newVolume = Math.max(0, Math.min(1, newVolume));
+				audio.volume = newVolume;
+				audioPlayer.find('.bt-volume-percentage').width(newVolume * 100 + '%');
+			}
 
 			audioPlayer.find('.bt-volume-button').on('click', function () {
 				const volumeEl = audioPlayer.find('.bt-volume');
@@ -392,8 +437,6 @@
 				}
 			});
 		});
-
-
 	}
 	function AwakenurVideoCustom() {
 		$(document).on('click', '.bt-play-video', function (e) {
@@ -409,6 +452,7 @@
 					videoiframe.attr('src', videoiframeSrc + '&autoplay=1');
 				}, 500);
 			}
+			$('.bt-play-audio').removeClass('active');
 			$('.bt-sermon-audio').removeClass('active');
 			$('audio').each(function () {
 				this.pause();
