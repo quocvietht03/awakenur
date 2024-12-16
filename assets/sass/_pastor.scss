@@ -29,6 +29,12 @@
                     color: $color-primary;
                     background: $color-accent;
                 }
+                @media(max-width:$break-sm){
+                    opacity: 1;
+                    visibility: visible;
+                    color: $color-primary;
+                    background: $color-accent;
+                }
             }
         }
         &--content {
