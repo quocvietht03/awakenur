@@ -4,23 +4,22 @@ $category = get_the_terms($post_id, 'category');
 ?>
 <article <?php post_class('bt-post'); ?>>
   <div class="bt-post--inner">
-    <?php echo awakenur_post_cover_featured_render($args['image-size']); ?>
-    <div class="bt-post--content">
-      <div class="bt-post--category">
-        <?php
-        if (!empty($category)) {
-          echo  '<a href="'.get_category_link($category[0]->term_id).'">'.$category[0]->name.'</a>';
-        }
-        ?>
+    <div class="bt-post--wrap-image">
+      <?php echo awakenur_post_cover_featured_render($args['image-size']); ?>
+      <div class="bt-post--publish">
+          <span><?php echo get_the_date('d'); ?></span>
+          <?php echo get_the_date('M'); ?>
       </div>
-
-      <?php echo awakenur_post_title_render(); ?>
     </div>
-    <div class="bt-post--info">
-        <?php
-        echo awakenur_post_publish_render();
-        echo awakenur_author_icon_render();
-        ?>
-      </div>
+    <div class="bt-post--content">
+      <?php echo awakenur_post_title_render(); ?>
+      <?php if (has_excerpt($post_id)) { ?>
+        <div class="bt-post--excerpt">
+          <?php
+          echo get_the_excerpt($post_id);
+          ?>
+        </div>
+      <?php } ?>
+    </div>
   </div>
 </article>

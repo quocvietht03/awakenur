@@ -1,15 +1,5 @@
-.admin-bar .select2-dropdown {
-  transform: translateY(32px);
-  @media (max-width: 782.98px) {
-    transform: translateY(46px);
-  }
-}
 .select2-container,
 .elementor-editor-active .select2-container {
-  font-size: 16px;
-  line-height: 24px;
-  min-height: 50px;
-
   &.select2-container--open {
     .select2-selection--single {
       .select2-selection {
@@ -27,9 +17,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    height: 50px;
     background: transparent;
-    padding-left: 16px;
     border: 1px solid #e4e4e4;
     border-radius: 0;
   }
@@ -38,28 +26,6 @@
     .select2-selection--single .select2-selection {
       &__rendered {
         color: $color-primary;
-        line-height: 50px;
-        padding: 0 0 0 24px;
-      }
-
-      &__arrow {
-        position: static;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 40px;
-        width: 40px;
-        height: 48px;
-        &::before {
-          content: "";
-          width: 16px;
-          height: 17px;
-          background-image: url("../images/alt-arrow-down.svg");
-          background-size: cover;
-        }
-        b {
-          display: none;
-        }
       }
     }
     .select2-results__option--highlighted[aria-selected],

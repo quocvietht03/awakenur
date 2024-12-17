@@ -388,14 +388,29 @@
     @extend .__bt-post-style-default;
   }
 }
-.bt-elwg-sermon-loop-item{
-  &--default{
+.bt-elwg-sermon-loop-item {
+  &--default {
     @extend .__bt-sermon-style-default;
   }
 }
-.bt-elwg-pastor-loop-item{
-  &--default{
+.bt-elwg-pastor-loop-item {
+  &--default {
     @extend .__bt-pastor-style-default;
+  }
+}
+
+.bt-elwg-event-grid {
+  grid-template-columns: repeat(var(--grid-columns, 3), 1fr);
+  gap: var(--grid-gap, 30px);
+  display: grid;
+  @extend .__bt-event-style-default;
+  @media (max-width: $break-tl) {
+    grid-template-columns: repeat(var(--grid-columns-tablet, 2), 1fr);
+    gap: var(--grid-gap-tablet, 20px);
+  }
+  @media (max-width: $break-sm) {
+    grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
+    gap: var(--grid-gap-mobile, 15px);
   }
 }
 .bt-elwg-upcoming-event {
@@ -408,7 +423,7 @@
     }
     &--content {
       display: flex;
-      gap: 32px
+      gap: 32px;
     }
     &--start-date {
       display: flex;
@@ -509,9 +524,9 @@
       white-space: nowrap;
     }
 
-    @media(max-width: $break-lg) {
+    @media (max-width: $break-lg) {
       &--content {
-        gap: 24px
+        gap: 24px;
       }
       &--start-date {
         min-width: 100px;
@@ -542,10 +557,9 @@
             font-size: 16px;
           }
         }
-        
       }
     }
-    @media(max-width: $break-md) {
+    @media (max-width: $break-md) {
       &--inner {
         flex-direction: column;
         gap: 24px;
@@ -554,9 +568,9 @@
         max-width: 380px;
       }
     }
-    @media(max-width: 400px) {
+    @media (max-width: 400px) {
       &--content {
-        gap: 16px
+        gap: 16px;
       }
       &--start-date {
         min-width: 80px;
@@ -594,18 +608,17 @@
             font-size: 14px;
           }
         }
-        
       }
     }
   }
   &.bt-layout-boxed {
-    color: #FFFFFF;
+    color: #ffffff;
     background: $color-secondary;
     padding: 40px;
-    @media(max-width: $break-lg) {
+    @media (max-width: $break-lg) {
       padding: 20px;
     }
-    @media(max-width: $break-md) {
+    @media (max-width: $break-md) {
       padding: 40px 15px;
     }
     .bt-tribe-event {
@@ -618,7 +631,7 @@
       }
       &--title,
       &--countdown .bt-countdown--digits {
-        color: #FFFFFF;
+        color: #ffffff;
       }
     }
   }
@@ -679,7 +692,7 @@
             line-height: 20px;
             text-transform: uppercase;
             text-align: center;
-            color: #FFFFFF;
+            color: #ffffff;
             background-color: $color-secondary;
             border-radius: 0;
             transition: width 1s ease-out;
@@ -692,7 +705,7 @@
         @extend .__bt-button-style;
       }
     }
-    @media(max-width: $break-md) {
+    @media (max-width: $break-md) {
       &--content {
         gap: 12px;
         padding: 30px;
@@ -702,14 +715,14 @@
         font-size: 28px;
       }
     }
-    @media(max-width: $break-sm) {
+    @media (max-width: $break-sm) {
       flex-direction: column;
       &--thumbnail,
       &--content {
         width: 100%;
       }
     }
-    @media(max-width: $break-xs) {
+    @media (max-width: $break-xs) {
       &--content {
         padding: 30px 15px;
       }

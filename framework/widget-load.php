@@ -63,7 +63,8 @@ class ElementorWidgets
 			'upcoming-event',
 			'give-form',
 			'sermon-loop-item',
-			'pastor-loop-item'
+			'pastor-loop-item',
+			'event-grid'
 		);
 
 		return $this->widgets;
@@ -174,6 +175,7 @@ class ElementorWidgets
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PastorLoopItem\Widget_PastorLoopItem());
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\GiveForm\Widget_GiveForm());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\EventGrid\Widget_EventGrid());
 	}
 
 	/**

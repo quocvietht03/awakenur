@@ -180,57 +180,65 @@ class Widget_PostLoopItem extends Widget_Base {
 				'selector' => '{{WRAPPER}} .bt-post--title a',
 			]
 		);
-
 		$this->add_control(
-			'category_style',[
-				'label' => esc_html__( 'Category', 'awakenur' ),
+			'publish_style',[
+				'label' => esc_html__( 'Publish', 'awakenur' ),
 				'type'  => Controls_Manager::HEADING,
 			]
 		);
+
 		$this->add_control(
-			'category_color',[
+			'publish_color',[
 				'label'     => esc_html__( 'Color', 'awakenur' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--category a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--publish' => 'color: {{VALUE}};',
 				],
 			]
 		);
 		$this->add_control(
-			'category_background',[
+			'publish_background',[
 				'label'     => esc_html__( 'Background', 'awakenur' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--category a' => 'Background: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--publish' => 'background: {{VALUE}};',
 				],
 			]
 		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'     => 'category_typography',
+				'name'     => 'publish_typography',
 				'label'    => esc_html__( 'Typography', 'awakenur' ),
 				'default'  => '',
-				'selector' => '{{WRAPPER}} .bt-post--category a',
+				'selector' => '{{WRAPPER}} .bt-post--publish',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'publish_day_typography',
+				'label'    => esc_html__( 'Typography Day', 'awakenur' ),
+				'default'  => '',
+				'selector' => '{{WRAPPER}} .bt-post--publish span',
 			]
 		);
 		$this->add_control(
-			'meta_style',[
-				'label' => esc_html__( 'Meta', 'awakenur' ),
+			'excerpt_style',[
+				'label' => esc_html__( 'Excerpt', 'awakenur' ),
 				'type'  => Controls_Manager::HEADING,
 			]
 		);
 
 		$this->add_control(
-			'meta_color',[
+			'excerpt_color',[
 				'label'     => esc_html__( 'Color', 'awakenur' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--publish span' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .bt-post-author--name' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--excerpt' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -238,10 +246,10 @@ class Widget_PostLoopItem extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'     => 'meta_typography',
+				'name'     => 'excerpt_typography',
 				'label'    => esc_html__( 'Typography', 'awakenur' ),
 				'default'  => '',
-				'selector' => '{{WRAPPER}} .bt-post-author--name, {{WRAPPER}} .bt-post--publish span',
+				'selector' => '{{WRAPPER}} .bt-post--excerpt',
 			]
 		);
 

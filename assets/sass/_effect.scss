@@ -675,6 +675,7 @@ body {
 			display: inline-flex;
 			position: relative;
 			overflow: hidden;
+			z-index: 1;
 			&::before,
 			&::after {
 				content: "";
@@ -685,6 +686,7 @@ body {
 				left: 0;
 				box-sizing: border-box;
 				transition: 0.3s ease-in-out;
+				z-index: -1;
 			}
 			&::before {
 				right: -50px;
@@ -713,6 +715,56 @@ body {
 				position: relative;
 				z-index: 1;
 			}
+		}
+	}
+	.give-btn.give-btn-modal {
+		display: inline-flex;
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+		&:focus{
+			background: $color-accent;
+			color: $color-primary;
+			fill: $color-primary;
+		}
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			box-sizing: border-box;
+			transition: 0.3s ease-in-out;
+			z-index: -1;
+		}
+		&::before {
+			right: -50px;
+			border-right: 50px solid transparent;
+			border-bottom: 80px solid $color-primary;
+			transform: translateX(-100%);
+		}
+		&::after {
+			left: -50px;
+			border-left: 50px solid transparent;
+			border-top: 80px solid $color-primary;
+			transform: translateX(100%);
+		}
+		&:hover {
+			color: $color-accent;
+			fill: $color-accent;
+			transition: 0.5s ease-in-out;
+			&::before {
+				transform: translateX(-49%);
+			}
+			&::after {
+				transform: translateX(49%);
+			}
+		}
+		> * {
+			position: relative;
+			z-index: 1;
 		}
 	}
 }
