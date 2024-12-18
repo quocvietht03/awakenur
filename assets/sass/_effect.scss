@@ -406,10 +406,10 @@ body {
 		background-position: center center;
 	}
 	25% {
-		background-position: center 75%;
+		background-position: center 25%;
 	}
 	75% {
-		background-position: center 25%;
+		background-position: center 75%;
 	}
 	to {
 		background-position: center center;
@@ -432,7 +432,7 @@ body {
 .bt-bg-scroll-enable {
 	.bt-bg-scroll-effect,
 	.bt-site-titlebar {
-		animation: effectBgScroll 70s infinite;
+		animation: effectBgScroll 120s infinite;
 	}
 	.bt-bg-scroll-horizontal-effect {
 		@media (min-width: 1025px) {
@@ -636,6 +636,14 @@ body {
 			display: block;
 		}
 	}
+	.elementor-icon-wrapper {
+		.elementor-icon {
+			display: inline-flex;
+			-webkit-animation: effectPlayButton2 2s infinite;
+			animation: effectPlayButton2 2s infinite;
+			border-radius: 50%;
+		}
+	}
 }
 
 @keyframes criss-cross-left {
@@ -722,7 +730,7 @@ body {
 		position: relative;
 		overflow: hidden;
 		z-index: 1;
-		&:focus{
+		&:focus {
 			background: $color-accent;
 			color: $color-primary;
 			fill: $color-primary;

@@ -1,0 +1,25 @@
+.elementor-element {
+    &.bt-text-run-animation {
+        .elementor-headline-dynamic-wrapper {
+            overflow: inherit;
+        }
+    }
+    &.bt-section-infomation {
+        .bt-elwg-site-infor {
+            svg {
+                display: none;
+            }
+        }
+    }
+    &.bt-text-run-mobile {
+        .elementor-headline-dynamic-wrapper {
+            width: 100% !important;
+            max-width: 100%;
+            .elementor-headline-dynamic-text{
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}

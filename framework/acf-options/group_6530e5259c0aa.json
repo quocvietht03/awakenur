@@ -97,6 +97,27 @@
                     "append": ""
                 },
                 {
+                    "key": "field_676226ad134bf",
+                    "label": "Time",
+                    "name": "site_time",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
                     "key": "field_653c7d8c53031",
                     "label": "Socials",
                     "name": "site_socials",
@@ -208,6 +229,28 @@
                             },
                             "default_value": "",
                             "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_6688a0691e7c5"
+                        },
+                        {
+                            "key": "field_6762776b80e55",
+                            "label": "Short Heading",
+                            "name": "short_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
@@ -1242,5 +1285,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1732085175
+    "modified": 1734506360
 }

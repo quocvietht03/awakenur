@@ -352,49 +352,49 @@
 		$('.bt-audio-player').each(function () {
 			const audioPlayer = $(this);
 			const audio = audioPlayer.find('.audio')[0];
-		
+
 			setTimeout(function () {
 				audioPlayer.find('.bt-time .length').text(AwakenurgetTimeCodeFromNum(audio.duration));
 				audio.volume = 0.75;
 			}, 2000);
-		
+
 			let isDraggingTimeline = false;
-		
+
 			const timeline = audioPlayer.find('.bt-timeline');
 			timeline.on('mousedown touchstart', function (e) {
 				isDraggingTimeline = true;
 				updateTimeline(e, $(this));
-				e.preventDefault(); 
+				e.preventDefault();
 			});
-		
+
 			$(document).on('mousemove touchmove', function (e) {
 				if (isDraggingTimeline) {
 					updateTimeline(e, timeline);
 				}
 			});
-		
+
 			$(document).on('mouseup touchend', function () {
 				isDraggingTimeline = false;
 			});
-		
+
 			function updateTimeline(e, timeline) {
 				const timelineWidth = timeline.width();
 				// Get the pageX for mouse or touch event
 				const offsetX = (e.pageX || e.originalEvent.touches[0].pageX) - timeline.offset().left;
 				let newTime = offsetX / timelineWidth * audio.duration;
-		
+
 				newTime = Math.max(0, Math.min(audio.duration, newTime));
 				audio.currentTime = newTime;
 				audioPlayer.find('.bt-progress').width((audio.currentTime / audio.duration) * 100 + '%');
 				audioPlayer.find('.bt-time .current').text(AwakenurgetTimeCodeFromNum(audio.currentTime));
 			}
-		
+
 			setInterval(function () {
 				const progressBar = audioPlayer.find('.bt-progress');
 				progressBar.width(audio.currentTime / audio.duration * 100 + '%');
 				audioPlayer.find('.bt-time .current').text(AwakenurgetTimeCodeFromNum(audio.currentTime));
 			}, 500);
-		
+
 			audioPlayer.find('.bt-toggle-play').on('click', function () {
 				if (audio.paused) {
 					$(this).removeClass('play').addClass('pause');
@@ -404,26 +404,26 @@
 					audio.pause();
 				}
 			});
-		
+
 			let isDragging = false;
 			const volumeSlider = audioPlayer.find('.bt-volume-slider');
-		
+
 			volumeSlider.on('mousedown touchstart', function (e) {
 				isDragging = true;
 				updateVolume(e, volumeSlider);
 				e.preventDefault();
 			});
-		
+
 			$(document).on('mousemove touchmove', function (e) {
 				if (isDragging) {
 					updateVolume(e, volumeSlider);
 				}
 			});
-		
+
 			$(document).on('mouseup touchend', function () {
 				isDragging = false;
 			});
-		
+
 			function updateVolume(e, slider) {
 				const sliderWidth = slider.width();
 				const offsetX = (e.pageX || e.originalEvent.touches[0].pageX) - slider.offset().left;
@@ -432,7 +432,7 @@
 				audio.volume = newVolume;
 				audioPlayer.find('.bt-volume-percentage').width(newVolume * 100 + '%');
 			}
-		
+
 			audioPlayer.find('.bt-volume-button').on('click', function () {
 				const volumeEl = audioPlayer.find('.bt-volume');
 				audio.muted = !audio.muted;
@@ -491,7 +491,13 @@
 			});
 		});
 	}
-
+	function AwakenurRemoveNbsp(selector) {
+		if ($('.bt-text-run-mobile').length > 0) {
+			$('.bt-text-run-mobile .elementor-headline-dynamic-text').each(function () {
+				$(this).html($(this).html().replace(/&nbsp;/g, ' '));
+			});
+		}
+	}
 	jQuery(document).ready(function ($) {
 		AwakenurSubmenuAuto();
 		AwakenurToggleMenuMobile();
@@ -505,6 +511,7 @@
 		AwakenurGiveProgressBar();
 		AwakenurAudioCustom();
 		AwakenurVideoCustom();
+		AwakenurRemoveNbsp();
 	});
 
 	jQuery(window).on('resize', function () {

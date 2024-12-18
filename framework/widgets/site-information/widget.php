@@ -42,6 +42,7 @@ class Widget_SiteInformation extends Widget_Base {
 					'address' => esc_html__( 'Address', 'awakenur' ),
 					'email' => esc_html__( 'Email', 'awakenur' ),
 					'phone'  => esc_html__( 'Phone', 'awakenur' ),
+					'time' => esc_html__('Opening Times', 'cleanira'),
 				],
 				'default' => [ 'address', 'email' ],
 			]
@@ -80,6 +81,7 @@ class Widget_SiteInformation extends Widget_Base {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .bt-elwg-site-infor--item' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-elwg-site-infor--item > a' => 'color: {{VALUE}};',
 				],
 			]
 		);

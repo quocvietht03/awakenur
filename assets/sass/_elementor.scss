@@ -123,7 +123,9 @@
     font-size: 14px;
     line-height: 150%;
     color: $color-text;
-    &.address {
+    font-weight: 400;
+    &.address,
+    &.time {
       display: flex;
       align-items: center;
       grid-gap: 8px;
@@ -132,6 +134,8 @@
       display: flex;
       align-items: center;
       grid-gap: 8px;
+      font-weight: inherit !important;
+      color: inherit !important;
     }
     svg {
       display: inline-block;
@@ -175,6 +179,19 @@
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
+  }
+  &.bt-layout-style1 {
+    .bt-list {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: inherit;
+      justify-content: space-between;
+      gap: 10px;
+      .bt-item{
+        flex-direction: column;
+        gap: 2px;
+      }
+    }
   }
 }
 
