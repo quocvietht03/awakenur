@@ -246,7 +246,7 @@
             &--content {
                 padding: 15px;
             }
-            .bt-post--register-now a{
+            &--register-now a{
                 padding: 14px 20px;
             }
             &--start-date {
@@ -278,10 +278,14 @@
         }
         @media (max-width: $break-xs) {
             &--content {
-                padding: 15px;
+                padding: 24px 15px;
+                gap: 15px;
             }
-            .bt-post--register-now a{
+            &--register-now a{
                 padding: 14px 20px;
+            }
+            &--inner {
+                flex-direction: row;
             }
             &--start-date {
                 min-width: 80px;
