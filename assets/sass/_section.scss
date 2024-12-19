@@ -15,10 +15,21 @@
         .elementor-headline-dynamic-wrapper {
             width: 100% !important;
             max-width: 100%;
-            .elementor-headline-dynamic-text{
+            .elementor-headline-dynamic-text {
                 width: 100%;
                 max-width: 100%;
                 text-align: center;
+            }
+        }
+    }
+    &.bt-section-hero-home3 {
+        @media (max-width: 1320px) and (min-width: $break-tl) {
+            --min-height: 570px !important;
+            .bt-text-run-animation {
+                .elementor-headline {
+                    font-size: 56px !important;
+                    line-height: 68px !important;
+                }
             }
         }
     }

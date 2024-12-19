@@ -108,7 +108,7 @@
           background: $color-primary;
           color: $color-accent;
           font-weight: 500;
-          &:hover{
+          &:hover {
             background: $color-secondary;
           }
         }
@@ -538,45 +538,44 @@
   display: flex;
   justify-content: center;
   margin-top: 60px;
+  gap: 12px;
   .page-numbers {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 36px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #e4e4e4;
     font-family: $primary-font;
-    font-size: 18px;
+    font-size: 16px;
+    font-style: normal;
     font-weight: 700;
-    line-height: 150%;
+    line-height: 24px;
     color: $color-primary;
     background: transparent;
-    border-radius: 10px;
+    border-radius: 0;
     &:not(.current, .dots):hover {
-      color: $color-accent;
+      color: #fff;
+      background: $color-primary;
+      border-color: $color-primary;
       svg {
         path {
-          fill: $color-accent;
+          fill: #fff;
         }
       }
     }
     &.current {
-      width: 42px;
       color: #ffffff;
-      background: $color-accent;
+      background: $color-primary;
+      border-color: $color-primary;
     }
     &.prev,
     &.next {
-      width: 42px;
       font-size: 0;
-    }
-    &.prev {
-      margin-right: 20px;
-    }
-    &.next {
-      margin-left: 20px;
     }
     &.dots {
       width: auto;
+      border: none;
     }
   }
   @media (max-width: $break-xs) {

@@ -415,6 +415,20 @@ body {
 		background-position: center center;
 	}
 }
+@keyframes effectBgScrollstyle2 {
+	from {
+		background-position: bottom center;
+	}
+	25% {
+		background-position: center 25%;
+	}
+	75% {
+		background-position: center 75%;
+	}
+	to {
+		background-position: bottom center;
+	}
+}
 @keyframes effectBgScrollHorizontal {
 	from {
 		background-position: center center;
@@ -430,9 +444,11 @@ body {
 	}
 }
 .bt-bg-scroll-enable {
-	.bt-bg-scroll-effect,
-	.bt-site-titlebar {
+	.bt-bg-scroll-effect{
 		animation: effectBgScroll 120s infinite;
+	}
+	.bt-bg-scroll-effect-style2{
+		animation: effectBgScrollstyle2 400s infinite;
 	}
 	.bt-bg-scroll-horizontal-effect {
 		@media (min-width: 1025px) {
@@ -706,6 +722,53 @@ body {
 				left: -50px;
 				border-left: 50px solid transparent;
 				border-top: 80px solid $color-primary;
+				transform: translateX(100%);
+			}
+			&:hover {
+				color: $color-accent;
+				fill: $color-accent;
+				transition: 0.5s ease-in-out;
+				&::before {
+					transform: translateX(-49%);
+				}
+				&::after {
+					transform: translateX(49%);
+				}
+			}
+			> * {
+				position: relative;
+				z-index: 1;
+			}
+		}
+	}
+	.bt-button-hover-style2 {
+		a {
+			display: inline-flex;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				box-sizing: border-box;
+				transition: 0.3s ease-in-out;
+				z-index: -1;
+			}
+			&::before {
+				right: -50px;
+				border-right: 50px solid transparent;
+				border-bottom: 80px solid $color-secondary;
+				transform: translateX(-100%);
+			}
+			&::after {
+				left: -50px;
+				border-left: 50px solid transparent;
+				border-top: 80px solid $color-secondary;
 				transform: translateX(100%);
 			}
 			&:hover {
