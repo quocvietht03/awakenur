@@ -29,14 +29,15 @@ $socials = get_field('socials', $post_id);
     </div>
   </div>
   <div class="bt-post--content">
-    <?php echo awakenur_post_title_render(); ?>
+    <div class="bt-post--infor">
+      <?php echo awakenur_post_title_render(); ?>
 
-    <?php
-    if (!empty($job)) {
-      echo '<div class="bt-post--job">' . $job . '</div>';
-    }
-    ?>
-
+      <?php
+      if (!empty($job)) {
+        echo '<div class="bt-post--job">' . $job . '</div>';
+      }
+      ?>
+    </div>
     <?php if (!empty($socials)) { ?>
       <div class="bt-post--social">
         <?php echo awakenur_socials_render($socials); ?>

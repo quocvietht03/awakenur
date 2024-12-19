@@ -187,7 +187,7 @@
       flex-direction: inherit;
       justify-content: space-between;
       gap: 10px;
-      .bt-item{
+      .bt-item {
         flex-direction: column;
         gap: 2px;
       }
@@ -417,17 +417,38 @@
 }
 
 .bt-elwg-event-grid {
-  grid-template-columns: repeat(var(--grid-columns, 3), 1fr);
-  gap: var(--grid-gap, 30px);
-  display: grid;
-  @extend .__bt-event-style-default;
-  @media (max-width: $break-tl) {
-    grid-template-columns: repeat(var(--grid-columns-tablet, 2), 1fr);
-    gap: var(--grid-gap-tablet, 20px);
+  &--default {
+    grid-template-columns: repeat(var(--grid-columns, 3), 1fr);
+    gap: var(--grid-gap, 30px);
+    display: grid;
+    @extend .__bt-event-style-default;
+    @media (max-width: $break-tl) {
+      grid-template-columns: repeat(var(--grid-columns-tablet, 2), 1fr);
+      gap: var(--grid-gap-tablet, 20px);
+    }
+    @media (max-width: $break-sm) {
+      grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
+      gap: var(--grid-gap-mobile, 15px);
+    }
   }
-  @media (max-width: $break-sm) {
-    grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
-    gap: var(--grid-gap-mobile, 15px);
+  &--style1{
+    grid-template-columns: repeat(var(--grid-columns, 2), 1fr);
+    gap: var(--grid-gap, 30px);
+    display: grid;
+    @extend .__bt-event-style-style1;
+    @media (max-width: 1300px) {
+      grid-template-columns: repeat(var(--grid-columns-tablet, 1), 1fr);
+      gap: var(--grid-gap-tablet, 20px);
+    }
+    @media (max-width: 1300px) and (min-width:$break-tl){
+      .bt-post--thumbnail .bt-cover-image{
+        padding-bottom: 70% !important;
+      }
+    }
+    @media (max-width: $break-sm) {
+      grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
+      gap: var(--grid-gap-mobile, 15px);
+    }
   }
 }
 .bt-elwg-upcoming-event {

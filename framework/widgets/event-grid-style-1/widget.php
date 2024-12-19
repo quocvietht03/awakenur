@@ -1,6 +1,6 @@
 <?php
 
-namespace AwakenurElementorWidgets\Widgets\EventGrid;
+namespace AwakenurElementorWidgets\Widgets\EventGridStyle1;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -10,17 +10,17 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 
-class Widget_EventGrid extends Widget_Base
+class Widget_EventGridStyle1 extends Widget_Base
 {
 
 	public function get_name()
 	{
-		return 'bt-event-grid';
+		return 'bt-event-grid-style-1';
 	}
 
 	public function get_title()
 	{
-		return __('Event Grid', 'awakenur');
+		return __('Event Grid Style 1', 'awakenur');
 	}
 
 	public function get_icon()
@@ -47,7 +47,7 @@ class Widget_EventGrid extends Widget_Base
 			[
 				'label' => __('Posts Per Page', 'awakenur'),
 				'type' => Controls_Manager::NUMBER,
-				'default' => 6,
+				'default' => 2,
 			]
 		);
 		$this->add_responsive_control(
@@ -55,7 +55,7 @@ class Widget_EventGrid extends Widget_Base
 			[
 				'label' => __('Column', 'awakenur'),
 				'type' => Controls_Manager::NUMBER,
-				'default' => 3,
+				'default' => 2,
 				'min' => 1,
 				'max' => 6,
 			]
@@ -96,7 +96,7 @@ class Widget_EventGrid extends Widget_Base
 				'label' => __('Image Ratio', 'awakenur'),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 0.66,
+					'size' => 1,
 				],
 				'range' => [
 					'px' => [
@@ -422,11 +422,11 @@ class Widget_EventGrid extends Widget_Base
 		$events = tribe_get_events($args);
 
 
-		echo '<div class="bt-elwg-event-grid--default" style="' . $style . '">';
+		echo '<div class="bt-elwg-event-grid--style1" style="' . $style . '">';
 
 		if (!empty($events)) {
 			foreach ($events as $event) {
-				get_template_part('framework/templates/event', 'style', array('event' => $event, 'image-size' => $settings['thumbnail_size']));
+				get_template_part('framework/templates/event', 'style1', array('event' => $event, 'image-size' => $settings['thumbnail_size']));
 			}
 		} else {
 			get_template_part('framework/templates/post', 'none');

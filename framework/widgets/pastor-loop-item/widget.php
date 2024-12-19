@@ -35,7 +35,18 @@ class Widget_PastorLoopItem extends Widget_Base {
 				'label' => __( 'Content', 'awakenur' ),
 			]
 		);
-
+		$this->add_control(
+			'layout',
+			[
+				'label' => esc_html__('Layout', 'awakenur'),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => esc_html__('Default', 'awakenur'),
+					'style1' => esc_html__('Style 1', 'awakenur'),
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			[
@@ -274,7 +285,7 @@ class Widget_PastorLoopItem extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		?>
-			<div class="bt-elwg-pastor-loop-item--default">
+			<div class="bt-elwg-pastor-loop-item--default <?php echo 'bt-layout-' . esc_attr($settings['layout']); ?>">
 				<?php get_template_part( 'framework/templates/pastor', 'style', array('image-size' => $settings['thumbnail_size'])); ?>
 	    	</div>
 		<?php
