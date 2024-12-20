@@ -128,7 +128,7 @@ if (function_exists('get_field')) {
 		$bg_scroll = get_field('effect_bg_scroll', 'options');
 		$img_zoom = get_field('effect_img_zoom', 'options');
 		$button_hover = get_field('effect_button_hover', 'options');
-
+		$effect_load_heading = get_field('effect_load_heading', 'options');
 		if ($orbit_circle) {
 			$classes[] = 'bt-orbit-enable';
 		}
@@ -150,6 +150,9 @@ if (function_exists('get_field')) {
 		}
 		if ($button_hover) {
 			$classes[] = 'bt-button-hover-enable';
+		}
+		if ($effect_load_heading) {
+			$classes[] = 'bt-effect-heading-enable';
 		}
 		return $classes;
 	}

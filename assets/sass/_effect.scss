@@ -444,10 +444,10 @@ body {
 	}
 }
 .bt-bg-scroll-enable {
-	.bt-bg-scroll-effect{
+	.bt-bg-scroll-effect {
 		animation: effectBgScroll 120s infinite;
 	}
-	.bt-bg-scroll-effect-style2{
+	.bt-bg-scroll-effect-style2 {
 		animation: effectBgScrollstyle2 400s infinite;
 	}
 	.bt-bg-scroll-horizontal-effect {
@@ -837,5 +837,91 @@ body {
 			position: relative;
 			z-index: 1;
 		}
+	}
+}
+@keyframes bt-text-scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+@keyframes fadeInRight {
+	from {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeInDown {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes ZoomIn {
+	0% {
+	  transform: scale(0);
+	  opacity: 0;
+	}
+	100% {
+	  transform: scale(1);
+	  opacity: 1;
+	}
+  }
+.bt-word,
+.bt-letter {
+	display: inline-block;
+}
+
+.bt-letter {
+	opacity: 0;
+	transform: translateX(20px);
+
+	.bt-animation-right &{
+		animation: fadeInRight 0.5s ease forwards;
+	}
+	.bt-animation-left &{
+		animation: fadeInLeft 0.5s ease forwards;
+	}
+	.bt-animation-up &{
+		animation: fadeInUp 0.5s ease forwards;
+	}
+	.bt-animation-down &{
+		animation: fadeInDown 0.5s ease forwards;
+	}
+	.bt-animation-zoom &{
+		animation: ZoomIn 0.5s ease forwards;
 	}
 }

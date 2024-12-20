@@ -1173,6 +1173,27 @@
             "ui": 1
         },
         {
+            "key": "field_6763e14866f7d",
+            "label": "Animation Heading",
+            "name": "effect_load_heading",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_65ab1d4bc41ad",
             "label": "Extras",
             "name": "",
@@ -1285,5 +1306,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734506360
+    "modified": 1734599009
 }

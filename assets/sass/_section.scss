@@ -33,4 +33,30 @@
             }
         }
     }
+    &.bt-section-who-we-are {
+        > .e-con-inner {
+            > .elementor-element {
+                .elementor-widget-n-tabs {
+                    .e-n-tabs-heading {
+                        border-bottom: 1px solid #e4e4e4;
+                        @media (max-width: 370px) {
+                            gap: 10px;
+                        }
+                        .e-n-tab-title {
+                            margin-bottom: -1px;
+                            .e-n-tab-title-text {
+                                @media (max-width: 390px) {
+                                    overflow: hidden;
+                                    width: 88px;
+                                    max-width: 100%;
+                                    display: block;
+                                    line-height: 1.2;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

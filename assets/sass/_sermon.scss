@@ -375,14 +375,6 @@
             }
         }
     }
-    @keyframes bt-text-scroll {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-100%);
-        }
-    }
     @media (max-width: $break-sm) {
         height: 67px;
         .bt-audio-player {
