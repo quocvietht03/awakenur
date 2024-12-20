@@ -56,29 +56,36 @@
 		var animationElement = headingAnimationContainer.find('.bt-heading-animation-js');
 		var animationClass = headingAnimationContainer.data('animation');
 		var animationDelay = headingAnimationContainer.data('delay');
-	
+
 		if (animationClass === 'none') {
 			return;
 		}
-		
-		const windowHeight = $(window).height();
-		const elementOffsetTop = animationElement.offset().top;
-		const elementOffsetBottom = elementOffsetTop + animationElement.outerHeight();
+		function checkIfElementInView() {
+			const windowHeight = $(window).height();
+			const elementOffsetTop = animationElement.offset().top;
+			const elementOffsetBottom = elementOffsetTop + animationElement.outerHeight();
 	
-		const isElementInView = 
-			elementOffsetTop < $(window).scrollTop() + windowHeight && 
-			elementOffsetBottom > $(window).scrollTop();
+			const isElementInView =
+				elementOffsetTop < $(window).scrollTop() + windowHeight &&
+				elementOffsetBottom > $(window).scrollTop();
 	
-		if (isElementInView) {
-			if (!animationElement.hasClass('bt-animated')) {
-				animationElement
-					.addClass('bt-animated')
-					.addClass(animationClass);
-				AwakenurAnimateText(animationElement, animationDelay);
+			if (isElementInView) {
+				if (!animationElement.hasClass('bt-animated')) {
+					animationElement
+						.addClass('bt-animated')
+						.addClass(animationClass);
+					AwakenurAnimateText(animationElement, animationDelay);
+				}
 			}
 		}
+		jQuery(window).on('scroll', function () {
+			checkIfElementInView();
+		});
+		jQuery(document).ready(function () {
+			checkIfElementInView();
+		});
 	}
-	
+
 
 	// Make sure you run this code under Elementor.
 	$(window).on('elementor/frontend/init', function () {
