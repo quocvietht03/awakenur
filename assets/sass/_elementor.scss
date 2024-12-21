@@ -27,6 +27,7 @@
     .gallery-item {
       width: 100%;
       border-radius: 0;
+      display: inline-flex
     }
   }
 }
@@ -263,20 +264,29 @@
   .bt-page-breadcrumb {
     position: relative;
     z-index: 3;
-    color: #fff;
     text-align: center;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-transform: uppercase;
+    text-transform: capitalize;
     word-break: break-word;
     display: flex;
     justify-content: center;
-    grid-gap: 10px;
+    align-items: center;
+    grid-gap: 8px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    .bt-deli {
+      display: flex;
+      color: rgba(255, 255, 255, 0.2);
+    }
+    a {
+      color: #fff;
+    }
+    .current {
+      color: rgba(255, 255, 255, 0.5);
+    }
     @media (max-width: $break-sm) {
-      font-size: 16px;
-      grid-gap: 6px;
       flex-wrap: wrap;
     }
   }

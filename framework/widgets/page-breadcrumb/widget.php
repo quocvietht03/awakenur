@@ -110,7 +110,7 @@ class Widget_PageBreadcrumb extends Widget_Base
 			<div class="bt-page-breadcrumb">
 				<?php
 				$home_text = esc_html__('Home', 'awakenur');
-				$delimiter = '|';
+				$delimiter = '/';
 				echo awakenur_page_breadcrumb($home_text, $delimiter);
 				?>
 			</div>

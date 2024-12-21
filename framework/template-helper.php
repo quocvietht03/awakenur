@@ -402,3 +402,28 @@ if (!function_exists('awakenur_socials_render')) {
 		return ob_get_clean();
 	}
 }
+function awakenur_check_post_types($post_type)
+{
+
+  if (is_singular()) {
+    return get_post_type() === $post_type;
+  }
+
+  if (is_post_type_archive()) {
+    return get_query_var('post_type') === $post_type;
+  }
+
+  if (is_category() || is_tag() || is_tax()) {
+    $taxonomy = is_category() ? 'category' : (is_tag() ? 'post_tag' : get_queried_object()->taxonomy);
+    $related_post_types = array_filter(get_post_types(['public' => true]), function ($type) use ($taxonomy) {
+      return in_array($taxonomy, get_object_taxonomies($type));
+    });
+    return in_array($post_type, $related_post_types, true);
+  }
+
+  if (is_home()) {
+    return $post_type === 'post';
+  }
+
+  return false;
+}
