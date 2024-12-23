@@ -22,12 +22,41 @@
     text-decoration: underline;
   }
 }
+.dialog-lightbox-widget-content {
+  .elementor-slideshow__header {
+    flex-direction: row;
+  }
+}
+
 .elementor-widget-image-gallery {
   .gallery {
     .gallery-item {
       width: 100%;
       border-radius: 0;
-      display: inline-flex
+      display: inline-flex;
+      a {
+        position: relative;
+        display: block;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+          background-color: $color-primary;
+          opacity: 0;
+          visibility: hidden;
+          transition: $transition;
+        }
+        &:hover {
+          &::before {
+            opacity: 0.5;
+            visibility: visible;
+          }
+        }
+      }
     }
   }
 }

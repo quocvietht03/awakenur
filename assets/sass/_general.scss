@@ -536,15 +536,17 @@
 
 .__bt-pagination-style {
   display: flex;
-  justify-content: center;
   margin-top: 60px;
   gap: 12px;
+  @media (max-width: $break-md) {
+    margin-top: 45px;
+  }
   .page-numbers {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
     border: 1px solid #e4e4e4;
     font-family: $primary-font;
     font-size: 16px;
@@ -554,6 +556,10 @@
     color: $color-primary;
     background: transparent;
     border-radius: 0;
+    @media (max-width: $break-xs) {
+      width: 40px;
+      height: 40px;
+    }
     &:not(.current, .dots):hover {
       color: #fff;
       background: $color-primary;
@@ -654,9 +660,6 @@
     &.bt-google {
       background: #e22e04;
       border-color: #e22e04;
-    }
-    svg {
-      fill: currentColor;
     }
   }
 }
@@ -855,8 +858,8 @@
 
 .__bt-newsletter-form-style {
   form {
+    display: flex;
     position: relative;
-    text-align: left !important;
     input.tnp-email {
       width: 100%;
       border: none;

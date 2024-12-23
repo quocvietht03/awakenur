@@ -1,25 +1,25 @@
 .widget {
   &:not(:last-child) {
     margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  &.widget_search {
+    padding-bottom: 0;
+    border-bottom: none;
   }
   .wp-block-group {
     margin: 0;
-    background: #f7f4ef;
-    padding: 40px;
-    border-radius: 15px 15px 60px 15px;
-    @media (max-width: $break-lg) and (min-width: $break-md) {
-      padding: 30px 15px;
-      border-radius: 10px 10px 40px 10px;
-    }
-    @media (max-width: $break-xs) {
-      padding: 30px 15px;
-      border-radius: 10px 10px 40px 10px;
-    }
   }
   .wp-block-heading,
   .wg-title,
   .widget-title {
-    @extend .__bt-block-heading-style;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    color: $color-primary;
+    margin: 0 0 16px 0;
   }
   ul,
   ol {
@@ -49,15 +49,41 @@
   &.widget_recent_entries ul {
     li {
       position: relative;
-      padding-left: 20px;
-      &:before {
-        content: "";
-        position: absolute;
-        top: 14px;
-        left: 0;
-        width: 12px;
-        height: 2px;
-        background: $color-accent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 26px;
+      color: $color-text;
+      a {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+        color: $color-text;
+        position: relative;
+        &::before{
+          content: '';
+          position: absolute;
+          bottom: 0;
+          width: 0;
+          height: 2px;
+          display: block;
+          left: 0;
+          background: $color-primary;
+          transition: all 0.6s;
+        }
+      }
+      &.current-cat,&:hover{
+        a{
+          color: $color-primary;
+          font-weight: 700;
+          &::before{
+            width: 100%;
+          }
+        }
       }
     }
   }
@@ -174,25 +200,28 @@
   }
   .wp-block-search {
     &__button {
-      padding: 16px;
+      padding: 12px;
       border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      border-radius: 10px;
+      border-radius: 4px;
+      margin-left: 0;
     }
     &__input {
       width: 100%;
-      padding: 18px 24px;
-      border-radius: 0;
+      padding: 12px 16px;
+      border-radius: 4px;
       font-family: $primary-font;
-      border-radius: 10px;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
     }
     &__icon-button {
       .wp-block-search {
         &__input {
-          padding-right: 65px !important;
+          padding-right: 55px !important;
         }
       }
     }
@@ -210,7 +239,7 @@
           width: 100%;
           display: flex;
           align-items: center;
-          column-gap: 15px;
+          column-gap: 0;
         }
         &__button {
           svg {
@@ -248,11 +277,19 @@
           right: 0;
           top: 0;
           height: 100%;
-          color: #fff;
-          background: $color-accent;
+          color: $color-primary;
+          background: transparent;
           margin: 0;
-          border-radius: 0 10px 10px 0;
+          border-radius: 0;
+          &::before {
+            content: "";
+            background-image: url("data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNCAyNSIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik0yMS4zOTczIDIwLjg5NzlMMTYuNTgwNCAxNi4wODFDMTcuOTU0IDE0LjUwMTQgMTguNjYwNiAxMi40NTAxIDE4LjU1MTMgMTAuMzU5NkMxOC40NDIgOC4yNjkxNSAxNy41MjUzIDYuMzAyNzcgMTUuOTk0NCA0Ljg3NUMxNC40NjM1IDMuNDQ3MjMgMTIuNDM4MSAyLjY2OTYxIDEwLjM0NTEgMi43MDYwNkM4LjI1MjA4IDIuNzQyNTEgNi4yNTQ5NyAzLjU5MDE5IDQuNzc0NzUgNS4wNzA0MUMzLjI5NDU0IDYuNTUwNjIgMi40NDY4NiA4LjU0NzczIDIuNDEwNDEgMTAuNjQwOEMyLjM3Mzk1IDEyLjczMzggMy4xNTE1NyAxNC43NTkyIDQuNTc5MzQgMTYuMjkwMUM2LjAwNzEyIDE3LjgyMDkgNy45NzM1IDE4LjczNzYgMTAuMDY0IDE4Ljg0NjlDMTIuMTU0NSAxOC45NTYzIDE0LjIwNTcgMTguMjQ5NiAxNS43ODU0IDE2Ljg3NkwyMC42MDIzIDIxLjY5MjlDMjAuNzA4OSAyMS43OTIzIDIwLjg0OTkgMjEuODQ2NCAyMC45OTU3IDIxLjg0MzhDMjEuMTQxNCAyMS44NDEyIDIxLjI4MDQgMjEuNzgyMiAyMS4zODM1IDIxLjY3OTFDMjEuNDg2NSAyMS41NzYxIDIxLjU0NTYgMjEuNDM3IDIxLjU0ODEgMjEuMjkxM0MyMS41NTA3IDIxLjE0NTYgMjEuNDk2NiAyMS4wMDQ1IDIxLjM5NzMgMjAuODk3OVpNMy41NjIyNiAxMC43OTU0QzMuNTYyMjYgOS40MjMzMSAzLjk2OTE0IDguMDgyMDEgNC43MzE0NCA2Ljk0MTE1QzUuNDkzNzQgNS44MDAyOCA2LjU3NzIzIDQuOTExMDggNy44NDQ4OSA0LjM4NkM5LjExMjU2IDMuODYwOTIgMTAuNTA3NSAzLjcyMzUzIDExLjg1MzIgMy45OTEyMkMxMy4xOTg5IDQuMjU4OSAxNC40MzUxIDQuOTE5NjMgMTUuNDA1MyA1Ljg4OTg2QzE2LjM3NTUgNi44NjAwOSAxNy4wMzYzIDguMDk2MjMgMTcuMzA0IDkuNDQxOThDMTcuNTcxNiAxMC43ODc3IDE3LjQzNDMgMTIuMTgyNiAxNi45MDkyIDEzLjQ1MDNDMTYuMzg0MSAxNC43MTc5IDE1LjQ5NDkgMTUuODAxNCAxNC4zNTQgMTYuNTYzN0MxMy4yMTMyIDE3LjMyNiAxMS44NzE5IDE3LjczMjkgMTAuNDk5OCAxNy43MzI5QzguNjYwNTEgMTcuNzMwNyA2Ljg5NzIyIDE2Ljk5OTEgNS41OTY2NyAxNS42OTg1QzQuMjk2MTIgMTQuMzk4IDMuNTY0NDkgMTIuNjM0NyAzLjU2MjI2IDEwLjc5NTRaIiBmaWxsPSIjNEYzMjBFIi8+Cjwvc3ZnPgo=");
+            background-size: cover;
+            width: 24px;
+            height: 25px;
+          }
           svg {
+            display: none;
             fill: currentColor;
           }
         }
@@ -291,19 +328,16 @@
     a {
       display: inline-block;
       font-family: $primary-font;
-      font-size: 12px !important;
-      font-weight: 700;
-      text-transform: uppercase;
-      line-height: 20px;
-      color: $color-primary;
-      background: #f5f5f5;
-      padding: 4px 10px;
-      border: 1px solid #c7c7c7;
-      border-radius: 8px;
+      font-size: 14px !important;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      color: $color-text;
+      background: $color-accent;
+      padding: 5px 16px;
       &:hover {
-        color: #ffffff;
-        background: $color-accent;
-        border-color: $color-accent;
+        color: $color-accent;
+        background: $color-primary;
       }
     }
   }
