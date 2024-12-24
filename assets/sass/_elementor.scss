@@ -105,12 +105,21 @@
 }
 
 .elementor-pagination {
+  display: block;
   @extend .__bt-pagination-style;
   .page-numbers {
+    display: inline-flex;
+    vertical-align: middle;
     &.prev,
     &.next {
       font-size: inherit;
     }
+    &:nth-last-child(2):is(span) {
+      margin-right: 0 !important;
+    }
+  }
+  span.page-numbers.prev + .page-numbers {
+    margin-left: 0 !important;
   }
   span {
     &.prev,

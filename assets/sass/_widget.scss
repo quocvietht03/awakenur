@@ -324,7 +324,7 @@
   .tagcloud {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 8px;
     a {
       display: inline-block;
       font-family: $primary-font;
@@ -333,10 +333,10 @@
       font-weight: 400;
       line-height: 22px;
       color: $color-text;
-      background: $color-accent;
+      background: $color-surface;
       padding: 5px 16px;
       &:hover {
-        color: $color-accent;
+        color:  $color-surface;
         background: $color-primary;
       }
     }
