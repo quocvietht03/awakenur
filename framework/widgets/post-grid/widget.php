@@ -451,7 +451,32 @@ class Widget_PostGrid extends Widget_Base
 				'selector' => '{{WRAPPER}} .bt-pagination .page-numbers',
 			]
 		);
-
+		$this->add_responsive_control(
+			'pagination_text_align',
+			[
+				'label' => esc_html__('Alignment', 'awakenur'),
+				'type'  => Controls_Manager::CHOOSE,
+				'options' => [
+					'start' => [
+						'title' => esc_html__('Left', 'awakenur'),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'awakenur'),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'end' => [
+						'title' => esc_html__('Right', 'awakenur'),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'start',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .bt-pagination' => 'justify-content: {{VALUE}};text-align: {{VALUE}};',
+				],
+			]
+		);
 		$this->add_responsive_control(
 			'pagination_space',
 			[

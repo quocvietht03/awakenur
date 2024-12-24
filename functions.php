@@ -49,7 +49,9 @@ if (!function_exists('awakenur_enqueue_scripts')) {
 
 		wp_enqueue_script('select2', get_template_directory_uri() . '/assets/libs/select2/select2.min.js', array('jquery'), '', true);
 		wp_enqueue_style('select2', get_template_directory_uri() . '/assets/libs/select2/select2.min.css', array(), false);
-
+		if (is_singular('post') && comments_open()) {
+			wp_enqueue_script('jquery-validate', get_template_directory_uri() . '/assets/libs/jquery-validate/jquery.validate.min.js', array('jquery'), '', true);
+		}
 		/* Fonts */
 		wp_enqueue_style('awakenur-fonts', awakenur_fonts_url(), false);
 		wp_enqueue_style('awakenur-main', get_template_directory_uri() . '/assets/css/main.css',  array(), false);

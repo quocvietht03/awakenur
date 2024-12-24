@@ -498,6 +498,34 @@
 			});
 		}
 	}
+	/* Validation form comment */
+	function AwakenurCommentValidation() {
+		if ($('#bt_comment_form').length) {
+			jQuery('#bt_comment_form').validate({
+				rules: {
+					author: {
+						required: true,
+						minlength: 2
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					comment: {
+						required: true,
+						minlength: 20
+					},
+					cookies: {
+						required: true,
+					}
+				},
+				errorElement: "div",
+				errorPlacement: function (error, element) {
+					element.after(error);
+				}
+			});
+		}
+	}
 	jQuery(document).ready(function ($) {
 		AwakenurSubmenuAuto();
 		AwakenurToggleMenuMobile();
@@ -512,6 +540,7 @@
 		AwakenurAudioCustom();
 		AwakenurVideoCustom();
 		AwakenurRemoveNbsp();
+		AwakenurCommentValidation();
 	});
 
 	jQuery(window).on('resize', function () {

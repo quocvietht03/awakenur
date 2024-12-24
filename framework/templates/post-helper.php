@@ -176,38 +176,22 @@ if (!function_exists('awakenur_post_meta_render')) {
     ob_start();
 
   ?>
-    <div class="bt-post--meta-wrap">
-      <ul class="bt-post--meta">
-        <li class="bt-meta bt-meta--author">
-          <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-              <path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
-            </svg>
-            <?php echo esc_html__('By', 'awakenur') . ' ' . get_the_author(); ?>
-          </a>
-        </li>
-        <li class="bt-meta bt-meta--view">
-          <a href="<?php echo get_the_permalink(); ?>">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-              <path d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
-            </svg>
-            <?php echo awakenur_get_count_view(); ?>
-          </a>
-        </li>
-
-        <li class="bt-meta bt-meta--comment">
-          <a href="<?php comments_link(); ?>">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-              <path d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z" />
-            </svg>
-            <?php comments_number(esc_html__('0 Comments', 'awakenur'), esc_html__('1 Comment', 'awakenur'), esc_html__('% Comments', 'awakenur')); ?>
-          </a>
-        </li>
-      </ul>
-      <?php
-      echo awakenur_share_render();
-      ?>
-    </div>
+    <ul class="bt-post--meta">
+      <li class="bt-meta bt-meta--publish">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+          <path d="M16.75 2.79541H14.875V2.17041C14.875 2.00465 14.8092 1.84568 14.6919 1.72847C14.5747 1.61126 14.4158 1.54541 14.25 1.54541C14.0842 1.54541 13.9253 1.61126 13.8081 1.72847C13.6908 1.84568 13.625 2.00465 13.625 2.17041V2.79541H7.375V2.17041C7.375 2.00465 7.30915 1.84568 7.19194 1.72847C7.07473 1.61126 6.91576 1.54541 6.75 1.54541C6.58424 1.54541 6.42527 1.61126 6.30806 1.72847C6.19085 1.84568 6.125 2.00465 6.125 2.17041V2.79541H4.25C3.91848 2.79541 3.60054 2.92711 3.36612 3.16153C3.1317 3.39595 3 3.71389 3 4.04541V16.5454C3 16.8769 3.1317 17.1949 3.36612 17.4293C3.60054 17.6637 3.91848 17.7954 4.25 17.7954H16.75C17.0815 17.7954 17.3995 17.6637 17.6339 17.4293C17.8683 17.1949 18 16.8769 18 16.5454V4.04541C18 3.71389 17.8683 3.39595 17.6339 3.16153C17.3995 2.92711 17.0815 2.79541 16.75 2.79541ZM6.125 4.04541V4.67041C6.125 4.83617 6.19085 4.99514 6.30806 5.11235C6.42527 5.22956 6.58424 5.29541 6.75 5.29541C6.91576 5.29541 7.07473 5.22956 7.19194 5.11235C7.30915 4.99514 7.375 4.83617 7.375 4.67041V4.04541H13.625V4.67041C13.625 4.83617 13.6908 4.99514 13.8081 5.11235C13.9253 5.22956 14.0842 5.29541 14.25 5.29541C14.4158 5.29541 14.5747 5.22956 14.6919 5.11235C14.8092 4.99514 14.875 4.83617 14.875 4.67041V4.04541H16.75V6.54541H4.25V4.04541H6.125ZM16.75 16.5454H4.25V7.79541H16.75V16.5454Z" fill="#4F320E" />
+        </svg>
+        <?php echo get_the_date(get_option('date_format')); ?>
+      </li>
+      <li class="bt-meta bt-meta--author">
+        <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>">
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+            <path d="M18.5407 16.858C17.3508 14.8009 15.5172 13.3259 13.3774 12.6267C14.4358 11.9966 15.2582 11.0365 15.7182 9.89374C16.1781 8.75102 16.2503 7.4889 15.9235 6.30121C15.5968 5.11352 14.8892 4.06592 13.9094 3.31931C12.9296 2.57269 11.7318 2.16833 10.5 2.16833C9.26821 2.16833 8.07044 2.57269 7.09067 3.31931C6.1109 4.06592 5.40331 5.11352 5.07654 6.30121C4.74978 7.4889 4.82193 8.75102 5.28189 9.89374C5.74186 11.0365 6.56422 11.9966 7.62268 12.6267C5.48284 13.3251 3.64925 14.8001 2.4594 16.858C2.41577 16.9291 2.38683 17.0083 2.37429 17.0908C2.36174 17.1733 2.36585 17.2575 2.38638 17.3384C2.4069 17.4193 2.44341 17.4953 2.49377 17.5618C2.54413 17.6284 2.60731 17.6842 2.67958 17.7259C2.75185 17.7677 2.83175 17.7945 2.91457 17.8049C2.99738 17.8152 3.08143 17.8089 3.16176 17.7863C3.24209 17.7636 3.31708 17.7251 3.38228 17.673C3.44749 17.6209 3.50161 17.5563 3.54143 17.483C5.01331 14.9392 7.61487 13.4205 10.5 13.4205C13.3852 13.4205 15.9867 14.9392 17.4586 17.483C17.4985 17.5563 17.5526 17.6209 17.6178 17.673C17.683 17.7251 17.758 17.7636 17.8383 17.7863C17.9186 17.8089 18.0027 17.8152 18.0855 17.8049C18.1683 17.7945 18.2482 17.7677 18.3205 17.7259C18.3927 17.6842 18.4559 17.6284 18.5063 17.5618C18.5566 17.4953 18.5932 17.4193 18.6137 17.3384C18.6342 17.2575 18.6383 17.1733 18.6258 17.0908C18.6132 17.0083 18.5843 16.9291 18.5407 16.858ZM6.12503 7.79546C6.12503 6.93017 6.38162 6.08431 6.86235 5.36484C7.34308 4.64538 8.02636 4.08462 8.82579 3.75349C9.62522 3.42235 10.5049 3.33571 11.3535 3.50452C12.2022 3.67334 12.9818 4.09001 13.5936 4.70187C14.2055 5.31372 14.6222 6.09327 14.791 6.94194C14.9598 7.79061 14.8731 8.67027 14.542 9.4697C14.2109 10.2691 13.6501 10.9524 12.9306 11.4331C12.2112 11.9139 11.3653 12.1705 10.5 12.1705C9.34009 12.1692 8.22801 11.7079 7.40781 10.8877C6.5876 10.0675 6.12627 8.9554 6.12503 7.79546Z" fill="#4F320E" />
+          </svg>
+          <?php echo esc_html__('By', 'cleanira') . ' ' . get_the_author(); ?>
+        </a>
+      </li>
+    </ul>
     <?php
     return ob_get_clean();
   }
@@ -221,11 +205,15 @@ if (!function_exists('awakenur_post_category_render')) {
     $categorys = get_the_terms($post_id, 'category');
     if ($categorys && !is_wp_error($categorys)) {
     ?>
-      <div class="bt-post--category">
+      <div class="bt-post--category"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+          <path d="M15.2069 8.79541L9 2.58854C8.90748 2.49528 8.79734 2.42134 8.67599 2.37101C8.55464 2.32069 8.4245 2.295 8.29313 2.29542H2.50001C2.3674 2.29542 2.24022 2.34809 2.14645 2.44186C2.05268 2.53563 2.00001 2.66281 2.00001 2.79542V8.58854C1.99959 8.71991 2.02528 8.85005 2.0756 8.9714C2.12593 9.09275 2.19987 9.20289 2.29313 9.29541L8.5 15.5023C8.59287 15.5952 8.70312 15.6689 8.82446 15.7191C8.9458 15.7694 9.07585 15.7953 9.20719 15.7953C9.33853 15.7953 9.46859 15.7694 9.58993 15.7191C9.71127 15.6689 9.82152 15.5952 9.91438 15.5023L15.2069 10.2098C15.2998 10.1169 15.3734 10.0067 15.4237 9.88534C15.474 9.764 15.4999 9.63394 15.4999 9.5026C15.4999 9.37126 15.474 9.24121 15.4237 9.11987C15.3734 8.99853 15.2998 8.88828 15.2069 8.79541ZM9.20688 14.7954L3 8.58854V3.29542H8.29313L14.5 9.50229L9.20688 14.7954ZM6 5.54541C6 5.69375 5.95602 5.83876 5.87361 5.96209C5.7912 6.08543 5.67406 6.18156 5.53702 6.23832C5.39997 6.29509 5.24917 6.30994 5.10369 6.281C4.9582 6.25206 4.82456 6.18063 4.71967 6.07575C4.61479 5.97086 4.54335 5.83722 4.51442 5.69173C4.48548 5.54625 4.50033 5.39545 4.5571 5.2584C4.61386 5.12136 4.70999 5.00422 4.83333 4.92181C4.95666 4.8394 5.10167 4.79541 5.25 4.79541C5.44892 4.79541 5.63968 4.87443 5.78033 5.01508C5.92099 5.15574 6 5.3465 6 5.54541Z" fill="currentColor" />
+        </svg>
         <?php
+        $output = [];
         foreach ($categorys as $category) {
-          echo '<a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a>';
+          $output[] = '<a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a>';
         }
+        echo implode(', ', $output);
         ?>
       </div>
     <?php
@@ -272,13 +260,10 @@ if (!function_exists('awakenur_tags_render')) {
     if (has_tag()) {
     ?>
       <div class="bt-post-tags">
-        <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5.65527 3.85714C5.65527 3.06473 5.01911 2.42857 4.2267 2.42857C3.43429 2.42857 2.79813 3.06473 2.79813 3.85714C2.79813 4.64955 3.43429 5.28571 4.2267 5.28571C5.01911 5.28571 5.65527 4.64955 5.65527 3.85714ZM17.5638 10.2857C17.5638 10.6652 17.4075 11.0335 17.1508 11.2902L11.6709 16.7812C11.403 17.0379 11.0347 17.1942 10.6553 17.1942C10.2758 17.1942 9.90751 17.0379 9.65081 16.7812L1.6709 8.79018C1.1017 8.23214 0.655273 7.14955 0.655273 6.35714V1.71429C0.655273 0.933035 1.30259 0.285713 2.08384 0.285713H6.7267C7.51911 0.285713 8.6017 0.732143 9.1709 1.30134L17.1508 9.27009C17.4075 9.53795 17.5638 9.90625 17.5638 10.2857ZM21.8495 10.2857C21.8495 10.6652 21.6932 11.0335 21.4365 11.2902L15.9566 16.7812C15.6888 17.0379 15.3205 17.1942 14.941 17.1942C14.3606 17.1942 14.0705 16.9263 13.691 16.5357L18.9365 11.2902C19.1932 11.0335 19.3495 10.6652 19.3495 10.2857C19.3495 9.90625 19.1932 9.53795 18.9365 9.27009L10.9566 1.30134C10.3874 0.732143 9.30483 0.285713 8.51242 0.285713H11.0124C11.8048 0.285713 12.8874 0.732143 13.4566 1.30134L21.4365 9.27009C21.6932 9.53795 21.8495 9.90625 21.8495 10.2857Z" fill="#C2A74E" />
-        </svg>
-
+        <span><?php esc_html_e('Tag:', 'cleanira') ?></span>
         <?php
         if (has_tag()) {
-          the_tags('', '|', '');
+          the_tags('', '', '');
         }
         ?>
       </div>
@@ -295,24 +280,9 @@ if (!function_exists('awakenur_share_render')) {
 
     $social_item = array();
     $social_item[] = '<li>
-                        <a target="_blank" data-btIcon="fa fa-linkedin" data-toggle="tooltip" title="' . esc_attr__('Linkedin', 'awakenur') . '" href="https://www.linkedin.com/shareArticle?url=' . get_the_permalink() . '">
-                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                            <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
-                          </svg>
-                        </a>
-                      </li>';
-    $social_item[] = '<li>
                         <a target="_blank" data-btIcon="fa fa-facebook" data-toggle="tooltip" title="' . esc_attr__('Facebook', 'awakenur') . '" href="https://www.facebook.com/sharer/sharer.php?u=' . get_the_permalink() . '">
                           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
                             <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
-                          </svg>
-                        </a>
-                      </li>';
-
-    $social_item[] = '<li>
-                        <a target="_blank" data-btIcon="fa fa-google-plus" data-toggle="tooltip" title="' . esc_attr__('Google Plus', 'awakenur') . '" href="https://plus.google.com/share?url=' . get_the_permalink() . '">
-                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 488 512">
-                            <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>
                           </svg>
                         </a>
                       </li>';
@@ -323,13 +293,19 @@ if (!function_exists('awakenur_share_render')) {
                         </svg>
                       </a>
                     </li>';
-
+    $social_item[] = '<li>
+                    <a target="_blank" data-btIcon="fa fa-linkedin" data-toggle="tooltip" title="' . esc_attr__('Linkedin', 'awakenur') . '" href="https://www.linkedin.com/shareArticle?url=' . get_the_permalink() . '">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                        <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+                      </svg>
+                    </a>
+                  </li>';
 
     ob_start();
     if (is_singular('post') && has_tag()) { ?>
       <div class="bt-post-share">
         <?php if (!empty($social_item)) {
-          echo '<span>' . esc_html__('Share: ', 'awakenur') . '</span><ul>' . implode(' ', $social_item) . '</ul>';
+          echo '<span>' . esc_html__('Share this post: ', 'awakenur') . '</span><ul>' . implode(' ', $social_item) . '</ul>';
         } ?>
       </div>
 
@@ -354,7 +330,7 @@ if (!function_exists('awakenur_post_button_render')) {
         <span> <?php echo esc_html($text) ?> </span>
       </a>
     </div>
-    <?php }
+  <?php }
 }
 
 /* Author Icon */
@@ -486,7 +462,7 @@ if (!function_exists('awakenur_related_posts')) {
       'category__in'   => $cat_ids,
       'post_type'      => $current_post_type,
       'post__not_in'    => array($post_id),
-      'posts_per_page'  => 2,
+      'posts_per_page'  => 3,
     );
 
     $list_posts = new WP_Query($query_args);
@@ -496,17 +472,19 @@ if (!function_exists('awakenur_related_posts')) {
     if ($list_posts->have_posts()) {
     ?>
       <div class="bt-related-posts">
-        <div class="bt-related-posts--heading">
-          <h4 class="bt-sub"><?php esc_html_e('From The Blog', 'awakenur'); ?></h4>
-          <h2 class="bt-head"><?php esc_html_e('Related News ', 'awakenur'); ?><span><?php esc_html_e('& Articles', 'awakenur'); ?></span></h2>
-        </div>
-        <div class="bt-related-posts--list bt-image-effect">
-          <?php
-          while ($list_posts->have_posts()) : $list_posts->the_post();
-            get_template_part('framework/templates/post', 'related');
-          endwhile;
-          wp_reset_postdata();
-          ?>
+        <div class="bt-container">
+          <div class="bt-related-posts--heading">
+            <h2 class="bt-head"><?php esc_html_e('Related Articles ', 'awakenur'); ?></h2>
+            <p class="bt-sub"><?php esc_html_e('Subscribe to our blog for the latest posts and insights!', 'awakenur'); ?></p>
+          </div>
+          <div class="bt-related-posts--list bt-image-effect">
+            <?php
+            while ($list_posts->have_posts()) : $list_posts->the_post();
+              get_template_part('framework/templates/post', 'related');
+            endwhile;
+            wp_reset_postdata();
+            ?>
+          </div>
         </div>
       </div>
     <?php
@@ -531,6 +509,7 @@ function awakenur_comment_fields_custom_order($fields)
   $fields['author'] = $author_field;
   $fields['email'] = $email_field;
   $fields['comment'] = $comment_field;
+  $fields['cookies'] = $cookies_field;
   // done ordering, now return the fields:
   return $fields;
 }

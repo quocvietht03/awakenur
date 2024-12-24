@@ -4,44 +4,52 @@
  */
 
 get_header();
-get_template_part( 'framework/templates/site', 'titlebar');
-
+if (function_exists('get_field')) {
+	$banner = get_field('banner_post', get_the_ID());
+} else {
+	$banner = '';
+}
 ?>
 
 <main id="bt_main" class="bt-site-main">
-	<div class="bt-main-content-ss">
-		<div class="bt-container">
-			<div class="bt-main-post-row">
-				<div class="bt-main-post-col">
-					<?php
-						while ( have_posts() ) : the_post();
-							?>
-							<div class="bt-main-post">
-								<?php get_template_part( 'framework/templates/post'); ?>
-							</div>
-							<?php
-							echo awakenur_tags_render();
-				
-							echo awakenur_author_render();
-
-							echo awakenur_related_posts();
-
-							// awakenur_post_nav();
-
-							// If comments are open or we have at least one comment, load up the comment template.
-							if ( comments_open() || get_comments_number() ) comments_template();
-						endwhile;
-					?>
-				</div>
-				<div class="bt-sidebar-col">
-					<div class="bt-sidebar">
-						<?php if(is_active_sidebar('main-sidebar')) echo get_sidebar('main-sidebar'); ?>
-					</div>
+	<div class="bt-main-image-full">
+		<?php
+		if (!empty($banner)) {
+		?>
+			<div class="bt-post--featured">
+				<div class="bt-cover-image">
+					<img src='<?php echo esc_url($banner['url']) ?>' />
 				</div>
 			</div>
-		</div>
+		<?php
+		} else {
+			echo awakenur_post_featured_render('full');
+		}
+		?>
 	</div>
+	<div class="bt-container-single">
+		<?php
+		while (have_posts()) : the_post();
+		?>
+			<div class="bt-main-post">
+				<?php get_template_part('framework/templates/post'); ?>
+			</div>
+			<div class="bt-main-actions">
+				<?php
+				echo awakenur_tags_render();
+				echo awakenur_share_render();
+				?>
+			</div>
+		<?php
+			awakenur_post_nav();
 
+			// If comments are open or we have at least one comment, load up the comment template.
+			if (comments_open() || get_comments_number()) comments_template();
+		
+		endwhile;
+		?>
+	</div>
+	<?php 	echo awakenur_related_posts(); ?>
 </main><!-- #main -->
 
 <?php get_footer(); ?>

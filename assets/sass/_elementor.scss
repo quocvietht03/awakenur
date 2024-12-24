@@ -135,6 +135,12 @@
       font-weight: inherit;
       font-family: inherit;
       font-size: inherit;
+      .bt-animation{
+        opacity: 0;
+        &.bt-animated{
+          opacity: 1;
+        }
+      }
     }
   }
 }
