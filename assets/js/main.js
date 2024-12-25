@@ -526,6 +526,11 @@
 			});
 		}
 	}
+	jQuery(window).on('elementor/frontend/init', function () {
+		elementorFrontend.hooks.addAction('frontend/element_ready/global', function () {
+			AwakenurPastorQuickView(); 
+		});
+	});
 	jQuery(document).ready(function ($) {
 		AwakenurSubmenuAuto();
 		AwakenurToggleMenuMobile();

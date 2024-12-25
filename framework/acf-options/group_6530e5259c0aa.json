@@ -860,7 +860,7 @@
         {
             "key": "field_6539eb81df4cd",
             "label": "Related Posts",
-            "name": "therapist_related_posts",
+            "name": "pastor_related_posts",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -874,9 +874,9 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_66865456ac66b",
-                    "label": "Sub Heading",
-                    "name": "sub_heading",
+                    "key": "field_6539eb81df4cf",
+                    "label": "Heading",
+                    "name": "heading",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -894,9 +894,9 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6539eb81df4cf",
-                    "label": "Heading",
-                    "name": "heading",
+                    "key": "field_66865456ac66b",
+                    "label": "Sub Heading",
+                    "name": "sub_heading",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -936,11 +936,11 @@
                     "append": ""
                 },
                 {
-                    "key": "field_66865474ac66c",
-                    "label": "Bottom Text",
-                    "name": "bottom_text",
+                    "key": "field_676babcf31aa5",
+                    "label": "Column",
+                    "name": "column",
                     "aria-label": "",
-                    "type": "textarea",
+                    "type": "number",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -950,58 +950,13 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "maxlength": "",
-                    "rows": "",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
-                    "new_lines": ""
-                }
-            ]
-        },
-        {
-            "key": "field_668778bfba5a2",
-            "label": "Feature Section",
-            "name": "feature_section",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_668778d9ba5a7",
-                    "label": "Shortcode Feature",
-                    "name": "shortcode_feature",
-                    "aria-label": "",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "elementor_library"
-                    ],
-                    "post_status": [
-                        "publish"
-                    ],
-                    "taxonomy": [
-                        "elementor_library_type:section"
-                    ],
-                    "return_format": "object",
-                    "multiple": 0,
-                    "allow_null": 1,
-                    "bidirectional": 0,
-                    "ui": 1,
-                    "bidirectional_target": []
+                    "step": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
@@ -1415,5 +1370,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734936020
+    "modified": 1735109604
 }

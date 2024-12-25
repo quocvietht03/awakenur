@@ -168,7 +168,7 @@ function bt_custom_posts_per_page($query) {
 		$query->set( 'posts_per_page', 12 );
 	}
 
-	if ( $query->is_post_type_archive( 'therapist' ) && $query->is_main_query() && ! is_admin() ) {
-		$query->set( 'posts_per_page', 12 );
+	if ( $query->is_post_type_archive( 'pastor' ) && $query->is_main_query() && ! is_admin() ) {
+		$query->set( 'posts_per_page', 6 );
 	}
 };
