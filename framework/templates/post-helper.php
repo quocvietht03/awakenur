@@ -515,6 +515,29 @@ function awakenur_comment_fields_custom_order($fields)
 }
 add_filter('comment_form_fields', 'awakenur_comment_fields_custom_order');
 
+function awakenur_time_comment($timestamp)
+{
+  $time_diff = time() - $timestamp;
+
+  if ($time_diff < 60) {
+    return $time_diff . ' seconds ago';
+  } elseif ($time_diff < 3600) {
+    $minutes = floor($time_diff / 60);
+    return $minutes . ' minute' . ($minutes > 1 ? 's' : '') . ' ago';
+  } elseif ($time_diff < 86400) {
+    $hours = floor($time_diff / 3600);
+    return $hours . ' hour' . ($hours > 1 ? 's' : '') . ' ago';
+  } elseif ($time_diff < 2592000) { 
+    $days = floor($time_diff / 86400);
+    return $days . ' day' . ($days > 1 ? 's' : '') . ' ago';
+  } elseif ($time_diff < 31536000) {
+    $months = floor($time_diff / 2592000);
+    return $months . ' month' . ($months > 1 ? 's' : '') . ' ago';
+  } else {
+    $years = floor($time_diff / 31536000);
+    return $years . ' year' . ($years > 1 ? 's' : '') . ' ago';
+  }
+}
 /* Custom comment list */
 if (!function_exists('awakenur_custom_comment')) {
   function awakenur_custom_comment($comment, $args, $depth)
@@ -553,7 +576,7 @@ if (!function_exists('awakenur_custom_comment')) {
             <?php echo get_comment_author(get_comment_ID()); ?>
           </h5>
           <div class="bt-date">
-            <?php echo get_comment_date(); ?>
+            <?php echo awakenur_time_comment(get_comment_date('U')); ?>
           </div>
           <?php if ($comment->comment_approved == '0') : ?>
             <em class="comment-awaiting-moderation"><?php esc_html_e('Your comment is awaiting moderation.', 'awakenur'); ?></em>
