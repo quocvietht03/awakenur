@@ -534,8 +534,7 @@ function awakenur_time_comment($timestamp)
     $months = floor($time_diff / 2592000);
     return $months . ' month' . ($months > 1 ? 's' : '') . ' ago';
   } else {
-    $years = floor($time_diff / 31536000);
-    return $years . ' year' . ($years > 1 ? 's' : '') . ' ago';
+    return date('F j, Y', $timestamp);
   }
 }
 /* Custom comment list */
