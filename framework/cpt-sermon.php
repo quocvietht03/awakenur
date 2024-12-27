@@ -185,7 +185,7 @@ function awakenur_sermon_query_args($params = array(), $limit = 12) {
 
 function awakenur_sermon_filter() {
 	$archive_page = get_field('sermon_archive_page', 'options');
-	$limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 3;
+	$limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 9;
 	$query_args = awakenur_sermon_query_args($_POST, $limit);
 	$wp_query = new \WP_Query($query_args);
 	$current_page = isset($_POST['current_page']) && $_POST['current_page'] != '' ? $_POST['current_page'] : 1;

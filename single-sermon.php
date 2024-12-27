@@ -1,6 +1,6 @@
 <?php
 /*
- * Single Service
+ * Single Sermon
  */
 
 get_header();
@@ -31,9 +31,9 @@ if (!empty($end_time)) {
 	$date_time .= ' - ' . $end_time;
 }
 if (!empty($tags) && !is_wp_error($tags)) {
-	$tag_links = [];
+	$tag_list = [];
 	foreach ($tags as $tag) {
-		$tag_links[] = '<a href="' . esc_url(get_term_link($tag->term_id, 'sermon_tag')) . '" class="tag-link">' . esc_html($tag->name) . '</a>';
+		$tag_list[] = esc_html($tag->name);
 	}
 }
 if ($video_type == 'youtube') {
@@ -177,7 +177,7 @@ $social_item[] = '<li>
 										</div>
 									</li>
 								<?php } ?>
-								<?php if (!empty($tag_links)) { ?>
+								<?php if (!empty($tag_list)) { ?>
 									<li class="bt-sidebar--item">
 										<div class="bt-icon">
 											<svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
@@ -194,7 +194,7 @@ $social_item[] = '<li>
 										</div>
 										<div class="bt-content">
 											<label><?php esc_html_e('Tag:', 'awakenur') ?></label>
-											<?php echo '<p class="tag-list">' . implode(', ', $tag_links) . '</p>'; ?>
+											<?php echo '<p class="tag-list">' . implode(', ', $tag_list) . '</p>'; ?>
 										</div>
 									</li>
 								<?php } ?>
