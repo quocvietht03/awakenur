@@ -314,7 +314,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-gap: 8px;
+    grid-gap: 2px 8px;
+    flex-wrap: wrap;
     color: rgba(255, 255, 255, 0.5);
     font-size: 16px;
     font-style: normal;
@@ -326,6 +327,7 @@
     }
     a {
       color: #fff;
+      font-weight: inherit;
     }
     .current {
       color: rgba(255, 255, 255, 0.5);

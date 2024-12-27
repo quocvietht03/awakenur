@@ -56,7 +56,6 @@ class ElementorWidgets
 			'highlighted-heading',
 			'heading-animation',
 			'pricing-item',
-			'therapist-loop-item',
 			'service-loop-item',
 			'page-title-bar',
 			'orbit-circle',
@@ -167,9 +166,7 @@ class ElementorWidgets
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PostLoopItem\Widget_PostLoopItem());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PostGrid\Widget_PostGrid());
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\TherapistLoopItem\Widget_TherapistLoopItem());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\ServiceLoopItem\Widget_ServiceLoopItem());
-
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\OrbitCircle\Widget_OrbitCircle());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PatternBackground\Widget_PatternBackground());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\BubleBackground\Widget_BubleBackground());

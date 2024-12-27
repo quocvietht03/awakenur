@@ -21,7 +21,7 @@ if (!empty($start_time)) {
   $date_time .= ': ' . $start_time;
 }
 if (!empty($end_time)) {
-  $date_time .= ': ' . $end_time;
+  $date_time .= ' - ' . $end_time;
 }
 
 if ($video_type == 'youtube') {
@@ -139,7 +139,7 @@ $social_item[] = '<li>
         <ul class="bt-share-list"><?php echo implode(' ', $social_item); ?></ul>
       </div>
       <?php if (!empty($pdf_file)) { ?>
-        <a class="bt-pdf-file" href="<?php echo esc_url($pdf_file); ?>" target="_blank"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a class="bt-pdf-file" href="<?php echo esc_url($pdf_file); ?>" download="sample"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 11.5454V2.79541" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M16.875 11.5454V16.5454H3.125V11.5454" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M13.125 8.42041L10 11.5454L6.875 8.42041" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

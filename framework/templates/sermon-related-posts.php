@@ -1,5 +1,5 @@
 <?php
-$related_posts = get_field('pastor_related_posts', 'options');
+$related_posts = get_field('sermon_related_posts', 'options');
 
 $post_id = get_the_ID();
 $cat_ids = array();
@@ -24,10 +24,10 @@ $list_posts = new WP_Query($query_args);
 $column = !empty($related_posts['column']) ? $related_posts['column'] : 3;
 if ($list_posts->have_posts()) {
 ?>
-  <div class="bt-related-pastor-ss">
+  <div class="bt-related-sermon-ss">
     <div class="bt-container">
       <?php if (!($related_posts['sub_heading']) || !empty($related_posts['heading'])) {  ?>
-        <div class="bt-related-pastor-ss--heading">
+        <div class="bt-related-sermon-ss--heading">
           <?php
           if (!empty($related_posts['heading'])) {
             echo '<h2 class="bt-main-text">' . $related_posts['heading'] . '</h2>';
@@ -38,10 +38,10 @@ if ($list_posts->have_posts()) {
           ?>
         </div>
       <?php } ?>
-      <div class="bt-related-pastor-ss--list bt-image-effect" style="--column:<?php echo esc_attr($column) ?>">
+      <div class="bt-related-sermon-ss--list bt-image-effect" style="--column:<?php echo esc_attr($column) ?>">
         <?php
         while ($list_posts->have_posts()): $list_posts->the_post();
-          get_template_part('framework/templates/pastor', 'style', array('image-size' => 'medium_large'));
+          get_template_part('framework/templates/sermon', 'style', array('image-size' => 'medium_large'));
         endwhile;
         wp_reset_postdata();
         ?>

@@ -1,6 +1,6 @@
 <?php
 /*
- * Single Therapist
+ * Single Pastor
  */
 
 get_header();

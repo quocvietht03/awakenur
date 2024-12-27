@@ -3,7 +3,7 @@ get_header();
 get_template_part( 'framework/templates/site', 'titlebar');
 
 $archive_page = get_field('sermon_archive_page', 'options');
-$limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 12;
+$limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 3;
 $query_args = awakenur_sermon_query_args($_GET, $limit);
 $wp_query = new \WP_Query($query_args);
 $current_page = isset($_GET['current_page']) && $_GET['current_page'] != '' ? $_GET['current_page'] : 1;
@@ -28,7 +28,6 @@ $of = $wp_query->found_posts;
                         <?php
                             while ($wp_query->have_posts()) { 
                                 $wp_query->the_post();
-
                                 get_template_part( 'framework/templates/sermon', 'style', array('image-size' => 'medium_large') );
                             }
                         ?>

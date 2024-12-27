@@ -21,13 +21,17 @@ if (function_exists('get_field')) {
 $style_parts = [];
 $background_image = $bg_image;
 
-if (awakenur_check_post_types('post')) {
+if (awakenur_check_post_types('tribe_events')) {
   if (!empty($custom_background['enable_background_event']) && !empty($custom_background['background_image_event'])) {
     $background_image = $custom_background['background_image_event'];
   }
 } elseif (awakenur_check_post_types('pastor')) {
   if (!empty($custom_background['enable_background_pastor']) && !empty($custom_background['background_image_pastor'])) {
     $background_image = $custom_background['background_image_pastor'];
+  }
+} elseif (awakenur_check_post_types('sermon')) {
+  if (!empty($custom_background['enable_background_sermon']) && !empty($custom_background['background_image_sermon'])) {
+    $background_image = $custom_background['background_image_sermon'];
   }
 }
 $style_parts[] = 'background-image: url(' . esc_url($background_image) . ');';

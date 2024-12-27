@@ -15,6 +15,11 @@
         font-size: 40px;
         line-height: 1.2;
       }
+      @media(max-width:$break-xs){
+        .single-sermon &{
+          font-size: 33px;
+        }
+      }
     }
     &--breadcrumb {
       color: rgba(255, 255, 255, 0.5);
@@ -24,9 +29,11 @@
       line-height: 26px;
       word-break: break-word;
       display: flex;
-      grid-gap: 8px;
+      grid-gap: 2px 8px;
+    flex-wrap: wrap;
       a {
         color: #fff;
+        font-weight: inherit;
       }
       .bt-deli {
         display: flex;
