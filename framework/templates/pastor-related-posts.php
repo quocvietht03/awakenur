@@ -2,19 +2,10 @@
 $related_posts = get_field('pastor_related_posts', 'options');
 
 $post_id = get_the_ID();
-$cat_ids = array();
-$categories = get_the_category($post_id);
-
-if (!empty($categories) && !is_wp_error($categories)) {
-  foreach ($categories as $category) {
-    array_push($cat_ids, $category->term_id);
-  }
-}
 
 $current_post_type = get_post_type($post_id);
 
 $query_args = array(
-  'category__in'   => $cat_ids,
   'post_type'      => $current_post_type,
   'post__not_in'    => array($post_id),
   'posts_per_page'  => !empty($related_posts['number_posts']) ? $related_posts['number_posts'] : 3,

@@ -3,21 +3,26 @@ $related_posts = get_field('sermon_related_posts', 'options');
 
 $post_id = get_the_ID();
 $cat_ids = array();
-$categories = get_the_category($post_id);
+$categories = wp_get_post_terms($post_id, 'sermon_categories');
 
 if (!empty($categories) && !is_wp_error($categories)) {
   foreach ($categories as $category) {
     array_push($cat_ids, $category->term_id);
   }
 }
-
 $current_post_type = get_post_type($post_id);
-
 $query_args = array(
-  'category__in'   => $cat_ids,
   'post_type'      => $current_post_type,
   'post__not_in'    => array($post_id),
   'posts_per_page'  => !empty($related_posts['number_posts']) ? $related_posts['number_posts'] : 3,
+  'tax_query'      => array(
+    array(
+      'taxonomy' => 'sermon_categories', 
+      'field'    => 'term_id',
+      'terms'    => $cat_ids,  
+      'operator' => 'IN', 
+    ),
+  ),
 );
 
 $list_posts = new WP_Query($query_args);

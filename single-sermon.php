@@ -200,18 +200,36 @@ $social_item[] = '<li>
 								<?php } ?>
 							</ul>
 							<div class="bt-actions bt-button-hover-style2">
-								<a href="#" class="btn-button btn-audio"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-										<g clip-path="url(#clip0_16967_10910)">
-											<path d="M13.125 5.29541C13.125 3.56952 11.7259 2.17041 10 2.17041C8.27411 2.17041 6.875 3.56952 6.875 5.29541V10.2954C6.875 12.0213 8.27411 13.4204 10 13.4204C11.7259 13.4204 13.125 12.0213 13.125 10.2954V5.29541Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-											<path d="M10 15.9204V19.0454" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-											<path d="M15.625 10.2954C15.625 11.7873 15.0324 13.218 13.9775 14.2729C12.9226 15.3278 11.4918 15.9204 10 15.9204C8.50816 15.9204 7.07742 15.3278 6.02252 14.2729C4.96763 13.218 4.375 11.7873 4.375 10.2954" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-										</g>
-										<defs>
-											<clipPath id="clip0_16967_10910">
-												<rect width="20" height="20" fill="white" transform="translate(0 0.29541)" />
-											</clipPath>
-										</defs>
-									</svg><span><?php esc_html_e('Play Audio', 'awakenur') ?></span></a>
+								<?php if (!empty($audio_source)) { ?>
+									<?php if ($audio_type == 'soundcloud') { ?>
+										<a href="#" class="btn-button btn-soundcloud"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+												<g clip-path="url(#clip0_16967_10910)">
+													<path d="M13.125 5.29541C13.125 3.56952 11.7259 2.17041 10 2.17041C8.27411 2.17041 6.875 3.56952 6.875 5.29541V10.2954C6.875 12.0213 8.27411 13.4204 10 13.4204C11.7259 13.4204 13.125 12.0213 13.125 10.2954V5.29541Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+													<path d="M10 15.9204V19.0454" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+													<path d="M15.625 10.2954C15.625 11.7873 15.0324 13.218 13.9775 14.2729C12.9226 15.3278 11.4918 15.9204 10 15.9204C8.50816 15.9204 7.07742 15.3278 6.02252 14.2729C4.96763 13.218 4.375 11.7873 4.375 10.2954" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+												</g>
+												<defs>
+													<clipPath id="clip0_16967_10910">
+														<rect width="20" height="20" fill="white" transform="translate(0 0.29541)" />
+													</clipPath>
+												</defs>
+											</svg><span><?php esc_html_e('Audio', 'awakenur') ?></span></a>
+									<?php } else { ?>
+										<a href="#" class="btn-button btn-audio"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+												<g clip-path="url(#clip0_16967_10910)">
+													<path d="M13.125 5.29541C13.125 3.56952 11.7259 2.17041 10 2.17041C8.27411 2.17041 6.875 3.56952 6.875 5.29541V10.2954C6.875 12.0213 8.27411 13.4204 10 13.4204C11.7259 13.4204 13.125 12.0213 13.125 10.2954V5.29541Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+													<path d="M10 15.9204V19.0454" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+													<path d="M15.625 10.2954C15.625 11.7873 15.0324 13.218 13.9775 14.2729C12.9226 15.3278 11.4918 15.9204 10 15.9204C8.50816 15.9204 7.07742 15.3278 6.02252 14.2729C4.96763 13.218 4.375 11.7873 4.375 10.2954" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+												</g>
+												<defs>
+													<clipPath id="clip0_16967_10910">
+														<rect width="20" height="20" fill="white" transform="translate(0 0.29541)" />
+													</clipPath>
+												</defs>
+											</svg><span><?php esc_html_e('Play Audio', 'awakenur') ?></span></a>
+								<?php
+									}
+								} ?>
 								<?php if (!empty($pdf_file)) { ?>
 									<a href="<?php echo esc_url($pdf_file); ?>" class="btn-button btn-download" download="sample"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
 											<g clip-path="url(#clip0_16967_10930)">
@@ -226,7 +244,7 @@ $social_item[] = '<li>
 											</defs>
 										</svg> <?php esc_html_e('Download', 'awakenur') ?></a>
 								<?php } ?>
-				
+
 							</div>
 							<?php if (!empty($audio_source)) { ?>
 								<div id="<?php echo esc_attr('bt_play_audio_' . $post_id); ?>" class="bt-sermon-audio">

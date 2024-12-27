@@ -411,6 +411,7 @@
 	}
 	function AwakenurPauseVideoSingle() {
 		if ($('body').hasClass('single-sermon')) {
+
 			// Pause YouTube iframe
 			const youtubeIframe = $('.bt-youtube-wrap iframe')[0];
 			if (youtubeIframe) {
@@ -440,14 +441,17 @@
 	}
 	function AwakenurpauseAllAudio() {
 		$('.bt-post audio').each(function () {
-		  this.pause();
-		  this.currentTime = 0;
+			this.pause();
+			this.currentTime = 0;
 		});
 		$('.bt-sidebar-wrap audio').each(function () {
-		  this.pause();
+			this.pause();
 		});
-	  }
-	  
+		if ($('body').hasClass('single-sermon')) {
+			$(".bt-actions .btn-audio span").text("Play Audio");
+		}
+	}
+
 	function AwakenurAudioCustom() {
 		$(document).on('click', '.bt-play-audio', function (e) {
 			e.preventDefault();
@@ -485,6 +489,9 @@
 				this.pause();
 				this.currentTime = 0;
 			});
+			if ($('body').hasClass('single-sermon')) {
+				$(".bt-actions .btn-audio span").text("Play Audio");
+			}
 			AwakenurResetIframe('.bt-soundcloud iframe');
 		});
 		if ($('body').hasClass('single-sermon')) {
@@ -496,7 +503,6 @@
 					// Reset all audio states
 					$('.bt-play-audio').removeClass('active');
 					$('.btn-audio').removeClass('active');
-					$('.bt-sermon-audio').removeClass('active');
 					AwakenurpauseAllAudio();
 					AwakenurResetIframe('.bt-soundcloud iframe');
 				} else {
@@ -508,13 +514,25 @@
 					$('.bt-sermon-audio').removeClass('active');
 					AwakenurpauseAllAudio();
 					sidebar.find('.bt-sermon-audio').addClass('active');
-
+					$(".bt-actions .btn-audio span").text("Pause Audio");
 					if (audioPlayer.length) {
 						const audio = audioPlayer.find('.audio')[0];
 						audio.play();
 						audioPlayer.find('.bt-toggle-play').addClass('pause');
 						audioPlayer.find('.bt-time .length').text(AwakenurgetTimeCodeFromNum(audio.duration));
 					}
+					AwakenurPauseVideoSingle();
+				}
+			});
+			$(document).on('click', '.btn-soundcloud', function (e) {
+				e.preventDefault();
+				const $this = $(this);
+				const sidebar = $this.closest('.bt-sidebar-wrap');
+				if (!sidebar.hasClass('active')) {
+					$('.bt-play-audio').removeClass('active');
+					$('.bt-sermon-audio').removeClass('active');
+					AwakenurpauseAllAudio();
+					sidebar.find('.bt-sermon-audio').addClass('active');
 					AwakenurPauseVideoSingle();
 				}
 			});

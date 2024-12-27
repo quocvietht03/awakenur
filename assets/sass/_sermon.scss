@@ -597,6 +597,20 @@
 }
 .single-sermon {
     .bt-main-content-ss {
+        .bt-main-post-row {
+            @media (max-width: $break-lg) and (min-width: $break-md) {
+                gap: 20px;
+                .bt-sidebar-col {
+                    width: 30%;
+                    .bt-sidebar-wrap{
+                        padding: 24px 15px;
+                        .bt-sidebar--item{
+                            gap: 10px;
+                        }
+                    }
+                }
+            }
+        }
         .bt-post {
             &--video-wrap {
                 position: relative;
@@ -705,6 +719,7 @@
                     display: flex;
                     align-items: center;
                     gap: 12px;
+                    flex-wrap: wrap;
                     span {
                         font-size: 16px;
                         font-style: normal;
@@ -730,6 +745,16 @@
                         &:hover {
                             background: $color-primary;
                             color: $color-accent;
+                        }
+                    }
+                    @media(max-width:$break-xs){
+                        gap: 6px;
+                        span{
+                            font-size: 14px;
+                        }
+                        a{
+                            width: 38px;
+                            height: 38px;
                         }
                     }
                 }
@@ -804,6 +829,7 @@
                 display: flex;
                 gap: 15px;
                 align-items: center;
+                max-width: $break-xs;
                 .btn-button {
                     width: 100%;
                     padding: 12px;
@@ -815,26 +841,13 @@
                     font-size: 16px;
                     line-height: 24px;
                     justify-content: center;
-                    &.active {
-                        color: $color-accent;
-                        fill: $color-accent;
-                        transition: 0.5s ease-in-out;
-                        &::before {
-                            transform: translateX(-49%);
-                        }
-                        &::after {
-                            transform: translateX(49%);
-                        }
-                        span {
-                            font-size: 0;
-                            display: flex;
-                            align-items: center;
-                            &::before {
-                                content: "Pause Video";
-                                font-size: 16px;
-                            }
-                        }
-                    }
+                    box-sizing: border-box;
+                }
+                @media (max-width: 1300px) and (min-width: $break-md) {
+                    flex-direction: column;
+                }
+                @media (max-width: $break-xs) {
+                    flex-direction: column;
                 }
             }
         }
