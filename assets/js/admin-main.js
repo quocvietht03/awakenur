@@ -6,7 +6,7 @@
 	});
 
 	jQuery(window).on('resize', function() {
-    AwakenurSubmenuAuto();
+   // AwakenurSubmenuAuto();
 	});
 
 	jQuery(window).on('scroll', function() {

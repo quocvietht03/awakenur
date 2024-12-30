@@ -57,7 +57,12 @@ class Widget_UpcomingEvent extends Widget_Base {
 
 	protected function render() {
         $settings = $this->get_settings_for_display();
-        $events = tribe_get_events( [ 'posts_per_page' => 1 ] );
+		$args = [
+			'posts_per_page' => 1,
+			'eventDisplay'   => 'upcoming',
+		];
+		
+        $events = tribe_get_events($args);
 
         ?>
 			<div class="bt-elwg-upcoming-event <?php echo 'bt-layout-' . esc_attr($settings['layout']); ?>">

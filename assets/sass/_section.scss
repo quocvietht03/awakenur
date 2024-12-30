@@ -1,0 +1,62 @@
+.elementor-element {
+    &.bt-text-run-animation {
+        .elementor-headline-dynamic-wrapper {
+            overflow: inherit;
+        }
+    }
+    &.bt-section-infomation {
+        .bt-elwg-site-infor {
+            svg {
+                display: none;
+            }
+        }
+    }
+    &.bt-text-run-mobile {
+        .elementor-headline-dynamic-wrapper {
+            width: 100% !important;
+            max-width: 100%;
+            .elementor-headline-dynamic-text {
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    }
+    &.bt-section-hero-home3 {
+        @media (max-width: 1320px) and (min-width: $break-tl) {
+            --min-height: 570px !important;
+            .bt-text-run-animation {
+                .elementor-headline {
+                    font-size: 56px !important;
+                    line-height: 68px !important;
+                }
+            }
+        }
+    }
+    &.bt-section-who-we-are {
+        > .e-con-inner {
+            > .elementor-element {
+                .elementor-widget-n-tabs {
+                    .e-n-tabs-heading {
+                        border-bottom: 1px solid #e4e4e4;
+                        @media (max-width: 370px) {
+                            gap: 10px;
+                        }
+                        .e-n-tab-title {
+                            margin-bottom: -1px;
+                            .e-n-tab-title-text {
+                                @media (max-width: 390px) {
+                                    overflow: hidden;
+                                    width: 88px;
+                                    max-width: 100%;
+                                    display: block;
+                                    line-height: 1.2;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -57,6 +57,7 @@
                 $list_pastor = get_posts( array(
                     'post_type' => $slug,
                     'post_status' => 'publish',
+                    'posts_per_page' => -1,
                 ));
                 
                 if (!empty($list_pastor)) {

@@ -50,25 +50,24 @@ class ElementorWidgets
 			'site-social',
 			'site-copyright',
 			'site-opening',
-			
 			'page-breadcrumb',
 			'post-loop-item',
-			
+			'post-grid',
 			'highlighted-heading',
+			'heading-animation',
 			'pricing-item',
-			'therapist-loop-item',
-			'service-loop-item',
 			'page-title-bar',
-
 			'orbit-circle',
 			'pattern-background',
 			'buble-background',
-
 			'upcoming-event',
-
 			'give-form',
+			'sermon-loop-item',
+			'pastor-loop-item',
+			'event-grid',
+			'event-grid-style-1'
 		);
-		
+
 		return $this->widgets;
 	}
 
@@ -159,23 +158,25 @@ class ElementorWidgets
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SiteOpening\Widget_SiteOpening());
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\HighlightedHeading\Widget_HighlightedHeading());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\HeadingAnimation\Widget_HeadingAnimation());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PageTitleBar\Widget_PageTitleBar());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PageBreadcrumb\Widget_PageBreadcrumb());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PricingItem\Widget_PricingItem());
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PostLoopItem\Widget_PostLoopItem());
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\TherapistLoopItem\Widget_TherapistLoopItem());
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\ServiceLoopItem\Widget_ServiceLoopItem());
-
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PostGrid\Widget_PostGrid());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\OrbitCircle\Widget_OrbitCircle());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PatternBackground\Widget_PatternBackground());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\BubleBackground\Widget_BubleBackground());
 
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\UpcomingEvent\Widget_UpcomingEvent());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SermonLoopItem\Widget_SermonLoopItem());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PastorLoopItem\Widget_PastorLoopItem());
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\GiveForm\Widget_GiveForm());
-		
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\EventGrid\Widget_EventGrid());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\EventGridStyle1\Widget_EventGridStyle1());
 	}
 
 	/**

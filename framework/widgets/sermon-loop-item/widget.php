@@ -1,5 +1,5 @@
 <?php
-namespace AwakenurElementorWidgets\Widgets\ServiceLoopItem;
+namespace AwakenurElementorWidgets\Widgets\SermonLoopItem;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -9,15 +9,15 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 
-class Widget_ServiceLoopItem extends Widget_Base {
+class Widget_SermonLoopItem extends Widget_Base {
 
 
 	public function get_name() {
-		return 'bt-service-loop-item';
+		return 'bt-sermon-loop-item';
 	}
 
 	public function get_title() {
-		return __( 'Service Loop Item', 'awakenur' );
+		return __( 'Sermon Loop Item', 'awakenur' );
 	}
 
 	public function get_icon() {
@@ -62,7 +62,7 @@ class Widget_ServiceLoopItem extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--featured .bt-cover-image' => 'padding-bottom: calc( {{SIZE}} * 100% );',
+					'{{WRAPPER}} .bt-post--thumbnail .bt-cover-image' => 'padding-bottom: calc( {{SIZE}} * 100% );',
 				],
 			]
 		);
@@ -87,7 +87,7 @@ class Widget_ServiceLoopItem extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--featured .bt-cover-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .bt-post--thumbnail .bt-cover-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -103,7 +103,7 @@ class Widget_ServiceLoopItem extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),[
 				'name' => 'thumbnail_filters',
-				'selector' => '{{WRAPPER}} .bt-post--featured img',
+				'selector' => '{{WRAPPER}} .bt-post--thumbnail img',
 			]
 		);
 
@@ -117,7 +117,7 @@ class Widget_ServiceLoopItem extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),[
 				'name'     => 'thumbnail_hover_filters',
-				'selector' => '{{WRAPPER}} .bt-post:hover .bt-post--featured img',
+				'selector' => '{{WRAPPER}} .bt-post:hover .bt-post--thumbnail img',
 			]
 		);
 
@@ -177,61 +177,59 @@ class Widget_ServiceLoopItem extends Widget_Base {
 				'name'     => 'title_typography',
 				'label'    => esc_html__( 'Typography', 'awakenur' ),
 				'default'  => '',
-				'selector' => '{{WRAPPER}} .bt-post--title',
+				'selector' => '{{WRAPPER}} .bt-post--title a',
 			]
 		);
 
 		$this->add_control(
-			'description_style',[
-				'label' => esc_html__( 'Description', 'awakenur' ),
+			'category_style',[
+				'label' => esc_html__( 'Category', 'awakenur' ),
 				'type'  => Controls_Manager::HEADING,
 			]
 		);
 		$this->add_control(
-			'description_color',[
+			'category_color',[
 				'label'     => esc_html__( 'Color', 'awakenur' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--description' => 'color: {{VALUE}};',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'description_typography',
-				'label'    => esc_html__( 'Typography', 'awakenur' ),
-				'default'  => '',
-				'selector' => '{{WRAPPER}} .bt-post--description',
-			]
-		);
-		$this->add_control(
-			'price_style',[
-				'label' => esc_html__( 'Price', 'awakenur' ),
-				'type'  => Controls_Manager::HEADING,
-			]
-		);
-
-		$this->add_control(
-			'price_color',[
-				'label'     => esc_html__( 'Color', 'awakenur' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '',
-				'selectors' => [
-					'{{WRAPPER}} .bt-post--price' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--term > a' => 'color: {{VALUE}};',
 				],
 			]
 		);
 		$this->add_control(
-			'price_background',[
+			'category_background',[
 				'label'     => esc_html__( 'Background', 'awakenur' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--price' => 'background: {{VALUE}};',
-					'{{WRAPPER}} .bt-post--price:before' => 'border-top-color: {{VALUE}};',
-					'{{WRAPPER}} .bt-post--price:after' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--term > a' => 'Background: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'category_typography',
+				'label'    => esc_html__( 'Typography', 'awakenur' ),
+				'default'  => '',
+				'selector' => '{{WRAPPER}} .bt-post--term > a',
+			]
+		);
+		$this->add_control(
+			'meta_style',[
+				'label' => esc_html__( 'Meta', 'awakenur' ),
+				'type'  => Controls_Manager::HEADING,
+			]
+		);
+
+		$this->add_control(
+			'meta_color',[
+				'label'     => esc_html__( 'Color', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .bt-post--meta li' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -239,10 +237,10 @@ class Widget_ServiceLoopItem extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'     => 'price_typography',
+				'name'     => 'meta_typography',
 				'label'    => esc_html__( 'Typography', 'awakenur' ),
 				'default'  => '',
-				'selector' => '{{WRAPPER}} .bt-post--price',
+				'selector' => '{{WRAPPER}} .bt-post--meta li',
 			]
 		);
 		$this->add_control(
@@ -251,83 +249,62 @@ class Widget_ServiceLoopItem extends Widget_Base {
 				'type'  => Controls_Manager::HEADING,
 			]
 		);
-		$this->start_controls_tabs( 'button_style_tabs' );
-
-		$this->start_controls_tab( 'style_normal',
-			[
-				'label' => __( 'Normal', 'awakenur' ),
-			]
-		);
-
 		$this->add_control(
-			'button_text_color',
-			[
-				'label' => __( 'Text Color', 'awakenur' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
+			'button_color',[
+				'label'     => esc_html__( 'Color', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--button-booknow a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--action > a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--action a.bt-share-link' => 'color: {{VALUE}};',
 				],
 			]
 		);
-
 		$this->add_control(
-			'button_bg_color',
-			[
-				'label' => __( 'Background Color', 'awakenur' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
+			'button_icon_hover',[
+				'label'     => esc_html__( 'Icon hover', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--button-booknow a' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--action > a:hover' => 'color: {{VALUE}};border-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--action a.bt-share-link:hover' => 'color: {{VALUE}};border-color: {{VALUE}};',
 				],
 			]
 		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab( 'style_hover',
-			[
-				'label' => __( 'Hover', 'awakenur' ),
-			]
-		);
-
 		$this->add_control(
-			'button_text_color_hover',
-			[
-				'label' => __( 'Text Color', 'awakenur' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
+			'button_border_color',[
+				'label'     => esc_html__( 'Border Color', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--button-booknow a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--action > a' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--action a.bt-share-link' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
-
 		$this->add_control(
-			'button_bg_color_hover',
-			[
-				'label' => __( 'Background Color', 'awakenur' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
+			'button_background',[
+				'label'     => esc_html__( 'Background', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--button-booknow a:hover' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--action > a' => 'Background: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--action a.bt-share-link' => 'Background: {{VALUE}};',
 				],
 			]
 		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'button_typography',
-				'label'    => esc_html__( 'Typography', 'awakenur' ),
-				'default'  => '',
-				'selector' => '{{WRAPPER}} .bt-post--button-booknow a',
+		$this->add_control(
+			'button_background_hover',[
+				'label'     => esc_html__( 'Background hover', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .bt-post--action > a:hover' => 'Background: {{VALUE}};border-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--action a.bt-share-link:hover' => 'Background: {{VALUE}};border-color: {{VALUE}};',
+				],
 			]
 		);
-
+		
 		$this->end_controls_section();
 
 	}
@@ -340,8 +317,8 @@ class Widget_ServiceLoopItem extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		?>
-			<div class="bt-elwg-service-loop-item--default bt-image-effect">
-				<?php get_template_part( 'framework/templates/service', 'style', array('image-size' => $settings['thumbnail_size'])); ?>
+			<div class="bt-elwg-sermon-loop-item--default">
+				<?php get_template_part( 'framework/templates/sermon', 'style', array('image-size' => $settings['thumbnail_size'])); ?>
 	    	</div>
 		<?php
 	}

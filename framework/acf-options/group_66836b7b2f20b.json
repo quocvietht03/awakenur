@@ -1,51 +1,27 @@
 {
     "key": "group_66836b7b2f20b",
-    "title": "Widget - Popular Category Posts",
+    "title": "Widget - Author",
     "fields": [
         {
             "key": "field_66836b7b37662",
-            "label": "Number Category",
-            "name": "number_category",
+            "label": "Select Author",
+            "name": "select_author",
             "aria-label": "",
-            "type": "range",
+            "type": "user",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": 6,
-            "min": 1,
-            "max": 10,
-            "step": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_66836b9347ece",
-            "label": "Popular Category",
-            "name": "popular_category",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "category",
-            "add_term": 1,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "object",
-            "field_type": "multi_select",
-            "allow_null": 1,
-            "bidirectional": 0,
+            "role": "",
+            "return_format": "id",
             "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "bidirectional": 0,
             "bidirectional_target": []
         }
     ],
@@ -54,7 +30,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/widget-popular-category-posts"
+                "value": "acf\/widget-author"
             }
         ]
     ],
@@ -67,5 +43,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719890298
+    "modified": 1734927362
 }

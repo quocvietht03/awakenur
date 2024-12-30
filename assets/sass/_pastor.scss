@@ -24,8 +24,18 @@
                 opacity: 0;
                 visibility: hidden;
                 transform: translate(-50%, -50%);
-                transition: all .3s;
+                transition: all 0.3s;
+                svg {
+                    width: 30px;
+                    height: 30px;
+                }
                 &:hover {
+                    color: $color-primary;
+                    background: $color-accent;
+                }
+                @media (max-width: $break-sm) {
+                    opacity: 1;
+                    visibility: visible;
                     color: $color-primary;
                     background: $color-accent;
                 }
@@ -35,13 +45,26 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 16px;
             padding: 24px;
+        }
+        &--infor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
         }
         &--title {
             font-size: 24px;
             font-weight: 600;
             margin: 0;
+            a{
+                color: inherit;
+                font-weight: inherit;
+                &:hover{
+                    color: $color-secondary;
+                }
+            }
         }
         &--job {
             font-size: 14px;
@@ -52,7 +75,6 @@
         }
         &--social {
             @extend .__bt-socials-style;
-            margin-top: 8px;
             a.bt-item {
                 color: $color-primary;
                 background: $color-surface;
@@ -64,33 +86,58 @@
             }
         }
     }
+    &.bt-layout-style1 {
+        @media (min-width: $break-xs) {
+            .bt-post {
+                display: flex;
+                &--thumbnail {
+                    width: 44%;
+                    .bt-cover-image {
+                        height: 100%;
+                    }
+                }
+                &--content {
+                    width: 56%;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    gap: 100px;
+                }
+                &--infor {
+                    align-items: flex-start;
+                    gap: 12px;
+                }
+            }
+        }
+    }
 }
 
 .bt-pastor-popup {
     position: relative;
-    max-width: 1020px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 24px;
-    @media(max-width: $break-xs) {
-        padding: 12px;
-    }
-    &--inner {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.3);
+    @extend .__scrollbar_style;
+    @media (max-width: $break-sm) {
         max-height: 80vh;
         overflow: auto;
-        background-color: #FFFFFF;
     }
     .mfp-close {
-        top: 44px;
-        right: 44px;
+        top: 15px;
+        right: 20px;
         display: flex;
-        width: 24px;
+        width: 26px;
         height: 24px;
         font-size: 0;
         opacity: 1;
-        background-color: #FFFFFF;
-        @media(max-width: $break-xs) {
-            top: 32px;
-            right: 32px;
+        background-color: #ffffff;
+        @media (max-width: $break-md) {
+            top: 10px;
+            right: 15px;
+        }
+        @media (max-width: $break-sm) {
+            top: 35px;
+            right: 30px;
         }
         &:before,
         &:after {
@@ -110,7 +157,7 @@
     .bt-post {
         display: flex;
         gap: 60px;
-        padding: 40px;
+        padding: 40px 0 40px 40px;
         &--thumbnail {
             width: 50%;
             .bt-cover-image {
@@ -119,6 +166,12 @@
         }
         &--content {
             width: 50%;
+            @extend .__scrollbar_style;
+            @media (min-width: $break-sm) {
+                max-height: 80vh;
+                overflow: auto;
+                padding-right: 40px;
+            }
         }
         &--job {
             font-size: 16px;
@@ -198,12 +251,14 @@
                 font-size: 16px;
                 font-weight: 400;
                 color: $color-primary;
+                line-height: 26px;
                 display: flex;
                 gap: 4px;
+                align-items: center;
                 &:not(:last-child) {
                     padding-bottom: 20px;
                     margin-bottom: 20px;
-                    border-bottom: 1px solid #E4E4E4;
+                    border-bottom: 1px solid #e4e4e4;
                 }
                 .bt-label {
                     width: calc(30% - 4px);
@@ -219,21 +274,28 @@
                 }
             }
         }
-        @media(max-width: $break-md) {
+        @media (max-width: $break-md) {
             gap: 30px;
-            padding: 24px;
+            padding: 30px 0 30px 20px;
+            &--content {
+                padding-right: 20px;
+            }
             &--title {
                 font-size: 32px;
             }
         }
-        @media(max-width: $break-sm) {
+        @media (max-width: $break-sm) {
+            padding: 20px 15px;
             flex-direction: column;
             &--thumbnail,
             &--content {
                 width: 100%;
             }
+            &--content {
+                padding-right: 0;
+            }
         }
-        @media(max-width: $break-xs) {
+        @media (max-width: $break-xs) {
             &--infor .bt-item {
                 width: 100%;
             }
@@ -257,12 +319,225 @@
         @extend .__bt-pastor-style-default;
         .bt-post {
             width: calc(33.33% - 20px);
-            @media(max-width: $break-tl) {
+            @media (max-width: $break-tl) {
                 width: calc(50% - 15px);
             }
-            @media(max-width: $break-sm) {
+            @media (max-width: $break-sm) {
                 width: 100%;
             }
+        }
+    }
+}
+.single-pastor {
+    .bt-main-detail-ss {
+        padding: 100px 0;
+        @media (max-width: $break-md) {
+            padding: 60px 0;
+        }
+        .bt-post {
+            display: flex;
+            gap: 60px;
+            &--thumbnail {
+                width: 50%;
+                .bt-cover-image {
+                    padding-bottom: 133.4%;
+                }
+            }
+            &--content {
+                width: 50%;
+            }
+            &--job {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 1.5;
+                margin-bottom: 12px;
+            }
+            &--title {
+                font-size: 44px;
+                font-weight: 600;
+                margin: 0;
+            }
+            &--social {
+                @extend .__bt-socials-style;
+                margin-top: 24px;
+                a.bt-item {
+                    color: $color-primary;
+                    background: $color-surface;
+                    border-color: $color-surface;
+                    &:hover {
+                        color: $color-surface;
+                        background: $color-primary;
+                        border-color: $color-primary;
+                    }
+                }
+            }
+            &--desc {
+                @extend .__bt-format-post-content;
+                margin-top: 24px;
+            }
+            &--infor {
+                margin-top: 40px;
+                .bt-ittle {
+                    font-size: 24px;
+                    font-weight: 600;
+                    line-height: 1.5;
+                    margin: 0 0 16px;
+                }
+                .bt-list {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+                .bt-item {
+                    width: calc(50% - 10px);
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: $color-primary;
+                    span {
+                        display: block;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 20px;
+                        text-transform: uppercase;
+                        color: $color-text;
+                        margin-bottom: 4px;
+                    }
+                }
+            }
+            &--exp {
+                margin-top: 40px;
+                .bt-ittle {
+                    font-size: 24px;
+                    font-weight: 600;
+                    line-height: 1.5;
+                    margin: 0 0 16px;
+                }
+                .bt-list {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                .bt-item {
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: $color-primary;
+                    line-height: 26px;
+                    display: flex;
+                    gap: 4px;
+                    align-items: center;
+                    &:not(:last-child) {
+                        padding-bottom: 20px;
+                        margin-bottom: 20px;
+                        border-bottom: 1px solid #e4e4e4;
+                    }
+                    .bt-label {
+                        width: calc(30% - 4px);
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 20px;
+                        text-transform: uppercase;
+                        color: $color-text;
+                    }
+                    .bt-text {
+                        width: 70%;
+                        text-align: right;
+                    }
+                }
+            }
+            @media (max-width: $break-md) {
+                gap: 30px;
+                padding: 0;
+                &--content {
+                    padding-right: 20px;
+                }
+                &--title {
+                    font-size: 32px;
+                }
+            }
+            @media (max-width: $break-sm) {
+                flex-direction: column;
+                &--thumbnail,
+                &--content {
+                    width: 100%;
+                }
+                &--content {
+                    padding-right: 0;
+                }
+            }
+            @media (max-width: $break-xs) {
+                &--infor .bt-item {
+                    width: 100%;
+                }
+                &--exp .bt-item {
+                    flex-direction: column;
+                    .bt-label,
+                    .bt-text {
+                        width: 100%;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}
+.bt-related-pastor-ss {
+    background: $color-surface;
+    padding: 100px 0;
+    @media (max-width: $break-md) {
+        padding: 60px 0;
+    }
+    &--heading {
+        margin-bottom: 40px;
+        text-align: center;
+        .bt-main-text {
+            color: $color-primary;
+            font-family: $secondary-font;
+            font-size: 44px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 56px;
+            margin: 0 0 12px 0;
+        }
+        .bt-sub-text {
+            color: $color-text;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 30px;
+            font-family: $accent-font;
+            margin: 0;
+        }
+        @media (max-width: $break-xs) {
+            margin-bottom: 28px;
+            .bt-main-text {
+                font-size: 36px;
+                line-height: 1.3;
+                margin-bottom: 5px;
+            }
+            .bt-sub-text {
+                font-size: 16px;
+                line-height: 1.4;
+            }
+        }
+    }
+    &--list {
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(var(--column, 3), 1fr);
+        @extend .__bt-pastor-style-default;
+        .bt-post{
+            &--content{
+                background: #fff;
+            }
+        }
+        @media (max-width: $break-tl) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: $break-sm) {
+            grid-template-columns: repeat(1, 1fr);
         }
     }
 }

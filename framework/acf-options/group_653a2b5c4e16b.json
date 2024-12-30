@@ -85,14 +85,16 @@
                     },
                     "choices": {
                         "facebook": "Facebook",
-                        "linkedin": "Linkedin",
                         "twitter": "Twitter",
-                        "google": "Google"
+                        "instagram": "Instagram",
+                        "skype": "Skype",
+                        "telegram": "Telegram"
                     },
                     "default_value": false,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
@@ -140,5 +142,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1710857431
+    "modified": 1734936321
 }

@@ -34,7 +34,7 @@ class Widget_SiteOpening extends Widget_Base
 		return ['elementor-widgets'];
 	}
 
-	protected function register_style_section_controls() 
+	protected function register_style_section_controls()
 	{
 		$this->start_controls_section(
 			'section_style_content',
@@ -43,7 +43,18 @@ class Widget_SiteOpening extends Widget_Base
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
-
+		$this->add_control(
+			'layout',
+			[
+				'label' => esc_html__('Layout', 'awakenur'),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => esc_html__('Default', 'awakenur'),
+					'style1' => esc_html__('Style 1', 'awakenur'),
+				],
+			]
+		);
 		$this->add_control(
 			'titmetitle_style',
 			[
@@ -116,32 +127,37 @@ class Widget_SiteOpening extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		$site_information = get_field('site_information', 'options');
 
-	?>
-		<div class="bt-elwg-site-opening">
+?>
+		<div class="bt-elwg-site-opening <?php echo 'bt-layout-' . esc_attr($settings['layout']); ?>">
 			<ul class="bt-list">
 				<?php
-					if (!empty($site_information['opening_hours'])) {
-						foreach ($site_information['opening_hours'] as $item) {
-						?>
-								<div class="bt-item">
-									<div class="bt-item--title">
-										<?php echo esc_html($item['heading']); ?>
-									</div>
-									<div class="bt-item--hours">
-										<?php echo esc_html($item['hours']); ?>
-									</div>
-								</div>
-							</li>
-						<?php
-						}
+				if (!empty($site_information['opening_hours'])) {
+					foreach ($site_information['opening_hours'] as $item) {
+				?>
+						<div class="bt-item">
+							<div class="bt-item--title">
+								<?php
+								if ($settings['layout'] == 'default') {
+									echo esc_html($item['short_heading']);
+								} else {
+									echo esc_html($item['heading']);
+								}
+
+								?>
+							</div>
+							<div class="bt-item--hours">
+								<?php echo esc_html($item['hours']); ?>
+							</div>
+						</div>
+						</li>
+				<?php
 					}
+				}
 				?>
 			</ul>
 		</div>
-	<?php
+<?php
 	}
 
-	protected function content_template()
-	{
-	}
+	protected function content_template() {}
 }

@@ -1,5 +1,5 @@
 <?php
-namespace AwakenurElementorWidgets\Widgets\TherapistLoopItem;
+namespace AwakenurElementorWidgets\Widgets\PastorLoopItem;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -9,15 +9,15 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 
-class Widget_TherapistLoopItem extends Widget_Base {
+class Widget_PastorLoopItem extends Widget_Base {
 
 
 	public function get_name() {
-		return 'bt-therapist-loop-item';
+		return 'bt-pastor-loop-item';
 	}
 
 	public function get_title() {
-		return __( 'Therapist Loop Item', 'awakenur' );
+		return __( 'Pastor Loop Item', 'awakenur' );
 	}
 
 	public function get_icon() {
@@ -35,7 +35,18 @@ class Widget_TherapistLoopItem extends Widget_Base {
 				'label' => __( 'Content', 'awakenur' ),
 			]
 		);
-
+		$this->add_control(
+			'layout',
+			[
+				'label' => esc_html__('Layout', 'awakenur'),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => esc_html__('Default', 'awakenur'),
+					'style1' => esc_html__('Style 1', 'awakenur'),
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			[
@@ -52,7 +63,7 @@ class Widget_TherapistLoopItem extends Widget_Base {
 				'label' => __( 'Image Ratio', 'awakenur' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 1.18,
+					'size' => 0.64,
 				],
 				'range' => [
 					'px' => [
@@ -62,7 +73,7 @@ class Widget_TherapistLoopItem extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--featured .bt-cover-image' => 'padding-bottom: calc( {{SIZE}} * 100% );',
+					'{{WRAPPER}} .bt-post--thumbnail .bt-cover-image' => 'padding-bottom: calc( {{SIZE}} * 100% );',
 				],
 			]
 		);
@@ -87,7 +98,7 @@ class Widget_TherapistLoopItem extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--featured .bt-cover-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .bt-post--thumbnail .bt-cover-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -103,7 +114,7 @@ class Widget_TherapistLoopItem extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),[
 				'name' => 'thumbnail_filters',
-				'selector' => '{{WRAPPER}} .bt-post--featured img',
+				'selector' => '{{WRAPPER}} .bt-post--thumbnail img',
 			]
 		);
 
@@ -117,7 +128,7 @@ class Widget_TherapistLoopItem extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),[
 				'name'     => 'thumbnail_hover_filters',
-				'selector' => '{{WRAPPER}} .bt-post:hover .bt-post--featured img',
+				'selector' => '{{WRAPPER}} .bt-post:hover .bt-post--thumbnail img',
 			]
 		);
 
@@ -133,7 +144,16 @@ class Widget_TherapistLoopItem extends Widget_Base {
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
-
+		$this->add_control(
+			'background_content',[
+				'label'     => esc_html__( 'Background Content', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .bt-post' => 'background: {{VALUE}};',
+				],
+			]
+		);
 		$this->add_control(
 			'title_style',[
 				'label' => esc_html__( 'Title', 'awakenur' ),
@@ -162,16 +182,6 @@ class Widget_TherapistLoopItem extends Widget_Base {
 				],
 			]
 		);
-		$this->add_control(
-			'title_background',[
-				'label'     => esc_html__( 'Background Title', 'awakenur' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '',
-				'selectors' => [
-					'{{WRAPPER}} .bt-post--infor' => 'background: {{VALUE}};',
-				],
-			]
-		);
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),[
@@ -188,7 +198,6 @@ class Widget_TherapistLoopItem extends Widget_Base {
 				'type'  => Controls_Manager::HEADING,
 			]
 		);
-
 		$this->add_control(
 			'job_color',[
 				'label'     => esc_html__( 'Color', 'awakenur' ),
@@ -199,27 +208,71 @@ class Widget_TherapistLoopItem extends Widget_Base {
 				],
 			]
 		);
-		$this->add_control(
-			'job_background',[
-				'label'     => esc_html__( 'Background Job', 'awakenur' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '',
-				'selectors' => [
-					'{{WRAPPER}} .bt-post--job' => 'background: {{VALUE}};',
-				],
-			]
-		);
-
 		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'meta_typography',
+			Group_Control_Typography::get_type(),[
+				'name'     => 'job_typography',
 				'label'    => esc_html__( 'Typography', 'awakenur' ),
 				'default'  => '',
 				'selector' => '{{WRAPPER}} .bt-post--job',
 			]
 		);
-
+		$this->add_control(
+			'social_style',[
+				'label' => esc_html__( 'Social', 'awakenur' ),
+				'type'  => Controls_Manager::HEADING,
+			]
+		);
+		$this->add_control(
+			'social_color',[
+				'label'     => esc_html__( 'Color', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .bt-post--social a.bt-item' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'social_icon_hover',[
+				'label'     => esc_html__( 'Icon hover', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .bt-post--social a.bt-item:hover' => 'color: {{VALUE}};border-color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'social_border_color',[
+				'label'     => esc_html__( 'Border Color', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .bt-post--social a.bt-item' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'social_background',[
+				'label'     => esc_html__( 'Background', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .bt-post--social a.bt-item' => 'Background: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'social_background_hover',[
+				'label'     => esc_html__( 'Background hover', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .bt-post--social a.bt-item:hover' => 'Background: {{VALUE}};border-color: {{VALUE}};',
+				],
+			]
+		);
+		
 		$this->end_controls_section();
 
 	}
@@ -232,8 +285,8 @@ class Widget_TherapistLoopItem extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		?>
-			<div class="bt-elwg-therapist-loop-item--default bt-image-effect">
-				<?php get_template_part( 'framework/templates/therapist', 'style', array('image-size' => $settings['thumbnail_size'])); ?>
+			<div class="bt-elwg-pastor-loop-item--default <?php echo 'bt-layout-' . esc_attr($settings['layout']); ?>">
+				<?php get_template_part( 'framework/templates/pastor', 'style', array('image-size' => $settings['thumbnail_size'])); ?>
 	    	</div>
 		<?php
 	}
