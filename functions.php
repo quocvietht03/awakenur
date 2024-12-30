@@ -52,6 +52,10 @@ if (!function_exists('awakenur_enqueue_scripts')) {
 		if (is_singular('post') && comments_open()) {
 			wp_enqueue_script('jquery-validate', get_template_directory_uri() . '/assets/libs/jquery-validate/jquery.validate.min.js', array('jquery'), '', true);
 		}
+		if (is_page_template('tribe/template-event.php')) {
+			wp_enqueue_script('bootstrap-datepicker', get_template_directory_uri() . '/assets/libs/datepicker/bootstrap-datepicker.min.js', array('jquery'), '', true);
+			wp_enqueue_style('bootstrap-datepicker', get_template_directory_uri() . '/assets/libs/datepicker/bootstrap-datepicker.min.css', array(), false);
+		}
 		/* Fonts */
 		wp_enqueue_style('awakenur-fonts', awakenur_fonts_url(), false);
 		wp_enqueue_style('awakenur-main', get_template_directory_uri() . '/assets/css/main.css',  array(), false);
@@ -110,6 +114,9 @@ require_once get_template_directory() . '/framework/acf-options.php';
 
 /* Template functions */
 require_once get_template_directory() . '/framework/template-helper.php';
+
+/* Events functions */
+require_once get_template_directory() . '/tribe/functions-event.php';
 
 /* Post Functions */
 require_once get_template_directory() . '/framework/templates/post-helper.php';

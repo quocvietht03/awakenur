@@ -34,6 +34,9 @@
                     padding: 13px 20px;
                 }
             }
+            .bt-start-date {
+                display: none;
+            }
         }
         &--content {
             display: flex;
@@ -94,6 +97,9 @@
         &--time {
             margin-bottom: 8px;
         }
+        &--register-now {
+            display: none;
+        }
         @media (max-width: 850px) and (min-width: $break-sm) {
             &--content {
                 padding: 15px;
@@ -148,6 +154,11 @@
             width: 50%;
             .bt-cover-image {
                 height: 100%;
+                box-sizing: border-box;
+            }
+            .bt-start-date,
+            .bt-register-now {
+                display: none;
             }
         }
         &--content {
@@ -158,6 +169,7 @@
             background: #fff;
             flex-direction: column;
             justify-content: space-between;
+            box-sizing: border-box;
             @media (max-width: $break-tl) {
                 padding: 24px;
             }
@@ -182,6 +194,7 @@
             color: $color-accent;
             background: $color-secondary;
             padding: 12px;
+            box-sizing: border-box;
             .bt-day {
                 font-size: 44px;
                 font-weight: 600;
@@ -237,6 +250,7 @@
                 color: $color-primary;
                 justify-content: center;
                 gap: 8px;
+                box-sizing: border-box;
             }
         }
         @media (max-width: 850px) and (min-width: $break-sm) {
@@ -304,3 +318,412 @@
         }
     }
 }
+.datepicker.dropdown-menu {
+    margin-top: 28px;
+}
+.template-events {
+    .bt-main-content-ss {
+        .bt-filter-bar {
+            .bt-filter-form {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 40px;
+                align-items: center;
+                &--left {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    input {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        opacity: 0;
+                        z-index: 1;
+                        cursor: pointer;
+                        height: 45px;
+                        box-sizing: border-box;
+                    }
+                    .bt-date-wrap {
+                        position: relative;
+                        font-size: 24px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 36px;
+                        text-transform: capitalize;
+                        color: $color-primary;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        span {
+                            margin: 0 12px 0 8px;
+                        }
+                    }
+                }
+                &--center {
+                    display: flex;
+                    gap: 12px;
+                    align-items: center;
+                    a {
+                        .bt-icon {
+                            display: flex;
+                            flex-wrap: wrap;
+                            width: 24px;
+                            gap: 2px 1px;
+                            .bt-dot {
+                                width: 6px;
+                                height: 6px;
+                                border: 1px solid $color-primary;
+                                border-radius: 50%;
+                                &.long {
+                                    border-radius: 8px;
+                                    width: 13px;
+                                }
+                            }
+                            &:hover {
+                                .bt-dot {
+                                    background-color: $color-primary;
+                                    box-shadow:
+                                        0 0 10px rgba(235, 213, 184, 0.6),
+                                        0 0 20px rgba(235, 213, 184, 0.6),
+                                        0 0 30px rgba(235, 213, 184, 0.6);
+                                }
+                            }
+                        }
+                        &.bt-view-grid {
+                            .bt-icon {
+                                gap: 2px;
+                                width: 18px;
+                            }
+                        }
+                        &.active {
+                            .bt-dot {
+                                background-color: $color-primary;
+                            }
+                        }
+                    }
+                }
+                &--right {
+                    .bt-field-type-search {
+                        position: relative;
+                        display: flex;
+                        z-index: 1;
+                        input {
+                            width: 100%;
+                            background-color: transparent;
+                            padding-right: 42px;
+                            min-width: 265px;
+                            box-sizing: border-box;
+                        }
+                        svg {
+                            position: absolute;
+                            top: 12px;
+                            right: 14px;
+                            z-index: -1;
+                        }
+                    }
+                }
+            }
+        }
+        .bt-filter-results {
+            position: relative;
+            &.loading {
+                min-height: 360px;
+                .bt-loading-wave {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            .bt-loading-wave {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        .bt-event-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            @extend .__bt-event-style-style1;
+            .bt-post {
+                &--content {
+                    background: $color-surface;
+                }
+                &--register-now {
+                    a {
+                        &:hover {
+                            color: $color-accent;
+                        }
+                    }
+                }
+            }
+            &[data-view="grid"] {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                @extend .__bt-event-style-default;
+                .bt-post {
+                    flex-direction: column;
+                    &--thumbnail {
+                        width: 100%;
+                        .bt-register-now {
+                            display: none;
+                        }
+                        .bt-start-date {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 2px;
+                            min-width: 72px;
+                            width: 72px;
+                            height: 72px;
+                            color: $color-accent;
+                            background: $color-secondary;
+                            padding: 12px;
+                            position: absolute;
+                            left: 24px;
+                            bottom: 24px;
+                            box-sizing: border-box;
+                            .bt-day {
+                                font-size: 32px;
+                                font-weight: 600;
+                                line-height: 1;
+                            }
+                            .bt-month {
+                                font-size: 16px;
+                                font-weight: 700;
+                                line-height: 1.5;
+                                text-transform: uppercase;
+                            }
+                        }
+                        .bt-cover-image {
+                            padding-bottom: 74.88%;
+                        }
+                    }
+                    &--content {
+                        width: 100%;
+                    }
+                    &--start-date {
+                        display: none;
+                    }
+                    &--title {
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 28px;
+                    }
+                }
+            }
+        }
+        .bt-loadmore-wrap {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            a {
+                display: inline-flex;
+                padding: 16px 32px;
+                background: $color-primary;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 24px;
+                color: #fff;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+                svg {
+                    position: absolute;
+                    height: 1em;
+                    width: 1em;
+                    fill: #fff;
+                    opacity: 0;
+                }
+            }
+            &.loadding {
+                a {
+                    span{
+                        opacity: 0;
+                    }
+                    svg{
+                       opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+.page-template-template-event {
+    .datepicker {
+        margin-top: 30px;
+        padding: 0 16px 16px;
+        max-width: 360px;
+        &.tribe-common--breakpoint-medium {
+          margin-top: 16px;
+        }
+    
+        table {
+          border-collapse: collapse;
+          table-layout: fixed;
+          border: none;
+        }
+    
+        .datepicker-switch, .next, .prev {
+          padding: 20px 0;
+          vertical-align: middle;
+        }
+    
+        .next, .prev {
+          .tribe-events-c-top-bar__datepicker-nav-icon-svg {
+            height: 15px;
+            margin-right: auto;
+            width: 9px;
+    
+            path {
+              fill: currentColor;
+            }
+    
+            &:first-child {
+              margin-left: auto;
+              margin-right: 0;
+            }
+          }
+        }
+    
+        .datepicker-months, .datepicker-years {
+          td, th {
+            padding: 0;
+          }
+    
+          .datepicker-switch, .next, .prev {
+            padding: 20px 0 8px;
+          }
+        }
+    
+        .dow {
+          padding: 0;
+          width: 14.285%;
+        }
+    
+        .day {
+          padding: 11px 0;
+          width: 48px;
+        }
+    
+        .month, .year {
+          height: auto;
+          margin: 0;
+          padding: 15px 0;
+          width: 25%;
+        }
+      }
+    
+      .admin-bar {
+        .datepicker {
+          margin-top: 8px;
+    
+          &.tribe-common--breakpoint-medium {
+            margin-top: 16px;
+          }
+        }
+      }
+    .datepicker {
+      background-color: #fff;
+      border: 1px solid #d5d5d5;
+      border-radius: 4px;
+      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.14);
+  
+      &:after, &:before {
+        content: none;
+      }
+  
+      .datepicker-switch {
+        color: $color-primary;
+        font-size: 16px;
+        line-height: 1.62;
+        font-weight: 400;
+  
+        &:focus, &:hover {
+          color: rgba(20, 24, 39, 0.8);
+        }
+  
+        &:active {
+          color: rgba(20, 24, 39, 0.9);
+        }
+      }
+  
+      .next, .prev {
+        &:active,
+        &:focus,
+        &:hover {
+          background-color: #fff;
+        }
+  
+        .tribe-events-c-top-bar__datepicker-nav-icon-svg path {
+          fill: #757575;
+  
+          &:hover, &:active {
+            fill: $color-primary;
+          }
+        }
+      }
+  
+      .dow {
+        font-size: 11px;
+        line-height: 1.5;
+      }
+  
+      .day, .dow {
+        color: $color-primary;
+        font-weight: 400;
+      }
+  
+      .day {
+        font-size: 16px;
+        line-height: 1.62;
+      }
+  
+      .month, .year {
+        color: $color-primary;
+        font-size: 12px;
+        line-height: 1.38;
+        font-weight: 400;
+      }
+  
+      .disabled {
+        color: rgba(20, 24, 39, 0.62);
+      }
+  
+      .day, .month, .year {
+        border-radius: 4px;
+      }
+  
+      .day.focused, .day:focus, .day:hover,
+      .month.focused, .month:focus, .month:hover,
+      .year.focused, .year:focus, .year:hover {
+        background: #f7f6f6;
+      }
+  
+      .day.current, .day.current.focused, .day.current:focus, .day.current:hover,
+      .month.current, .month.current.focused, .month.current:focus, .month.current:hover,
+      .year.current, .year.current.focused, .year.current:focus, .year.current:hover {
+        background: rgba(51, 74, 255, 0.07);
+      }
+  
+      .day.active, .day.active.focused, .day.active:focus, .day.active:hover,
+      .month.active, .month.active.focused, .month.active:focus, .month.active:hover,
+      .year.active, .year.active.focused, .year.active:focus, .year.active:hover {
+        background: $color-accent;
+        color: #fff;
+        text-shadow: none;
+      }
+    }
+  
+    .admin-bar {
+      .datepicker {
+        margin-top: 8px;
+  
+        &.tribe-common--breakpoint-medium {
+          margin-top: 16px;
+        }
+      }
+    }
+  }

@@ -41,7 +41,18 @@ class Widget_EventGrid extends Widget_Base
 				'label' => __('Layout', 'awakenur'),
 			]
 		);
-
+		$this->add_control(
+			'layout',
+			[
+				'label' => esc_html__( 'Layout', 'awakenur' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => esc_html__( 'Default', 'awakenur' ),
+					'style1' => esc_html__( 'Style 1', 'awakenur' ),
+				],
+			]
+		);
 		$this->add_control(
 			'posts_per_page',
 			[
@@ -313,7 +324,7 @@ class Widget_EventGrid extends Widget_Base
 				'name' => 'button_typography',
 				'label' => __('Typography', 'awakenur'),
 				'default' => '',
-				'selector' => '{{WRAPPER}} .bt-post--thumbnail .bt-register-now',
+				'selector' => '{{WRAPPER}} .bt-post--thumbnail .bt-register-now,{{WRAPPER}} .bt-post--register-now a',
 			]
 		);
 		$this->start_controls_tabs('button_style_tabs');
@@ -333,6 +344,7 @@ class Widget_EventGrid extends Widget_Base
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .bt-post--thumbnail .bt-register-now' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--register-now a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -345,6 +357,7 @@ class Widget_EventGrid extends Widget_Base
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .bt-post--thumbnail .bt-register-now' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--register-now a' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -366,6 +379,7 @@ class Widget_EventGrid extends Widget_Base
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .bt-post--thumbnail .bt-register-now:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--register-now a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -379,6 +393,8 @@ class Widget_EventGrid extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .bt-post--thumbnail .bt-register-now:before' => 'border-bottom-color: {{VALUE}};',
 					'{{WRAPPER}} .bt-post--thumbnail .bt-register-now:after' => 'border-top-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--register-now a:before' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-post--register-now a:after' => 'border-top-color: {{VALUE}};',
 				],
 			]
 		);
@@ -422,7 +438,7 @@ class Widget_EventGrid extends Widget_Base
 		$events = tribe_get_events($args);
 
 
-		echo '<div class="bt-elwg-event-grid--default" style="' . $style . '">';
+		echo '<div class="bt-elwg-event-grid--'.$settings['layout'].'" style="' . $style . '">';
 
 		if (!empty($events)) {
 			foreach ($events as $event) {
