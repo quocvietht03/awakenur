@@ -807,7 +807,7 @@
 							$('.bt-event-layout').append(response.data['items']);
 							$('.bt-loadmore-wrap').html(response.data['loadmore']);
 							$('.bt-loadmore-wrap').removeClass('loadding');
-						}, 1000);
+						}, 500);
 					} else {
 						console.log('error');
 					}

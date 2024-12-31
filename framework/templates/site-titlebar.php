@@ -6,13 +6,11 @@
  */
 
 if (function_exists('get_field')) {
-  $distance = get_field('top_distance', 'options');
   $bg_image = get_field('background_image', 'options');
   $ovl_color = get_field('overlay_color', 'options');
   $ovl_opacity = get_field('overlay_opacity', 'options');
   $custom_background = get_field('custom_background', 'options');
 } else {
-  $distance = false;
   $bg_image = '';
   $ovl_color = '';
   $ovl_opacity = '';

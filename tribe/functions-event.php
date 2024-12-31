@@ -124,7 +124,53 @@ function awakenur_button_loadmore($next_page, $total_pages)
             <path d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"></path>
         </svg>
     </a>
-    </div>
+<?php
+    return ob_get_clean();
+}
+
+function awakenur_titlebar_events()
+{
+    if (function_exists('get_field')) {
+        $bg_image = get_field('background_image', 'options');
+        $ovl_color = get_field('overlay_color', 'options');
+        $ovl_opacity = get_field('overlay_opacity', 'options');
+        $custom_background = get_field('custom_background', 'options');
+    } else {
+        $bg_image = '';
+        $ovl_color = '';
+        $ovl_opacity = '';
+    }
+
+    $style_parts = [];
+    $background_image = $bg_image;
+    if (!empty($custom_background['enable_background_event']) && !empty($custom_background['background_image_event'])) {
+        $background_image = $custom_background['background_image_event'];
+    }
+    $style_parts[] = 'background-image: url(' . esc_url($background_image) . ');';
+    $style_attributes = implode(' ', $style_parts);
+    ob_start();
+?>
+    <section class="bt-site-titlebar" <?php echo 'style="' . $style_attributes . '"'; ?>>
+
+        <?php
+        if (!empty($ovl_color)) {
+            echo '<div class="bt-site-titlebar--overlay" style="background: ' . $ovl_color . '; opacity: ' . $ovl_opacity . '%;"></div>';
+        }
+        ?>
+
+        <div class="bt-container">
+            <div class="bt-page-titlebar">
+                <div class="bt-page-titlebar--infor">
+                    <h1 class="bt-page-titlebar--title"><?php esc_html_e('Events', 'awakenur'); ?></h1>
+                    <div class="bt-page-titlebar--breadcrumb">
+                        <a class="bt-home" href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'awakenur'); ?></a>
+                        <span class="bt-deli first"> / </span>
+                        <span class="current"><?php esc_html_e('Events', 'awakenur'); ?></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <?php
     return ob_get_clean();
 }

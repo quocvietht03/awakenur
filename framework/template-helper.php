@@ -166,7 +166,7 @@ if (!function_exists('awakenur_page_title')) {
 				esc_html_e('Archive', 'awakenur');
 			}
 		} else {
-			echo get_the_title();
+				echo get_the_title();
 		}
 
 		return ob_get_clean();
