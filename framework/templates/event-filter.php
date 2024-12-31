@@ -12,7 +12,7 @@ $last_event_date =  tribe_get_start_date($last_event->ID, true, 'd M Y');
         <!--View type-->
         <input type="hidden" class="bt-event-view-type" name="view_type" value="<?php if (isset($_GET['view_type'])) echo esc_attr($_GET['view_type']); ?>">
         <div class="bt-filter-form--left">
-            <input id="bt-date-filter" name="date_filter" class="bt-date-filter" type="text" value="<?php if (isset($_GET['date_filter'])) echo esc_attr($_GET['date_filter']); ?>" readonly />
+            <input id="bt-date-filter" name="date_filter" class="bt-date-filter" type="text" value="<?php echo isset($_GET['date_filter']) ? esc_attr($_GET['date_filter']) : esc_html__('today', 'awakenur'); ?>" readonly />
             <div class="bt-date-wrap" data-datelast="<?php echo esc_attr($last_event_date); ?>">
                 <div id="bt-date-result"><?php if (isset($_GET['date_filter'])) {
                                                 echo esc_attr($_GET['date_filter']) . ', ';

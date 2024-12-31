@@ -644,7 +644,6 @@
 	function AwakenurDatepicker() {
 		if ($('#bt-date-filter').length) {
 			var lastDate = $('.bt-date-wrap').data('datelast');
-			var date_filter = $('input[name="date_filter"]').val();
 			$("#bt-date-filter").datepicker({
 				format: "d M yyyy",
 				autoclose: true,
@@ -655,19 +654,8 @@
 					rightArrow: '<svg class="tribe-common-c-svgicon tribe-common-c-svgicon--caret-right tribe-events-c-top-bar__datepicker-nav-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 16" aria-hidden="true"><path d="M.3 1.6L1.8.1 9.7 8l-7.9 7.9-1.5-1.5L6.7 8 .3 1.6z"></path></svg>'
 				}
 			}).on('changeDate', function (e) {
-				var selectedDate = new Date(e.date);
-				var today = new Date();
-				today.setHours(0, 0, 0, 0); 
-				selectedDate.setHours(0, 0, 0, 0);
-				if (selectedDate.getTime() === today.getTime()) {
-					$('#bt-date-result').text('today, ');
-				} else {
-					$('#bt-date-result').text(e.format() + ', ');
-				}
+				$('#bt-date-result').text(e.format() + ', ');
 			});
-			if (date_filter == '') {
-				$("#bt-date-filter").datepicker('setDate', new Date());
-			}
 		}
 	}
 	/* Event Filter */
@@ -722,7 +710,9 @@
 					param_val = param.split('=')[1];
 
 				if ('' !== param_val) {
-
+					if (param_key == 'date_filter' && param_val === 'today') {
+						return;  
+					}
 					param_out.push(param);
 					param_ajax[param_key] = param_val.replace(/%2C/g, ',');
 
