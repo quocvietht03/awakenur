@@ -126,11 +126,13 @@ if (!function_exists('awakenur_page_title')) {
 		} elseif (is_archive()) {
 			if (is_category()) {
 				single_cat_title();
-			} elseif (get_post_type() == 'sermon' || get_post_type() == 'pastor') {
+			} elseif (get_post_type() == 'sermon' || get_post_type() == 'pastor' || get_post_type() == 'give_forms') {
 				if (is_post_type_archive('sermon')) {
 					esc_html_e('Sermons', 'awakenur');
 				} elseif (is_post_type_archive('pastor')) {
 					esc_html_e('Pastors', 'awakenur');
+				} elseif (is_post_type_archive('give_forms')) {
+					esc_html_e('Donations', 'awakenur');
 				} else {
 					single_term_title();
 				}

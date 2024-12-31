@@ -95,27 +95,6 @@
 .mfp-wrap .mfp-container {
   padding: 0 15px;
 }
-.give-form {
-  #give-donation-level-button-wrap {
-    li {
-      button {
-        &.give-btn {
-          border: none;
-          cursor: pointer;
-          font-size: 16px;
-          line-height: 1;
-          padding: 8px 10px;
-          background: $color-primary;
-          color: $color-accent;
-          font-weight: 500;
-          &:hover {
-            background: $color-secondary;
-          }
-        }
-      }
-    }
-  }
-}
 .bt-cover-image {
   position: relative;
   overflow: hidden;
