@@ -133,10 +133,10 @@
 			max-width: 100%;
 			height: auto;
 			overflow: unset;
-			@media(max-width: $break-sm - 0.02) {
+			@media(max-width: $break-sm) {
 				padding: 24px 32px;
 			}
-			@media(max-width: $break-xs - 0.02) {
+			@media(max-width: $break-xs) {
 				padding: 24px 16px;
 			}
 			> *:first-child {
@@ -154,7 +154,7 @@
 
 .give-btn {
 	font-size: 14px;
-  font-weight: 700;
+  	font-weight: 700;
 	line-height: 58px;
 	color: #ffffff;
 	background: $color-primary;

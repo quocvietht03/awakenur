@@ -5893,11 +5893,11 @@ div[id*=give-form] #give-gateway-radio-list > li label {
     max-width: 100%;
     height: auto;
     overflow: unset; }
-    @media (max-width: 767.96px) {
+    @media (max-width: 767.98px) {
       .mfp-wrap .mfp-content div.give-form,
       .mfp-wrap .mfp-content form.give-form {
         padding: 24px 32px; } }
-    @media (max-width: 519.96px) {
+    @media (max-width: 519.98px) {
       .mfp-wrap .mfp-content div.give-form,
       .mfp-wrap .mfp-content form.give-form {
         padding: 24px 16px; } }
