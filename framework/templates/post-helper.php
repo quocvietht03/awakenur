@@ -538,54 +538,278 @@ function awakenur_time_comment($timestamp)
   }
 }
 /* Custom comment list */
-if (!function_exists('awakenur_custom_comment')) {
-  function awakenur_custom_comment($comment, $args, $depth)
-  {
-    $GLOBALS['comment'] = $comment;
-    extract($args, EXTR_SKIP);
+function awakenur_custom_comment($comment, $args, $depth)
+{
+  $GLOBALS['comment'] = $comment;
+  extract($args, EXTR_SKIP);
 
-    if ('div' == $args['style']) {
-      $tag = 'div';
-      $add_below = 'comment';
-    } else {
-      $tag = 'li';
-      $add_below = 'div-comment';
-    }
-    ?>
-    <<?php echo esc_html($tag); ?> <?php comment_class(empty($args['has_children']) ? 'bt-comment-item clearfix' : 'bt-comment-item parent clearfix') ?> id="comment-<?php comment_ID() ?>">
-      <div class="bt-comment">
-        <div class="bt-avatar">
-          <?php
-          if (function_exists('get_field')) {
-            $avatar = get_field('avatar', 'user_' . $comment->user_id);
-          } else {
-            $avatar = array();
-          }
-          if (!empty($avatar)) {
-            echo '<img src="' . esc_url($avatar['url']) . '" alt="' . esc_attr($avatar['title']) . '" />';
-          } else {
-            if ($args['avatar_size'] != 0) echo get_avatar($comment, $args['avatar_size']);
-          }
-
-
-          ?>
-        </div>
-        <div class="bt-content">
-          <h5 class="bt-name">
-            <?php echo get_comment_author(get_comment_ID()); ?>
-          </h5>
-          <div class="bt-date">
-            <?php echo awakenur_time_comment(get_comment_date('U')); ?>
-          </div>
-          <?php if ($comment->comment_approved == '0') : ?>
-            <em class="comment-awaiting-moderation"><?php esc_html_e('Your comment is awaiting moderation.', 'awakenur'); ?></em>
-          <?php endif; ?>
-          <div class="bt-text">
-            <?php comment_text(); ?>
-          </div>
-          <?php comment_reply_link(array_merge($args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
-        </div>
-      </div>
-  <?php
+  if ('div' == $args['style']) {
+    $tag = 'div';
+    $add_below = 'comment';
+  } else {
+    $tag = 'li';
+    $add_below = 'div-comment';
   }
+  ?>
+  <<?php echo esc_html($tag); ?> <?php comment_class(empty($args['has_children']) ? 'bt-comment-item clearfix' : 'bt-comment-item parent clearfix') ?> id="comment-<?php comment_ID() ?>">
+    <div class="bt-comment">
+      <div class="bt-avatar">
+        <?php
+        if (function_exists('get_field')) {
+          $avatar = get_field('avatar', 'user_' . $comment->user_id);
+        } else {
+          $avatar = array();
+        }
+        if (!empty($avatar)) {
+          echo '<img src="' . esc_url($avatar['url']) . '" alt="' . esc_attr($avatar['title']) . '" />';
+        } else {
+          if ($args['avatar_size'] != 0) echo get_avatar($comment, $args['avatar_size']);
+        }
+
+        ?>
+      </div>
+      <div class="bt-content">
+        <h5 class="bt-name">
+          <?php echo get_comment_author(get_comment_ID()); ?>
+        </h5>
+        <div class="bt-date">
+          <?php echo awakenur_time_comment(get_comment_date('U')); ?>
+        </div>
+        <?php if ($comment->comment_approved == '0') : ?>
+          <em class="comment-awaiting-moderation"><?php esc_html_e('Your comment is awaiting moderation.', 'awakenur'); ?></em>
+        <?php endif; ?>
+        <div class="bt-text">
+          <?php comment_text(); ?>
+        </div>
+        <?php comment_reply_link(array_merge($args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
+      </div>
+    </div>
+<?php
+}
+
+//Give goal progress
+function awakenur_give_goal_progress($form_id, $args)
+{
+  $form        = new \Give_Donate_Form($form_id);
+		$goal_option = give_get_meta($form->ID, '_give_goal_option', true);
+
+		// Sanity check - ensure form has pass all condition to show goal.
+		if ((isset($args['show_goal']) && ! filter_var($args['show_goal'], FILTER_VALIDATE_BOOLEAN))
+			|| empty($form->ID)
+			|| (is_singular('give_forms') && ! give_is_setting_enabled($goal_option))
+			|| ! give_is_setting_enabled($goal_option) || 0 === $form->goal
+		) {
+			return false;
+		}
+
+		$goal_format         = give_get_form_goal_format($form_id);
+		$price               = give_get_meta($form_id, '_give_set_price', true);
+		$color               = give_get_meta($form_id, '_give_goal_color', true);
+		$show_text           = isset($args['show_text']) ? filter_var($args['show_text'], FILTER_VALIDATE_BOOLEAN) : true;
+		$show_bar            = isset($args['show_bar']) ? filter_var($args['show_bar'], FILTER_VALIDATE_BOOLEAN) : true;
+		$goal_progress_stats = give_goal_progress_stats($form);
+
+		$income = $goal_progress_stats['raw_actual'];
+		$goal   = $goal_progress_stats['raw_goal'];
+
+		switch ($goal_format) {
+
+			case 'donation':
+				$progress           = $goal ? round(($income / $goal) * 100, 2) : 0;
+				$progress_bar_value = $income >= $goal ? 100 : $progress;
+				break;
+
+			case 'donors':
+				$progress_bar_value = $goal ? round(($income / $goal) * 100, 2) : 0;
+				$progress           = $progress_bar_value;
+				break;
+
+			case 'percentage':
+				$progress           = $goal ? round(($income / $goal) * 100, 2) : 0;
+				$progress_bar_value = $income >= $goal ? 100 : $progress;
+				break;
+
+			default:
+				$progress           = $goal ? round(($income / $goal) * 100, 2) : 0;
+				$progress_bar_value = $income >= $goal ? 100 : $progress;
+				break;
+		}
+
+		/**
+		 * Filter the goal progress output
+		 *
+		 * @since 1.8.8
+		 */
+		$progress = apply_filters('give_goal_amount_funded_percentage_output', $progress, $form_id, $form);
+
+    ?>
+		<div class="give-goal-progress">
+			<?php if (! empty($show_text)) : ?>
+				<div class="raised">
+					<?php
+					if ('amount' === $goal_format) :
+
+						/**
+						 * Filter the give currency.
+						 *
+						 * @since 1.8.17
+						 */
+						$form_currency = apply_filters('give_goal_form_currency', give_get_currency($form_id), $form_id);
+
+						/**
+						 * Filter the income formatting arguments.
+						 *
+						 * @since 1.8.17
+						 */
+						$income_format_args = apply_filters(
+							'give_goal_income_format_args',
+							array(
+								'sanitize' => false,
+								'currency' => $form_currency,
+								'decimal'  => false,
+							),
+							$form_id
+						);
+
+						/**
+						 * Filter the goal formatting arguments.
+						 *
+						 * @since 1.8.17
+						 */
+						$goal_format_args = apply_filters(
+							'give_goal_amount_format_args',
+							array(
+								'sanitize' => false,
+								'currency' => $form_currency,
+								'decimal'  => false,
+							),
+							$form_id
+						);
+
+						/**
+						 * This filter will be used to convert the goal amounts to different currencies.
+						 *
+						 * @since 2.5.4
+						 *
+						 * @param array $amounts List of goal amounts.
+						 * @param int   $form_id Donation Form ID.
+						 */
+						$goal_amounts = apply_filters(
+							'give_goal_amounts',
+							array(
+								$form_currency => $goal,
+							),
+							$form_id
+						);
+
+						/**
+						 * This filter will be used to convert the income amounts to different currencies.
+						 *
+						 * @since 2.5.4
+						 *
+						 * @param array $amounts List of goal amounts.
+						 * @param int   $form_id Donation Form ID.
+						 */
+						$income_amounts = apply_filters(
+							'give_goal_raised_amounts',
+							array(
+								$form_currency => $income,
+							),
+							$form_id
+						);
+
+						// Get human readable donation amount.
+						$income = give_human_format_large_amount(give_format_amount($income, $income_format_args), array('currency' => $form_currency));
+						$goal   = give_human_format_large_amount(give_format_amount($goal, $goal_format_args), array('currency' => $form_currency));
+
+						// Format the human readable donation amount.
+						$formatted_income = give_currency_filter(
+							$income,
+							array(
+								'form_id' => $form_id,
+							)
+						);
+
+						$formatted_goal = give_currency_filter(
+							$goal,
+							array(
+								'form_id' => $form_id,
+							)
+						);
+
+						echo sprintf(
+							/* translators: 1: amount of income raised 2: goal target amount. */
+							__('<span class="raised-income"><span class="income" data-amounts="%1$s">%2$s</span> %5$s</span> <span class="raised-goal"><span class="goal-text" data-amounts="%3$s">%4$s</span> %6$s</span>', 'awakenur'),
+							esc_attr(wp_json_encode($income_amounts, JSON_PRETTY_PRINT)),
+							esc_attr($formatted_income),
+							esc_attr(wp_json_encode($goal_amounts, JSON_PRETTY_PRINT)),
+							esc_attr($formatted_goal),
+							esc_html($args['income_text']),
+							esc_html($args['goal_text'])
+						);
+
+					elseif ('percentage' === $goal_format) :
+
+						echo sprintf( /* translators: %s: percentage of the amount raised compared to the goal target */
+							__('<span class="give-percentage">%s%%</span> funded', 'awakenur'),
+							round($progress)
+						);
+
+					elseif ('donation' === $goal_format) :
+
+						echo sprintf( /* translators: 1: total number of donations completed 2: total number of donations set as goal */
+							_n(
+								'<span class="income">%1$s</span> of <span class="goal-text">%2$s</span> donation',
+								'<span class="income">%1$s</span> of <span class="goal-text">%2$s</span> donations',
+								$goal,
+								'awakenur'
+							),
+							give_format_amount($income, array('decimal' => false)),
+							give_format_amount($goal, array('decimal' => false))
+						);
+
+					elseif ('donors' === $goal_format) :
+
+						echo sprintf( /* translators: 1: total number of donors completed 2: total number of donors set as goal */
+							_n(
+								'<span class="income">%1$s</span> of <span class="goal-text">%2$s</span> donor',
+								'<span class="income">%1$s</span> of <span class="goal-text">%2$s</span> donors',
+								$goal,
+								'awakenur'
+							),
+							give_format_amount($income, array('decimal' => false)),
+							give_format_amount($goal, array('decimal' => false))
+						);
+
+					endif;
+					?>
+				</div>
+			<?php endif; ?>
+
+			<?php if (! empty($show_bar)) : ?>
+				<div class="give-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr($progress_bar_value); ?>">
+					<span style="width: <?php echo esc_attr($progress_bar_value); ?>%; <?php if (! empty($color)) {
+																							echo 'background-color:' . $color;
+																						} ?>"><?php echo esc_html($progress_bar_value) . '%' ?></span>
+				</div><!-- /.give-progress-bar -->
+			<?php endif; ?>
+
+		</div><!-- /.goal-progress -->
+
+		<?php
+}
+
+//Give goal progress
+function awakenur_give_sidebar()
+{
+  ?>
+  <div class="give-sidebar">
+    <div class="give-donor-wall-top">
+      <?php
+        echo '<h2 class="give-donor-wall-title">' . esc_html__('Top Donations', 'awakenur') . '</h2>';
+        echo do_shortcode('[give_donor_wall columns="1" orderby="donation_amount" donors_per_page="3" show_total="true" show_comments="false"]');
+      ?>
+    </div>
+  </div>
+  <?php
 }

@@ -50,7 +50,7 @@ $style_attributes = implode(' ', $style_parts);
         <h1 class="bt-page-titlebar--title"><?php echo awakenur_page_title(); ?></h1>
         <div class="bt-page-titlebar--breadcrumb">
           <?php
-          $home_text = 'Home';
+          $home_text = __('Home', 'awakenur');
           $delimiter = ' / ';
           echo awakenur_page_breadcrumb($home_text, $delimiter);
           ?>
