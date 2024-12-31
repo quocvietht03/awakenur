@@ -73,7 +73,7 @@ if (post_password_required()) {
 								</div>',
 		'cookies' => '<div class="bt-form-cookies-consent">
 								<input id="cookies" name="cookies" type="checkbox" value="yes"' . (empty($commenter['comment_author_email']) ? '' : ' checked="checked"') . ' />
-								<label for="cookies">' . __('Save my name, email, and website in this browser for the next time I comment.', 'autoart') . '</label>
+								<label for="cookies">' . __('Save my name, email, and website in this browser for the next time I comment.', 'awakenur') . '</label>
 							</div>',
 	);
 

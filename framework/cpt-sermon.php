@@ -209,7 +209,7 @@ function awakenur_sermon_filter() {
 		$output['items'] = ob_get_clean();
 		$output['pagination'] = awakenur_sermon_pagination($current_page, $total_page);
 	} else {
-		$output['items'] = '<h3 class="not-found-post">' . esc_html__('Sorry, No results', 'autoart') . '</h3>';
+		$output['items'] = '<h3 class="not-found-post">' . esc_html__('Sorry, No results', 'awakenur') . '</h3>';
 		$output['pagination'] = '';
 	}
 
@@ -233,7 +233,7 @@ function awakenur_sermon_pagination($current_page, $total_page) {
 		<?php if (1 != $current_page) { ?>
 			<a class="prev page-numbers" href="#" data-page="<?php echo esc_attr($current_page - 1); ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
   <path d="M13.9511 3.4186C14.2122 3.67631 14.2359 4.07953 14.0223 4.36367L13.9511 4.44509L7.6087 10.7061L13.9511 16.967C14.2122 17.2247 14.2359 17.6279 14.0223 17.9121L13.9511 17.9935C13.6901 18.2512 13.2816 18.2746 12.9938 18.0638L12.9113 17.9935L6.04851 11.2193C5.78747 10.9616 5.76374 10.5584 5.97732 10.2743L6.04851 10.1929L12.9113 3.4186C13.1984 3.13512 13.664 3.13512 13.9511 3.4186Z" fill="currentColor"/>
-</svg> <?php echo esc_html__('Prev', 'autoart'); ?></a>
+</svg> <?php echo esc_html__('Prev', 'awakenur'); ?></a>
 		<?php } ?>
 
 		<?php
@@ -299,7 +299,7 @@ function awakenur_sermon_pagination($current_page, $total_page) {
 		?>
 
 		<?php if ($total_page != $current_page) { ?>
-			<a class="next page-numbers" href="#" data-page="<?php echo esc_attr($current_page + 1); ?>"><?php echo esc_html__('Next', 'autoart'); ?> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+			<a class="next page-numbers" href="#" data-page="<?php echo esc_attr($current_page + 1); ?>"><?php echo esc_html__('Next', 'awakenur'); ?> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
   <path d="M6.04886 17.5828C5.78781 17.3251 5.76408 16.9219 5.97766 16.6378L6.04886 16.5564L12.3913 10.2954L6.04886 4.03444C5.78781 3.77676 5.76408 3.37354 5.97766 3.0894L6.04886 3.00799C6.3099 2.75032 6.7184 2.72689 7.00625 2.93772L7.08872 3.00799L13.9515 9.78219C14.2125 10.0399 14.2362 10.4431 14.0227 10.7272L13.9515 10.8086L7.08872 17.5828C6.80157 17.8663 6.33601 17.8663 6.04886 17.5828Z" fill="currentColor"/>
 </svg></a>
 		<?php } ?>
