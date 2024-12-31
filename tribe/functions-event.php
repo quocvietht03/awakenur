@@ -39,7 +39,7 @@ function awakenur_event_query_args($params = array(), $limit = 6)
 function awakenur_event_filter()
 {
     $archive_page = get_field('event_archive_page', 'options');
-    $limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 2;
+    $limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 6;
 
     $query_args = awakenur_event_query_args($_POST, $limit);
     $events = tribe_get_events($query_args);
@@ -63,7 +63,7 @@ function awakenur_event_filter()
             $output['loadmore'] = '';
         }
     } else {
-        $output['items'] = '<h3 class="not-found-post">' . esc_html__('Sorry, No results', 'autoart') . '</h3>';
+        $output['items'] = '<h3 class="not-found-post">' . esc_html__('Sorry, No results', 'awakenur') . '</h3>';
         $output['loadmore'] = '';
     }
 
@@ -79,7 +79,7 @@ add_action('wp_ajax_nopriv_awakenur_event_filter', 'awakenur_event_filter');
 function awakenur_event_loadmore()
 {
     $archive_page = get_field('event_archive_page', 'options');
-    $limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 2;
+    $limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 6;
 
     $query_args = awakenur_event_query_args($_POST, $limit);
     $events = tribe_get_events($query_args);
@@ -102,7 +102,7 @@ function awakenur_event_loadmore()
             $output['loadmore'] = '';
         }
     } else {
-        $output['items'] = '<h3 class="not-found-post">' . esc_html__('Sorry, No results', 'autoart') . '</h3>';
+        $output['items'] = '<h3 class="not-found-post">' . esc_html__('Sorry, No results', 'awakenur') . '</h3>';
         $output['loadmore'] = '';
     }
 

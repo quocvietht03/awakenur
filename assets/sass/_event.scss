@@ -329,6 +329,8 @@
                 justify-content: space-between;
                 margin-bottom: 40px;
                 align-items: center;
+                gap: 7px 20px;
+                flex-wrap: wrap;
                 &--left {
                     position: relative;
                     display: flex;
@@ -356,6 +358,19 @@
                         justify-content: center;
                         span {
                             margin: 0 12px 0 8px;
+                        }
+                        @media (max-width: 800px) {
+                            font-size: 18px;
+                            span {
+                                margin: 0 8px;
+                            }
+                            svg {
+                                width: 22px;
+                                height: 22px;
+                            }
+                        }
+                        @media (max-width: 360px) {
+                            font-size: 15px;
                         }
                     }
                 }
@@ -413,6 +428,9 @@
                             padding-right: 42px;
                             min-width: 265px;
                             box-sizing: border-box;
+                            @media (max-width: 800px) {
+                                min-width: 100%;
+                            }
                         }
                         svg {
                             position: absolute;
@@ -420,6 +438,9 @@
                             right: 14px;
                             z-index: -1;
                         }
+                    }
+                    @media (max-width: 660px) {
+                        width: 100%;
                     }
                 }
             }
@@ -460,6 +481,12 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 30px;
                 @extend .__bt-event-style-default;
+                @media(max-width:$break-tl){
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                @media(max-width:$break-sm){
+                    grid-template-columns: repeat(1, 1fr);
+                }
                 .bt-post {
                     flex-direction: column;
                     &--thumbnail {
@@ -497,6 +524,7 @@
                         }
                         .bt-cover-image {
                             padding-bottom: 74.88%;
+                            min-height: 250px;
                         }
                     }
                     &--content {
@@ -540,11 +568,11 @@
             }
             &.loadding {
                 a {
-                    span{
+                    span {
                         opacity: 0;
                     }
-                    svg{
-                       opacity: 1;
+                    svg {
+                        opacity: 1;
                     }
                 }
             }
@@ -556,174 +584,155 @@
         margin-top: 30px;
         padding: 0 16px 16px;
         max-width: 360px;
-        &.tribe-common--breakpoint-medium {
-          margin-top: 16px;
-        }
-    
-        table {
-          border-collapse: collapse;
-          table-layout: fixed;
-          border: none;
-        }
-    
-        .datepicker-switch, .next, .prev {
-          padding: 20px 0;
-          vertical-align: middle;
-        }
-    
-        .next, .prev {
-          .tribe-events-c-top-bar__datepicker-nav-icon-svg {
-            height: 15px;
-            margin-right: auto;
-            width: 9px;
-    
-            path {
-              fill: currentColor;
-            }
-    
-            &:first-child {
-              margin-left: auto;
-              margin-right: 0;
-            }
-          }
-        }
-    
-        .datepicker-months, .datepicker-years {
-          td, th {
-            padding: 0;
-          }
-    
-          .datepicker-switch, .next, .prev {
-            padding: 20px 0 8px;
-          }
-        }
-    
-        .dow {
-          padding: 0;
-          width: 14.285%;
-        }
-    
-        .day {
-          padding: 11px 0;
-          width: 48px;
-        }
-    
-        .month, .year {
-          height: auto;
-          margin: 0;
-          padding: 15px 0;
-          width: 25%;
-        }
-      }
-    
-      .admin-bar {
-        .datepicker {
-          margin-top: 8px;
-    
-          &.tribe-common--breakpoint-medium {
-            margin-top: 16px;
-          }
-        }
-      }
-    .datepicker {
-      background-color: #fff;
-      border: 1px solid #d5d5d5;
-      border-radius: 4px;
-      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.14);
-  
-      &:after, &:before {
-        content: none;
-      }
-  
-      .datepicker-switch {
-        color: $color-primary;
-        font-size: 16px;
-        line-height: 1.62;
-        font-weight: 400;
-  
-        &:focus, &:hover {
-          color: rgba(20, 24, 39, 0.8);
-        }
-  
-        &:active {
-          color: rgba(20, 24, 39, 0.9);
-        }
-      }
-  
-      .next, .prev {
-        &:active,
-        &:focus,
-        &:hover {
-          background-color: #fff;
-        }
-  
-        .tribe-events-c-top-bar__datepicker-nav-icon-svg path {
-          fill: #757575;
-  
-          &:hover, &:active {
-            fill: $color-primary;
-          }
-        }
-      }
-  
-      .dow {
-        font-size: 11px;
-        line-height: 1.5;
-      }
-  
-      .day, .dow {
-        color: $color-primary;
-        font-weight: 400;
-      }
-  
-      .day {
-        font-size: 16px;
-        line-height: 1.62;
-      }
-  
-      .month, .year {
-        color: $color-primary;
-        font-size: 12px;
-        line-height: 1.38;
-        font-weight: 400;
-      }
-  
-      .disabled {
-        color: rgba(20, 24, 39, 0.62);
-      }
-  
-      .day, .month, .year {
+        background-color: #fff;
+        border: 1px solid #d5d5d5;
         border-radius: 4px;
-      }
-  
-      .day.focused, .day:focus, .day:hover,
-      .month.focused, .month:focus, .month:hover,
-      .year.focused, .year:focus, .year:hover {
-        background: #f7f6f6;
-      }
-  
-      .day.current, .day.current.focused, .day.current:focus, .day.current:hover,
-      .month.current, .month.current.focused, .month.current:focus, .month.current:hover,
-      .year.current, .year.current.focused, .year.current:focus, .year.current:hover {
-        background: rgba(51, 74, 255, 0.07);
-      }
-  
-      .day.active, .day.active.focused, .day.active:focus, .day.active:hover,
-      .month.active, .month.active.focused, .month.active:focus, .month.active:hover,
-      .year.active, .year.active.focused, .year.active:focus, .year.active:hover {
-        background: $color-accent;
-        color: #fff;
-        text-shadow: none;
-      }
-    }
-  
-    .admin-bar {
-      .datepicker {
-        margin-top: 8px;
-  
-        &.tribe-common--breakpoint-medium {
-          margin-top: 16px;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.14);
+
+        &:after,
+        &:before {
+            content: none;
         }
-      }
+
+        &.tribe-common--breakpoint-medium {
+            margin-top: 16px;
+        }
+
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+            border: none;
+        }
+
+        .datepicker-switch {
+            color: $color-primary;
+            font-size: 16px;
+            line-height: 1.62;
+            font-weight: 400;
+
+            &:focus,
+            &:hover {
+                color: rgba(20, 24, 39, 0.8);
+            }
+
+            &:active {
+                color: rgba(20, 24, 39, 0.9);
+            }
+        }
+
+        .next,
+        .prev {
+            &:active,
+            &:focus,
+            &:hover {
+                background-color: #fff;
+            }
+
+            .tribe-events-c-top-bar__datepicker-nav-icon-svg {
+                height: 15px;
+                margin-right: auto;
+                width: 9px;
+
+                path {
+                    fill: currentColor;
+
+                    &:hover,
+                    &:active {
+                        fill: $color-primary;
+                    }
+                }
+
+                &:first-child {
+                    margin-left: auto;
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .datepicker-months,
+        .datepicker-years {
+            td,
+            th {
+                padding: 0;
+            }
+
+            .datepicker-switch,
+            .next,
+            .prev {
+                padding: 20px 0 8px;
+            }
+        }
+
+        .dow {
+            padding: 0;
+            width: 14.285%;
+            font-size: 11px;
+            line-height: 1.5;
+            color: $color-primary;
+            font-weight: 400;
+        }
+
+        .day {
+            padding: 11px 0;
+            width: 48px;
+            font-size: 16px;
+            line-height: 1.62;
+            color: $color-primary;
+            font-weight: 400;
+        }
+
+        .month,
+        .year {
+            height: auto;
+            margin: 0;
+            padding: 15px 0;
+            width: 25%;
+            color: $color-primary;
+            font-size: 12px;
+            line-height: 1.38;
+            font-weight: 400;
+        }
+
+        .disabled {
+            color: rgba(20, 24, 39, 0.62);
+        }
+
+        .day,
+        .month,
+        .year {
+            border-radius: 4px;
+
+            &.focused,
+            &:focus,
+            &:hover {
+                background: #f7f6f6;
+            }
+
+            &.current,
+            &.current.focused,
+            &.current:focus,
+            &.current:hover {
+                background: rgba(51, 74, 255, 0.07);
+            }
+
+            &.active,
+            &.active.focused,
+            &.active:focus,
+            &.active:hover {
+                background: $color-accent;
+                color: #fff;
+                text-shadow: none;
+            }
+        }
     }
-  }
+
+    .admin-bar {
+        .datepicker {
+            margin-top: 8px;
+
+            &.tribe-common--breakpoint-medium {
+                margin-top: 16px;
+            }
+        }
+    }
+}

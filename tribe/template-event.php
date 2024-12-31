@@ -6,7 +6,7 @@ Template Name: Events
 <?php get_header();
 get_template_part('framework/templates/site', 'titlebar');
 $archive_page = get_field('event_archive_page', 'options');
-$limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 2;
+$limit = !empty($archive_page['number_posts']) ? $archive_page['number_posts'] : 6;
 $query_args = awakenur_event_query_args($_GET, $limit);
 $events = tribe_get_events($query_args);
 

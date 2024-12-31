@@ -21,7 +21,7 @@ if (function_exists('get_field')) {
 $style_parts = [];
 $background_image = $bg_image;
 
-if (awakenur_check_post_types('tribe_events')) {
+if (awakenur_check_post_types('tribe_events') || is_page_template('tribe/template-event.php')) {
   if (!empty($custom_background['enable_background_event']) && !empty($custom_background['background_image_event'])) {
     $background_image = $custom_background['background_image_event'];
   }
