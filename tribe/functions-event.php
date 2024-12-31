@@ -10,7 +10,7 @@ function awakenur_event_query_args($params = array(), $limit = 6)
         $query_args['s'] = $params['search_keyword'];
     }
 
-    if (isset($params['date_filter']) && $params['date_filter'] != '') {
+    if (isset($params['date_filter']) && $params['date_filter'] != '' && $params['date_filter'] != 'today') {
         $date_filter = $params['date_filter'];
         $date = DateTime::createFromFormat('j M Y', $date_filter);
         $formatted_date = $date->format('Y-m-d H:i:s');
