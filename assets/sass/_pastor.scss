@@ -122,38 +122,7 @@
         max-height: 80vh;
         overflow: auto;
     }
-    .mfp-close {
-        top: 15px;
-        right: 20px;
-        display: flex;
-        width: 26px;
-        height: 24px;
-        font-size: 0;
-        opacity: 1;
-        background-color: #ffffff;
-        @media (max-width: $break-md) {
-            top: 10px;
-            right: 15px;
-        }
-        @media (max-width: $break-sm) {
-            top: 35px;
-            right: 30px;
-        }
-        &:before,
-        &:after {
-            content: "";
-            position: absolute;
-            top: 11px;
-            left: 4px;
-            width: 18px;
-            height: 2px;
-            background-color: $color-primary;
-            transform: rotate(45deg);
-        }
-        &:after {
-            transform: rotate(-45deg);
-        }
-    }
+
     .bt-post {
         display: flex;
         gap: 60px;
@@ -310,7 +279,23 @@
         }
     }
 }
-
+.mfp-content{
+    .bt-pastor-popup {
+        .mfp-close {
+            @media (max-width: $break-md) {
+                width: 25px;
+                height: 25px;
+            }
+            @media (max-width: $break-sm) {
+                top: 35px;
+                right: 30px;
+                padding: 0;
+                border-radius: 50%;
+            }
+    
+        }
+    }
+}
 .post-type-archive-pastor {
     .bt-grid-post {
         display: flex;

@@ -10,3 +10,4 @@
 	<?php wp_body_open(); ?>
 	<div class="bt-site">
 		<?php get_template_part( 'framework/templates/site', 'header'); ?>
+		<?php do_action('bt_after_site_header'); ?>

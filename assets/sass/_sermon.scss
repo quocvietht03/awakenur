@@ -404,39 +404,30 @@
 }
 .bt-sermon-popup {
     position: relative;
-    max-width: 800px;
+    max-width: 830px;
     margin: 0 auto;
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.8);
-    .mfp-close {
-        display: flex;
-        width: 24px;
-        height: 24px;
-        font-size: 0;
-        opacity: 1;
-        color: #ffffff;
-        top: -30px;
-        background: transparent;
-        right: -30px;
-        @media (max-width: $break-md) {
-            right: 0;
+}
+.mfp-content {
+    .bt-sermon-popup {
+        .mfp-close {
+            opacity: 0;
+            @media (max-width: $break-sm) {
+                opacity: 1;
+                padding: 0;
+                border-radius: 0;
+                top: -25px;
+                width: 25px;
+                height: 25px;
+            }
         }
-        &:before,
-        &:after {
-            content: "";
-            position: absolute;
-            top: 11px;
-            left: 4px;
-            width: 18px;
-            height: 2px;
-            background-color: #ffffff;
-            transform: rotate(45deg);
-        }
-        &:after {
-            transform: rotate(-45deg);
+        &:hover {
+            .mfp-close {
+                opacity: 1;
+            }
         }
     }
 }
-
 .post-type-archive-sermon {
     .bt-filter-bar {
         margin-bottom: 30px;
@@ -602,9 +593,9 @@
                 gap: 20px;
                 .bt-sidebar-col {
                     width: 30%;
-                    .bt-sidebar-wrap{
+                    .bt-sidebar-wrap {
                         padding: 24px 15px;
-                        .bt-sidebar--item{
+                        .bt-sidebar--item {
                             gap: 10px;
                         }
                     }
@@ -747,12 +738,12 @@
                             color: $color-accent;
                         }
                     }
-                    @media(max-width:$break-xs){
+                    @media (max-width: $break-xs) {
                         gap: 6px;
-                        span{
+                        span {
                             font-size: 14px;
                         }
-                        a{
+                        a {
                             width: 38px;
                             height: 38px;
                         }

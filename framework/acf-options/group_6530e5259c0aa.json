@@ -565,6 +565,61 @@
                     "mime_types": "",
                     "allow_in_bindings": 1,
                     "preview_size": "medium_large"
+                },
+                {
+                    "key": "field_67763e19f3e42",
+                    "label": "Enable Background Donation",
+                    "name": "enable_background_donation",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_67763e2cf3e43",
+                    "label": "Background Image Donation",
+                    "name": "background_image_donation",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_67763e19f3e42",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 1,
+                    "preview_size": "medium_large"
                 }
             ]
         },
@@ -1323,5 +1378,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1735607516
+    "modified": 1735802440
 }

@@ -845,3 +845,8 @@
     }
   }
 }
+.bt-elwg-give-loop-item{
+  &--default{
+    @extend .__bt-give-style-default;
+  }
+}

@@ -1103,3 +1103,8 @@
     max-width: 350px !important;
     min-height: 350px !important;
 }
+.tribe-events-view-loader__dots.tribe-common-c-loader{
+        svg{
+            color: $color-primary;
+        }
+}

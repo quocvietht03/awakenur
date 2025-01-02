@@ -18,7 +18,6 @@ if (function_exists('get_field')) {
 
 $style_parts = [];
 $background_image = $bg_image;
-
 if (awakenur_check_post_types('tribe_events') || is_page_template('tribe/template-event.php')) {
   if (!empty($custom_background['enable_background_event']) && !empty($custom_background['background_image_event'])) {
     $background_image = $custom_background['background_image_event'];
@@ -30,6 +29,10 @@ if (awakenur_check_post_types('tribe_events') || is_page_template('tribe/templat
 } elseif (awakenur_check_post_types('sermon')) {
   if (!empty($custom_background['enable_background_sermon']) && !empty($custom_background['background_image_sermon'])) {
     $background_image = $custom_background['background_image_sermon'];
+  }
+} elseif (awakenur_check_post_types('give_forms')) {
+  if (!empty($custom_background['enable_background_donation']) && !empty($custom_background['background_image_donation'])) {
+    $background_image = $custom_background['background_image_donation'];
   }
 }
 $style_parts[] = 'background-image: url(' . esc_url($background_image) . ');';

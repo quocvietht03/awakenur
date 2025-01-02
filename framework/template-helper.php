@@ -168,7 +168,7 @@ if (!function_exists('awakenur_page_title')) {
 				esc_html_e('Archive', 'awakenur');
 			}
 		} else {
-				echo get_the_title();
+			echo get_the_title();
 		}
 
 		return ob_get_clean();
@@ -216,6 +216,14 @@ if (!function_exists('awakenur_page_breadcrumb')) {
 					} else {
 						echo '<span class="current">' . get_the_title() . '</span>';
 					}
+				} elseif (get_post_type() == 'give_forms') {
+					$post_type = get_post_type_object(get_post_type());
+					$slug = $post_type->rewrite;
+					if ($post_type->rewrite) {
+						echo '<a href="' . esc_url(home_url('/')) . $slug['slug'] . '/">' . esc_html__('Donation', 'awakenur') . '</a>';
+						echo ' <span class="bt-deli">' . $delimiter . '</span> ';
+					}
+					echo '<span class="current">' . get_the_title() . '</span>';
 				} else {
 					$post_type = get_post_type_object(get_post_type());
 					$slug = $post_type->rewrite;
@@ -471,3 +479,31 @@ function awakenur_check_post_types($post_type)
 
 	return false;
 }
+
+function awakenur_titlebar_donation_single_ver2($elementor)
+{
+	if ($elementor->get_name() === 'header') {
+		if (is_singular('give_forms')) { 
+			$id_give = get_the_ID();
+			$meta_data = get_post_meta($id_give);
+			if (isset($meta_data['formBuilderSettings']) && !empty($meta_data['formBuilderSettings'][0])) {
+				get_template_part('framework/templates/site', 'titlebar');
+
+			}
+		}
+
+	}
+}
+add_action('elementor/frontend/before_get_builder_content', 'awakenur_titlebar_donation_single_ver2');
+function awakenur_class_body_donation_ver2($classes) {
+	if (is_singular('give_forms')) { 
+		$id_give = get_the_ID();
+		$meta_data = get_post_meta($id_give);
+		if (isset($meta_data['formBuilderSettings']) && !empty($meta_data['formBuilderSettings'][0])) {
+			$classes[] = 'bt-single-donation-ver2';
+		}
+	}
+	return $classes;
+}
+
+add_filter('body_class', 'awakenur_class_body_donation_ver2');

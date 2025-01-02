@@ -57,36 +57,27 @@
   max-width: 800px;
   margin: 0 auto;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.8);
-  .mfp-close {
-    display: flex;
-    width: 24px;
-    height: 24px;
-    font-size: 0;
-    opacity: 1;
-    color: #ffffff;
-    top: -30px;
-    background: transparent;
-    right: -30px;
-    @media (max-width: $break-md) {
-      right: 0;
-    }
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      top: 11px;
-      left: 4px;
-      width: 18px;
-      height: 2px;
-      background-color: #ffffff;
-      transform: rotate(45deg);
-    }
-    &:after {
-      transform: rotate(-45deg);
-    }
+}
+.mfp-content {
+  .bt-post-popup {
+      .mfp-close {
+          opacity: 0;
+          @media (max-width: $break-sm) {
+              opacity: 1;
+              padding: 0;
+              border-radius: 0;
+              top: -25px;
+              width: 25px;
+              height: 25px;
+          }
+      }
+      &:hover {
+          .mfp-close {
+              opacity: 1;
+          }
+      }
   }
 }
-
 .bt-list-post {
   display: flex;
   flex-direction: column;
