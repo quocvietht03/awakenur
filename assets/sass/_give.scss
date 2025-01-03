@@ -164,8 +164,8 @@
 	font-size: 14px;
 	font-weight: 700;
 	line-height: 56px;
-	color: #ffffff;
-	background: $color-primary;
+	color: $color-primary;
+	background: $color-accent;
 	padding: 0 35px;
 	outline: none;
 	border: none;
@@ -740,6 +740,9 @@ div[id*="give-form"] {
 		margin-left: auto;
 		margin-right: auto;
 		padding: 100px $padding-start;
+		@media(max-width:$break-tl){
+			padding: 60px $padding-start;
+		}
 	}
 	#content {
 		display: flex;
@@ -764,7 +767,7 @@ div[id*="give-form"] {
 		}
 		@media (max-width: $break-md) {
 			flex-direction: column;
-			gap: 60px;
+			gap: 30px;
 			.give_forms,
 			.give-sidebar {
 				width: 100%;
@@ -905,14 +908,13 @@ div[id*="give-form"] {
 			outline: none;
 			border: none;
 			border-radius: 2px;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
 			span.give-loading-animation {
 				color: $color-accent;
 				top: 0;
 			}
-			display: inline-flex;
-			position: relative;
-			overflow: hidden;
-			z-index: 1;
 			&::before,
 			&::after {
 				content: "";

@@ -41,7 +41,7 @@ if (empty($disable_event_search)) {
 	<?php endif; ?>>
 	<?php echo awakenur_titlebar_events(); ?>
 	<div class="tribe-common-l-container tribe-events-l-container ">
-		<?php $this->template('components/loader', ['text' => __('Loading...', 'the-events-calendar')]); ?>
+		<?php $this->template('components/loader', ['text' => __('Loading...', 'awakenur')]); ?>
 
 		<?php $this->template('components/json-ld-data'); ?>
 
