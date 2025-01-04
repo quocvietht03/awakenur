@@ -83,11 +83,16 @@ $cost  = tribe_get_formatted_cost($event_id);
 		<div id="post-<?php the_ID(); ?>" <?php post_class('bt-event'); ?>>
 			<!-- Event featured image, but exclude link -->
 			<div class="bt-event--thumbnail">
-				<?php echo tribe_event_featured_image($event_id, 'full', false); ?>
+				<div class="bt-cover-image">
+					<?php echo tribe_event_featured_image($event_id, 'full', false); ?>
+				</div>
 				<div class="bt-event--infor">
-					<?php if (! empty($cost)) : ?>
-						<div class="bt-event--cost"><?php echo esc_html($cost)?><span><?php echo esc_html__('/ticket', 'awakenur' ) ?></span></div>
-					<?php endif; ?>
+					<?php if (! empty($cost) && $cost != 'Free') { ?>
+						<div class="bt-event--cost"><?php echo esc_html($cost) ?><span><?php echo esc_html__('/ticket', 'awakenur') ?></span></div>
+					<?php }elseif ($cost == 'Free') {
+					?>
+						<div class="bt-event--cost-free"><?php echo esc_html__('Free Ticket', 'awakenur') ?></div>
+					<?php } ?>
 					<?php echo '<div class="bt-event--title">' . $title . '</div>'; ?>
 				</div>
 			</div>
@@ -96,7 +101,7 @@ $cost  = tribe_get_formatted_cost($event_id);
 			<!-- Event content -->
 			<?php do_action('tribe_events_single_event_before_the_content') ?>
 			<div class="tribe-events-single-event-description tribe-events-content">
-				<h2 class="bt-title"><?php esc_html_e( 'About Event', 'awakenur' ) ?></h2>
+				<h2 class="bt-title"><?php esc_html_e('About Event', 'awakenur') ?></h2>
 				<?php the_content(); ?>
 			</div>
 			<!-- .tribe-events-single-event-description -->
@@ -104,9 +109,9 @@ $cost  = tribe_get_formatted_cost($event_id);
 
 			<!-- Event meta -->
 			<div class="bt-event--meta">
-			<?php do_action('tribe_events_single_event_before_the_meta') ?>
-			<?php tribe_get_template_part('modules/meta'); ?>
-			<?php do_action('tribe_events_single_event_after_the_meta') ?>
+				<?php do_action('tribe_events_single_event_before_the_meta') ?>
+				<?php tribe_get_template_part('modules/meta'); ?>
+				<?php do_action('tribe_events_single_event_after_the_meta') ?>
 			</div>
 		</div> <!-- #post-x -->
 		<?php if (get_post_type() == Tribe__Events__Main::POSTTYPE && tribe_get_option('showComments', false)) comments_template() ?>

@@ -18,7 +18,7 @@ $website = tribe_get_organizer_website_link();
 $website_title = tribe_events_get_organizer_website_title();
 ?>
 
-<div class="tribe-events-meta-group tribe-events-meta-group-organizer ss">
+<div class="tribe-events-meta-group tribe-events-meta-group-organizer">
 	<h2 class="tribe-events-single-section-title"><?php echo tribe_get_organizer_label( ! $multiple ); ?></h2>
 	<dl>
 		<?php
