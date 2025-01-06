@@ -1146,15 +1146,15 @@
                 padding-bottom: 51%;
                 min-height: 450px;
                 box-sizing: border-box;
+                @media(max-width:$break-xs){
+                    min-height: 300px;
+                }
             }
             .tribe-events-event-image {
                 margin: 0;
                 img {
                     @extend .bt-image-absolute;
                     transition: all 0.3s;
-                }
-                @media(max-width:$break-xs){
-                    min-height: 300px;
                 }
             }
         }

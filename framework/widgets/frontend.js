@@ -51,7 +51,7 @@
 			$text.append($wordSpan).append(" ");
 		});
 	}
-	function handleHeadingAnimation($scope) {
+	function headingAnimationHandler($scope) {
 		var headingAnimationContainer = $scope.find('.bt-elwg-heading-animation');
 		var animationElement = headingAnimationContainer.find('.bt-heading-animation-js');
 		var animationClass = headingAnimationContainer.data('animation');
@@ -64,11 +64,11 @@
 			const windowHeight = $(window).height();
 			const elementOffsetTop = animationElement.offset().top;
 			const elementOffsetBottom = elementOffsetTop + animationElement.outerHeight();
-	
+
 			const isElementInView =
 				elementOffsetTop < $(window).scrollTop() + windowHeight &&
 				elementOffsetBottom > $(window).scrollTop();
-	
+
 			if (isElementInView) {
 				if (!animationElement.hasClass('bt-animated')) {
 					animationElement
@@ -85,12 +85,49 @@
 			checkIfElementInView();
 		});
 	}
-
-
+	function PricingHandler($scope) {
+		var switchPricing = $scope.find('input[type="checkbox"]'),
+			itemPricing = $scope.find('.bt-pricing li'),
+			discount = $scope.find('.bt-pricing').data('discount');
+		switchPricing.change(function () {
+			if ($(this).prop('checked')) {
+				itemPricing.each(function () {
+					var price = $(this).data('price');
+					var priceyear = price * 12;
+					var priceDiscount = priceyear - (priceyear * discount / 100);
+					$(this).find('.bt-price').text(priceDiscount);
+					$(this).find('.bt-pricing--price-after').text(' /per year');
+				});
+			} else {
+				itemPricing.each(function () {
+					var price = $(this).data('price');
+					$(this).find('.bt-price').text(price);
+					$(this).find('.bt-pricing--price-after').text(' /per month');
+				});
+			}
+		});
+	}
+	var FaqHandler = function ($scope, $) {
+		const $titleFaq = $scope.find('.bt-item-title');
+		if ($titleFaq.length > 0) {
+			$titleFaq.on('click', function (e) {
+				e.preventDefault();
+				if ($(this).hasClass('active')) {
+					$(this).parent().find('.bt-item-content').slideUp();
+					$(this).removeClass('active');
+				} else {
+					$(this).parent().find('.bt-item-content').slideDown();
+					$(this).addClass('active');
+				}
+			});
+		}
+	};
 	// Make sure you run this code under Elementor.
 	$(window).on('elementor/frontend/init', function () {
 		elementorFrontend.hooks.addAction('frontend/element_ready/bt-upcoming-event.default', countDownHandler);
-		elementorFrontend.hooks.addAction('frontend/element_ready/bt-heading-animation.default', handleHeadingAnimation);
+		elementorFrontend.hooks.addAction('frontend/element_ready/bt-heading-animation.default', headingAnimationHandler);
+		elementorFrontend.hooks.addAction('frontend/element_ready/bt-pricing-item.default', PricingHandler);
+		elementorFrontend.hooks.addAction('frontend/element_ready/bt-list-faq.default', FaqHandler);
 	});
 
 })(jQuery);

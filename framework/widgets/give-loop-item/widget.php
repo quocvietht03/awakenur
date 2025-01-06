@@ -62,7 +62,7 @@ class Widget_GiveLoopItem extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--thumbnail .bt-cover-image' => 'padding-bottom: calc( {{SIZE}} * 100% );',
+					'{{WRAPPER}} .bt-give-form--thumbnail .bt-cover-image' => 'padding-bottom: calc( {{SIZE}} * 100% );',
 				],
 			]
 		);
@@ -87,7 +87,7 @@ class Widget_GiveLoopItem extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--thumbnail .bt-cover-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .bt-give-form--thumbnail .bt-cover-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -103,7 +103,7 @@ class Widget_GiveLoopItem extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),[
 				'name' => 'thumbnail_filters',
-				'selector' => '{{WRAPPER}} .bt-post--thumbnail img',
+				'selector' => '{{WRAPPER}} .bt-give-form--thumbnail img',
 			]
 		);
 
@@ -117,7 +117,7 @@ class Widget_GiveLoopItem extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),[
 				'name'     => 'thumbnail_hover_filters',
-				'selector' => '{{WRAPPER}} .bt-post:hover .bt-post--thumbnail img',
+				'selector' => '{{WRAPPER}} .bt-post:hover .bt-give-form--thumbnail img',
 			]
 		);
 
@@ -139,7 +139,7 @@ class Widget_GiveLoopItem extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--content' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .bt-give-form--content' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -156,7 +156,7 @@ class Widget_GiveLoopItem extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--title a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-give-form--title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -167,7 +167,7 @@ class Widget_GiveLoopItem extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--title a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-give-form--title a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -177,72 +177,36 @@ class Widget_GiveLoopItem extends Widget_Base {
 				'name'     => 'title_typography',
 				'label'    => esc_html__( 'Typography', 'awakenur' ),
 				'default'  => '',
-				'selector' => '{{WRAPPER}} .bt-post--title a',
+				'selector' => '{{WRAPPER}} .bt-give-form--title a',
 			]
 		);
 
 		$this->add_control(
-			'category_style',[
-				'label' => esc_html__( 'Category', 'awakenur' ),
+			'excerpt_style',[
+				'label' => esc_html__( 'Excerpt', 'awakenur' ),
 				'type'  => Controls_Manager::HEADING,
 			]
 		);
 		$this->add_control(
-			'category_color',[
+			'excerpt_color',[
 				'label'     => esc_html__( 'Color', 'awakenur' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--term > a' => 'color: {{VALUE}};',
-				],
-			]
-		);
-		$this->add_control(
-			'category_background',[
-				'label'     => esc_html__( 'Background', 'awakenur' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '',
-				'selectors' => [
-					'{{WRAPPER}} .bt-post--term > a' => 'Background: {{VALUE}};',
+					'{{WRAPPER}} .bt-give-form--excerpt' => 'color: {{VALUE}};',
 				],
 			]
 		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'     => 'category_typography',
+				'name'     => 'excerpt_typography',
 				'label'    => esc_html__( 'Typography', 'awakenur' ),
 				'default'  => '',
-				'selector' => '{{WRAPPER}} .bt-post--term > a',
-			]
-		);
-		$this->add_control(
-			'meta_style',[
-				'label' => esc_html__( 'Meta', 'awakenur' ),
-				'type'  => Controls_Manager::HEADING,
+				'selector' => '{{WRAPPER}} .bt-give-form--excerpt',
 			]
 		);
 
-		$this->add_control(
-			'meta_color',[
-				'label'     => esc_html__( 'Color', 'awakenur' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '',
-				'selectors' => [
-					'{{WRAPPER}} .bt-post--meta li' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'meta_typography',
-				'label'    => esc_html__( 'Typography', 'awakenur' ),
-				'default'  => '',
-				'selector' => '{{WRAPPER}} .bt-post--meta li',
-			]
-		);
 		$this->add_control(
 			'button_style',[
 				'label' => esc_html__( 'Button', 'awakenur' ),
@@ -255,30 +219,7 @@ class Widget_GiveLoopItem extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--action > a' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .bt-post--action a.bt-share-link' => 'color: {{VALUE}};',
-				],
-			]
-		);
-		$this->add_control(
-			'button_icon_hover',[
-				'label'     => esc_html__( 'Icon hover', 'awakenur' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '',
-				'selectors' => [
-					'{{WRAPPER}} .bt-post--action > a:hover' => 'color: {{VALUE}};border-color: {{VALUE}};',
-					'{{WRAPPER}} .bt-post--action a.bt-share-link:hover' => 'color: {{VALUE}};border-color: {{VALUE}};',
-				],
-			]
-		);
-		$this->add_control(
-			'button_border_color',[
-				'label'     => esc_html__( 'Border Color', 'awakenur' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '',
-				'selectors' => [
-					'{{WRAPPER}} .bt-post--action > a' => 'border-color: {{VALUE}};',
-					'{{WRAPPER}} .bt-post--action a.bt-share-link' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} div[id*=give-form] > .give-btn' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -288,8 +229,17 @@ class Widget_GiveLoopItem extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--action > a' => 'Background: {{VALUE}};',
-					'{{WRAPPER}} .bt-post--action a.bt-share-link' => 'Background: {{VALUE}};',
+					'{{WRAPPER}} div[id*=give-form] > .give-btn' => 'Background: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'button_color:hover',[
+				'label'     => esc_html__( 'Color Hover', 'awakenur' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} div[id*=give-form] > .give-btn:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -299,12 +249,20 @@ class Widget_GiveLoopItem extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-post--action > a:hover' => 'Background: {{VALUE}};border-color: {{VALUE}};',
-					'{{WRAPPER}} .bt-post--action a.bt-share-link:hover' => 'Background: {{VALUE}};border-color: {{VALUE}};',
+					'{{WRAPPER}} div[id*=give-form] > .give-btn:before' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} div[id*=give-form] > .give-btn:after' => 'border-top-color: {{VALUE}};',
 				],
 			]
 		);
-		
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'button_typography',
+				'label'    => esc_html__( 'Typography', 'awakenur' ),
+				'default'  => '',
+				'selector' => '{{WRAPPER}} div[id*=give-form] > .give-btn',
+			]
+		);
 		$this->end_controls_section();
 
 	}
