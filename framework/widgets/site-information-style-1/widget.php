@@ -180,18 +180,7 @@ class Widget_SiteInformationStyle1 extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-elwg-site-infor--item svg path' => 'fill: {{VALUE}};',
-				],
-			]
-		);
-		$this->add_control(
-			'icon_border_color',
-			[
-				'label' => __( 'Icon Border Color', 'awakenur' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}}  .bt-elwg-site-infor--item-icon' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .bt-elwg-site-infor--item svg' => 'color: {{VALUE}};',
 				],
 			]
 		);

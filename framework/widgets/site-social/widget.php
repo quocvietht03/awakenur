@@ -39,7 +39,22 @@ class Widget_SiteSocial extends Widget_Base
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
-
+		$this->add_control(
+			'list',
+			[
+				'label' => esc_html__( 'Show Elements', 'awakenur' ),
+				'type' => Controls_Manager::SELECT2,
+				'label_block' => true,
+				'multiple' => true,
+				'options' => [
+					'facebook' => esc_html__( 'Facebook', 'awakenur' ),
+					'twitter' => esc_html__( 'Twitter', 'awakenur' ),
+					'instagram'  => esc_html__( 'Instagram', 'awakenur' ),
+					'telegram' => esc_html__('telegram', 'awakenur'),
+				],
+				'default' => [ 'facebook', 'twitter','instagram' ],
+			]
+		);
 		$this->add_control(
 			'style',
 			[
@@ -262,10 +277,12 @@ class Widget_SiteSocial extends Widget_Base
 		if (empty($site_infor['site_socials'])) {
 			return;
 		}
-
+		if(empty($settings['list'])) {
+			return;
+		}
 		?>
 			<div class="bt-elwg-site-social">
-				<?php echo awakenur_socials_render($site_infor['site_socials']); ?>
+				<?php echo awakenur_socials_elm_render($site_infor['site_socials'],$settings['list']); ?>
 			</div>
 		<?php
 	}
