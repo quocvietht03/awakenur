@@ -126,7 +126,7 @@ class Widget_SiteInformation extends Widget_Base {
 	?>
 	
 		<div class="bt-elwg-site-infor">
-			<?php get_template_part( 'framework/templates/site-information', 'style', array('data' => $settings['list'])); ?>
+			<?php get_template_part( 'framework/templates/site-information', 'style', array('layout' => 'default','data' => $settings['list'])); ?>
 	    </div>
 	
 	<?php }

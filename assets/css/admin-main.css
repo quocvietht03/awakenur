@@ -626,7 +626,7 @@ html :where(.editor-styles-wrapper) {
   align-items: center;
   gap: 12px;
 }
-.__bt-socials-style a {
+.__bt-socials-style a.bt-item {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -637,19 +637,19 @@ html :where(.editor-styles-wrapper) {
   border: 1px solid var(--e-global-color-accent, #EBD5B8);
   border-radius: 100px;
 }
-.__bt-socials-style a.bt-facebook {
+.__bt-socials-style a.bt-item.bt-facebook {
   background: #186cb0;
   border-color: #186cb0;
 }
-.__bt-socials-style a.bt-linkedin {
+.__bt-socials-style a.bt-item.bt-linkedin {
   background: #074682;
   border-color: #074682;
 }
-.__bt-socials-style a.bt-twitter {
+.__bt-socials-style a.bt-item.bt-twitter {
   background: #000000;
   border-color: #000000;
 }
-.__bt-socials-style a.bt-google {
+.__bt-socials-style a.bt-item.bt-google {
   background: #e22e04;
   border-color: #e22e04;
 }

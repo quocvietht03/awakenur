@@ -163,11 +163,85 @@ class Widget_SiteSocial extends Widget_Base
 				],
 			]
 		);
-
+		
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
-
+		$this->add_responsive_control(
+			'size_item',
+			[
+				'label' => __('Size Item', 'awakenur'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px', '%'],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 100,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .bt-elwg-site-social a.bt-item' => 'width: {{SIZE}}{{UNIT}};height:{{SIZE}}{{UNIT}}',
+				],
+				'condition' => [
+					'style!' => 'default',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'size_icon',
+			[
+				'label' => __('Size Icon', 'awakenur'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px', '%'],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 100,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .bt-elwg-site-social a.bt-item svg' => 'width: {{SIZE}}{{UNIT}};height:{{SIZE}}{{UNIT}}',
+				],
+				'condition' => [
+					'style!' => 'default',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'gap',
+			[
+				'label' => __('Gap', 'awakenur'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px', '%'],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 100,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .bt-elwg-site-social' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'style!' => 'default',
+				],
+			]
+		);
 		$this->end_controls_section();
 	}
 

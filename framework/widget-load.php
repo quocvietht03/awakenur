@@ -47,6 +47,7 @@ class ElementorWidgets
 
 		$this->widgets = array(
 			'site-information',
+			'site-information-style-1',
 			'site-social',
 			'site-copyright',
 			'site-opening',
@@ -156,6 +157,7 @@ class ElementorWidgets
 
 		// Register Widgets
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SiteInformation\Widget_SiteInformation());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SiteInformationStyle1\Widget_SiteInformationStyle1());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SiteSocial\Widget_SiteSocial());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SiteCopyright\Widget_SiteCopyright());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SiteOpening\Widget_SiteOpening());

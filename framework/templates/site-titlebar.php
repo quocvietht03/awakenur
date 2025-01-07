@@ -30,7 +30,7 @@ if (awakenur_check_post_types('tribe_events') || is_page_template('tribe/templat
   if (!empty($custom_background['enable_background_sermon']) && !empty($custom_background['background_image_sermon'])) {
     $background_image = $custom_background['background_image_sermon'];
   }
-} elseif (awakenur_check_post_types('give_forms') || strpos(implode(' ', get_body_class()), 'give-page') == true) {
+} elseif (awakenur_check_post_types('give_forms') || strpos(implode(' ', get_body_class()), 'give-donation-history') == true) {
   if (!empty($custom_background['enable_background_donation']) && !empty($custom_background['background_image_donation'])) {
     $background_image = $custom_background['background_image_donation'];
   }

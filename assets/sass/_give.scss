@@ -607,6 +607,34 @@ div[id*="give-form"] {
 			margin-top: -8px;
 		}
 	}
+	#give_purchase_form_wrap{
+		.give-new-account-link{
+			font-size: 16px;
+			a{
+				font-weight: 400;
+			}
+		}
+		.give-user-login-fields-container{
+			.give-input{
+				min-height: 46px;
+				font-size: 15px;
+			}
+		}
+		.give-submit{
+			line-height: 46px;
+		}
+		.give-cancel-login{
+			padding: 0 30px;
+			line-height: 44px;
+		}
+		.give_login_forgot_password{
+			line-height: 46px;
+			a{
+				font-weight: 400;
+				font-size: 16px;
+			}
+		}
+	}
 	> .give-btn,
 	.give-submit {
 		font-size: 14px;
@@ -898,7 +926,7 @@ div[id*="give-form"] {
 			}
 		}
 		.give-donor__load_more {
-			display: inline-block;
+			display: inline-flex;
 			font-size: 14px;
 			font-weight: 700;
 			line-height: 40px;

@@ -205,6 +205,52 @@
       height: auto;
     }
   }
+  &--style-1 {
+    row-gap: 28px;
+    .bt-elwg-site-infor {
+      &--item {
+        > a,  &.address{
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+
+        &-icon {
+          width: 60px;
+          height: 60px;
+          background-color: $color-surface;
+          color: $color-primary;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          svg {
+            width: 100%;
+            height: auto;
+            max-width: 30px;
+            margin: 0;
+          }
+        }
+        &-content {
+          h4 {
+            color: $color-primary;
+            text-align: left;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+          }
+          span {
+            color: $color-primary;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 28px;
+          }
+        }
+      }
+    }
+  }
 }
 
 .bt-elwg-site-social {

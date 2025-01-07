@@ -161,7 +161,7 @@ class Widget_ListFaq extends Widget_Base
             [
                 'label' => __('Color Active', 'awakenur'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#FFFFFF',
+                'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .bt-item-title.active h3' => 'color: {{VALUE}} !important;',
                 ],
