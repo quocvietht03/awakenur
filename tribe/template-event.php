@@ -28,7 +28,7 @@ $next_page = 2;
                     <div class="bt-event-layout" data-view="<?php echo isset($_GET['view_type']) && $_GET['view_type'] != '' ? $_GET['view_type'] : 'list' ?>">
                         <?php
                         foreach ($events as $event) {
-                            get_template_part('framework/templates/event', 'style', array('event' => $event, 'image-size' => 'medium_large'));
+                            get_template_part('framework/templates/event', 'style', array('event' => $event, 'image-size' => 'large'));
                         }
                         ?>
 
