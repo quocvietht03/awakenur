@@ -248,7 +248,7 @@
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
-            line-height: 26px; 
+            line-height: 26px;
           }
         }
       }
@@ -1040,6 +1040,63 @@
             font-size: 16px;
             line-height: 24px;
           }
+        }
+      }
+    }
+  }
+}
+.bt-countdown-coming-soon {
+  .elementor-countdown-wrapper {
+    .elementor-countdown-item {
+      @media (min-width: 767px) {
+        &:not(:last-child) {
+          position: relative;
+          &::after {
+            display: block;
+            content: ":";
+            font-size: 56px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 68px;
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+}
+.bt-newsletter-coming-soon {
+  .tnp-subscription-minimal {
+    form {
+      input.tnp-email {
+        background: #fff;
+        height: 60px;
+        padding-left: 24px;
+        font-size: 16px;
+        line-height: 24px;
+        @media (max-width: $break-xs) {
+          padding-left: 16px;
+          height: auto;
+        }
+      }
+      input.tnp-email::placeholder {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      input.tnp-submit {
+        width: 44px;
+        height: 44px;
+        background: $color-primary;
+        background-image: url("../images/subcribe-coming-soon.svg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        @media (max-width: $break-xs) {
+          width: 36px;
+          height: 36px;
         }
       }
     }
