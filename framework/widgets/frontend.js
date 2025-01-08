@@ -125,6 +125,7 @@
 	// Make sure you run this code under Elementor.
 	$(window).on('elementor/frontend/init', function () {
 		elementorFrontend.hooks.addAction('frontend/element_ready/bt-upcoming-event.default', countDownHandler);
+		elementorFrontend.hooks.addAction('frontend/element_ready/bt-upcoming-event-menu.default', countDownHandler);
 		elementorFrontend.hooks.addAction('frontend/element_ready/bt-heading-animation.default', headingAnimationHandler);
 		elementorFrontend.hooks.addAction('frontend/element_ready/bt-pricing-item.default', PricingHandler);
 		elementorFrontend.hooks.addAction('frontend/element_ready/bt-list-faq.default', FaqHandler);

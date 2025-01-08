@@ -17,9 +17,7 @@
     letter-spacing: inherit;
   }
   a {
-    display: inline-block;
-    color: $color-accent !important;
-    text-decoration: underline;
+    font-weight: inherit;
   }
 }
 .dialog-lightbox-widget-content {
@@ -27,7 +25,9 @@
     flex-direction: row;
   }
 }
-
+.dialog-type-lightbox.elementor-lightbox {
+  z-index: 9999999999;
+}
 .elementor-widget-image-gallery {
   .gallery {
     .gallery-item {
@@ -1100,5 +1100,105 @@
         }
       }
     }
+  }
+}
+.bt-elwg-upcoming-event-menu {
+  .bt-tribe-event {
+    .bt-cover-image {
+      padding-bottom: 65%;
+      &::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: $color-primary;
+        opacity: 0.7;
+        width: 100%;
+        height: 100%;
+        content: "";
+        z-index: 1;
+      }
+    }
+    &--content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      padding: 15px;
+    }
+    &--subtext {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    &--title {
+      color: #fff;
+      font-weight: 600;
+      font-size: 36px;
+      text-align: center;
+      margin: 0;
+      a {
+        color: #fff;
+      }
+      @media(max-width:$break-lg){
+        font-size: 32px;
+      }
+    }
+    &--countdown {
+      margin: 25px 0;
+      .bt-countdown {
+        display: flex;
+        gap: 48px;
+        color: #fff;
+        &--item {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          min-width: 70px;
+          &:not(:last-child):after {
+            content: ":";
+            position: absolute;
+            top: 50%;
+            right: -29px;
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1;
+            transform: translateY(-50%);
+          }
+        }
+        &--digits {
+          font-size: 45px;
+          line-height: 1;
+          font-weight: 600;
+          color: #fff;
+        }
+        &--label {
+          font-size: 18px;
+          line-height: 1.5;
+        }
+      }
+    }
+    &--button a {
+      @extend .__bt-button-style;
+      white-space: nowrap;
+    }
+  }
+}
+.bt-elwg-give-button{
+  .give-form-wrap .give-btn{
+      line-height: 56px;
   }
 }

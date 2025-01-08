@@ -69,7 +69,8 @@ class ElementorWidgets
 			'pastor-loop-item',
 			'event-grid',
 			'event-grid-style-1',
-			'list-faq'
+			'list-faq',
+			'upcoming-event-menu'
 		);
 
 		return $this->widgets;
@@ -176,6 +177,7 @@ class ElementorWidgets
 
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\UpcomingEvent\Widget_UpcomingEvent());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\UpcomingEventMenu\Widget_UpcomingEventMenu());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SermonLoopItem\Widget_SermonLoopItem());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PastorLoopItem\Widget_PastorLoopItem());
 		

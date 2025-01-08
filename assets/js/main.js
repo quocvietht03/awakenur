@@ -810,6 +810,12 @@
 			});
 		});
 	}
+	/* mega menu add class custom */
+	function AwakenurMegaMenuAddClass() {
+		jQuery('.bt-mega-menu-sub').each(function () {
+			jQuery(this).parents('.e-n-menu-item').addClass('bt-submenu-content');
+		});
+	}
 	jQuery(window).on('elementor/frontend/init', function () {
 		elementorFrontend.hooks.addAction('frontend/element_ready/global', function () {
 			AwakenurMagnific();
@@ -834,6 +840,7 @@
 		AwakenurDatepicker();
 		AwakenurEventFilter();
 		AwakenurEventLoadMore();
+		AwakenurMegaMenuAddClass();
 	});
 
 	jQuery(window).on('resize', function () {
