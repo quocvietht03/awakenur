@@ -18,6 +18,7 @@
   }
   a {
     font-weight: inherit;
+    font-family: inherit;
   }
 }
 .dialog-lightbox-widget-content {
@@ -1105,7 +1106,7 @@
 .bt-elwg-upcoming-event-menu {
   .bt-tribe-event {
     .bt-cover-image {
-      padding-bottom: 65%;
+      padding-bottom: 56%;
       &::before {
         position: absolute;
         left: 0;
@@ -1147,6 +1148,11 @@
       font-size: 36px;
       text-align: center;
       margin: 0;
+      overflow: hidden;
+      width: 100%;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
       a {
         color: #fff;
       }

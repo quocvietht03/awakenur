@@ -454,7 +454,7 @@ body.admin-bar .dialog-type-lightbox {
   .bt-mega-menu-pages {
     .bt-tribe-event {
       .bt-cover-image {
-        min-height: 360px;
+        min-height: 340px;
       }
     }
   }
@@ -611,20 +611,6 @@ body.admin-bar .dialog-type-lightbox {
         }
       }
     }
-    .bt-mega-menu-pages {
-      > .e-con-inner {
-        > .elementor-element {
-          > .elementor-element {
-            &:nth-child(1),&:nth-child(2){
-              width: 23%;
-            }
-            &:nth-child(3){
-              width: 54%;
-            }
-          }
-        }
-      }
-    }
   }
 }
 .elementor-widget-n-menu .e-n-menu:not([data-layout="dropdown"]):not(.content-above) {
@@ -638,21 +624,35 @@ body.admin-bar .dialog-type-lightbox {
       }
     }
     .e-n-menu-content {
-      left: -4px;
-      max-width: 240px;
+      left: -6px;
+      max-width: 200px;
       top: 100%;
       > .e-con {
         left: 0 !important;
       }
       .e-n-menu-wrapper {
         .e-n-menu-heading {
-          .e-n-menu-item {
-            display: block;
+          > .e-n-menu-item {
             width: 100%;
-            display: block;
-            margin: 1px 0;
-            .e-n-menu-title {
-              border-radius: 0;
+            > .e-n-menu-title {
+              position: relative;
+              &::before {
+                background: $color-accent;
+                content: "";
+                top: 50%;
+                width: 0;
+                height: 2px;
+                display: block;
+                position: absolute;
+                margin-top: 13px;
+                transition: 0.3s all;
+              }
+              &.e-current,
+              &:hover {
+                &::before {
+                  width: 30px;
+                }
+              }
             }
           }
         }
