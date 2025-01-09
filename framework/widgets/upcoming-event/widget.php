@@ -46,7 +46,21 @@ class Widget_UpcomingEvent extends Widget_Base {
 				],
 			]
 		);
-
+		$this->add_control(
+			'events_all_url',
+			[
+				'label' => esc_html__('All Events Url', 'awakenur'),
+				'type' => Controls_Manager::URL,
+				'options' => ['url', 'is_external', 'nofollow'],
+				'default' => [
+					'url' => '/upcoming-events',
+					'is_external' => false,
+					'nofollow' => false,
+					'custom_attributes' => '',
+				],
+				'label_block' => true,
+			]
+		);
 		$this->end_controls_section();
 	}
 
@@ -63,13 +77,17 @@ class Widget_UpcomingEvent extends Widget_Base {
 		];
 		
         $events = tribe_get_events($args);
-
+		$events_all_url = '';
+		if (!empty($settings['events_all_url']['url'])) {
+		  $this->add_link_attributes('event_url', $settings['events_all_url']);
+		  $events_all_url = $this->get_render_attribute_string('event_url');
+		}
         ?>
 			<div class="bt-elwg-upcoming-event <?php echo 'bt-layout-' . esc_attr($settings['layout']); ?>">
 				<?php 
 					if( !empty($events) ) {
 						foreach ( $events as $event ) {
-							get_template_part( 'framework/templates/upcoming', 'event', array('event' => $event));
+							get_template_part( 'framework/templates/upcoming', 'event', array('event' => $event,'events_all_url' => $events_all_url));
 						}
 					} else {
 						get_template_part( 'framework/templates/post', 'none');

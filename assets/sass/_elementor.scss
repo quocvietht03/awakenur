@@ -1209,5 +1209,8 @@
 .bt-elwg-give-button{
   .give-form-wrap .give-btn{
       line-height: 56px;
+      .bt-menu-mobile-popup &{
+        width: 100%;
+      }
   }
 }

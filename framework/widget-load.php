@@ -68,7 +68,6 @@ class ElementorWidgets
 			'give-loop-item',
 			'pastor-loop-item',
 			'event-grid',
-			'event-grid-style-1',
 			'list-faq',
 			'upcoming-event-menu'
 		);
@@ -178,6 +177,7 @@ class ElementorWidgets
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\UpcomingEvent\Widget_UpcomingEvent());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\UpcomingEventMenu\Widget_UpcomingEventMenu());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\EventGrid\Widget_EventGrid());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\SermonLoopItem\Widget_SermonLoopItem());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\PastorLoopItem\Widget_PastorLoopItem());
 		
@@ -185,8 +185,6 @@ class ElementorWidgets
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\GiveForm\Widget_GiveForm());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\GiveButton\Widget_GiveButton());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\GiveLoopItem\Widget_GiveLoopItem());
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\EventGrid\Widget_EventGrid());
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\EventGridStyle1\Widget_EventGridStyle1());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Widgets\ListFaq\Widget_ListFaq());
 	}
 	/**
