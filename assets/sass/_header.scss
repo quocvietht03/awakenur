@@ -368,6 +368,26 @@
           }
         }
       }
+      &.elementor-sticky--effects {
+        .bt-mega-menu {
+          &.elementor-widget-n-menu {
+            > .elementor-widget-container {
+              > .e-n-menu {
+                > .e-n-menu-wrapper {
+                  > .e-n-menu-heading {
+                    > .e-n-menu-item {
+                      > .e-n-menu-title {
+                        padding-top: 30px;
+                        padding-bottom: 30px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
     &.bt-header-style-1 {
       > .e-con-inner {
@@ -393,8 +413,45 @@
           }
         }
       }
-      @media (max-width: $break-tl) {
-        position: relative;
+      &.elementor-sticky--effects {
+        background: #fff;
+        .elementor-widget-image{
+          display: none;
+          &.elementor-widget-theme-site-logo{
+            display: block;
+          }
+        }
+        .bt-elwg-site-social a.bt-item{
+          color: $color-primary;
+          background-color: $color-surface;
+          border-color: $color-primary;
+          &:hover{
+            color: #fff;
+            background-color: $color-primary;
+            border-color: $color-primary;
+          }
+        }
+        .bt-mega-menu {
+          &.elementor-widget-n-menu {
+            > .elementor-widget-container {
+              > .e-n-menu {
+                > .e-n-menu-wrapper {
+                  > .e-n-menu-heading {
+                    > .e-n-menu-item {
+                      > .e-n-menu-title {
+                        padding-top: 30px;
+                        padding-bottom: 30px;
+                        .e-n-menu-title-text{
+                          color: $color-primary;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
     &.bt-header-style-2 {
@@ -547,10 +604,6 @@ body.admin-bar .dialog-type-lightbox {
                       width: 100%;
                     }
                   }
-                }
-                .elementor-sticky--effects & {
-                  padding-top: 30px;
-                  padding-bottom: 30px;
                 }
               }
               &:not(.bt-submenu-content) {
