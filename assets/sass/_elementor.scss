@@ -1105,6 +1105,9 @@
 }
 .bt-elwg-upcoming-event-menu {
   .bt-tribe-event {
+    &.give_forms{
+      margin: 0;
+    }
     .bt-cover-image {
       padding-bottom: 56%;
       &::before {

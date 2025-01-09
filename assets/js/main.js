@@ -649,7 +649,7 @@
 				autoclose: true,
 				startDate: new Date(),
 				endDate: lastDate,
-				minViewMode: "days", 
+				minViewMode: "days",
 				maxViewMode: "years",
 				templates: {
 					leftArrow: '<svg class="tribe-common-c-svgicon tribe-common-c-svgicon--caret-left tribe-events-c-top-bar__datepicker-nav-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 16" aria-hidden="true"><path d="M9.7 14.4l-1.5 1.5L.3 8 8.2.1l1.5 1.5L3.3 8l6.4 6.4z"></path></svg>',
@@ -713,7 +713,7 @@
 
 				if ('' !== param_val) {
 					if (param_key == 'date_filter' && param_val === 'today') {
-						return;  
+						return;
 					}
 					param_out.push(param);
 					param_ajax[param_key] = param_val.replace(/%2C/g, ',');
@@ -816,6 +816,12 @@
 			jQuery(this).parents('.e-n-menu-item').addClass('bt-submenu-content');
 		});
 	}
+	function AwakenurButtonGiveMobile() {
+		$(document).on('click', '.bt-menu-mobile-popup .give-form-wrap .give-btn', function (e) {
+			e.preventDefault();
+			$(".bt-menu-mobile-popup .dialog-lightbox-close-button").trigger("click");
+		});
+	}
 	jQuery(window).on('elementor/frontend/init', function () {
 		elementorFrontend.hooks.addAction('frontend/element_ready/global', function () {
 			AwakenurMagnific();
@@ -841,6 +847,7 @@
 		AwakenurEventFilter();
 		AwakenurEventLoadMore();
 		AwakenurMegaMenuAddClass();
+		AwakenurButtonGiveMobile();
 	});
 
 	jQuery(window).on('resize', function () {

@@ -370,8 +370,64 @@
       }
     }
     &.bt-header-style-1 {
+      > .e-con-inner {
+        > .elementor-element {
+          > .elementor-element {
+            @media (max-width: 1480px) and (min-width: $break-tl) {
+              &.elementor-widget-bt-give-button {
+                > .elementor-widget-container {
+                  padding: 0 20px 0 10px;
+                }
+              }
+            }
+            @media (max-width: 1385px) and (min-width: $break-tl) {
+              &.elementor-widget-bt-site-social {
+                display: none;
+              }
+              &.elementor-widget-bt-give-button {
+                > .elementor-widget-container {
+                  padding-right: 0;
+                }
+              }
+            }
+          }
+        }
+      }
       @media (max-width: $break-tl) {
         position: relative;
+      }
+    }
+    &.bt-header-style-2 {
+      > .e-con-inner {
+        > .elementor-element {
+          > .elementor-element {
+            &.elementor-widget-bt-give-button {
+              > .elementor-widget-container {
+                @media (max-width: 1480px) and (min-width: $break-tl) {
+                  padding: 0 20px 0 10px;
+                }
+                .give-btn.give-btn-modal {
+                  &::before {
+                    border-bottom: 80px solid $color-secondary;
+                  }
+                  &::after {
+                    border-top: 80px solid $color-secondary;
+                  }
+                }
+              }
+            }
+            @media (max-width: 1385px) and (min-width: $break-tl) {
+              &.elementor-widget-bt-site-social {
+                display: none;
+              }
+              &.elementor-widget-bt-give-button {
+                > .elementor-widget-container {
+                  padding-right: 0;
+                }
+              }
+            }
+          }
+        }
       }
     }
     ul.elementor-nav-menu--dropdown {
@@ -468,6 +524,7 @@ body.admin-bar .dialog-type-lightbox {
           > .e-n-menu-heading {
             > .e-n-menu-item {
               > .e-n-menu-title {
+                transition: $transition;
                 .e-n-menu-title-text {
                   position: relative;
                   &::before {
@@ -490,6 +547,10 @@ body.admin-bar .dialog-type-lightbox {
                       width: 100%;
                     }
                   }
+                }
+                .elementor-sticky--effects & {
+                  padding-top: 30px;
+                  padding-bottom: 30px;
                 }
               }
               &:not(.bt-submenu-content) {
