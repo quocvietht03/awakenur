@@ -150,7 +150,7 @@ $social_item[] = '<li>
 										</div>
 										<div class="bt-content">
 											<label><?php esc_html_e('Pastor:', 'awakenur') ?></label>
-											<p><?php echo esc_attr($pastor->post_title) ?></p>
+											<p><?php echo esc_html($pastor->post_title) ?></p>
 										</div>
 									</li>
 								<?php } ?>
@@ -173,7 +173,7 @@ $social_item[] = '<li>
 										</div>
 										<div class="bt-content">
 											<label><?php esc_html_e('Date & Time:', 'awakenur') ?></label>
-											<p><?php echo esc_attr($date_time) ?></p>
+											<p><?php echo esc_html($date_time) ?></p>
 										</div>
 									</li>
 								<?php } ?>

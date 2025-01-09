@@ -1231,66 +1231,6 @@
             "selected": 0
         },
         {
-            "key": "field_659f8f6c582e8",
-            "label": "Orbit Circle",
-            "name": "effect_orbit_circle",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_659f8fb98e236",
-            "label": "Background Pattern",
-            "name": "effect_bg_pattern",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_65a7513e74220",
-            "label": "Background Buble",
-            "name": "effect_bg_buble",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
             "key": "field_65a789675c138",
             "label": "Background Scroll",
             "name": "effect_bg_scroll",
@@ -1346,27 +1286,6 @@
             },
             "message": "",
             "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_6763e14866f7d",
-            "label": "Animation Heading",
-            "name": "effect_load_heading",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 1,
             "ui_on_text": "",
             "ui_off_text": "",
             "ui": 1
@@ -1484,5 +1403,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1735889314
+    "modified": 1736408335
 }

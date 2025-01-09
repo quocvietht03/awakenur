@@ -128,28 +128,11 @@ require_once get_template_directory() . '/framework/block-load.php';
 require_once get_template_directory() . '/framework/widget-load.php';
 
 if (function_exists('get_field')) {
-	/* Orbit circle effect */
 	function awakenur_body_class($classes)
 	{
-		$orbit_circle = get_field('effect_orbit_circle', 'options');
-		$bg_pattern = get_field('effect_bg_pattern', 'options');
-		$bg_buble = get_field('effect_bg_buble', 'options');
 		$bg_scroll = get_field('effect_bg_scroll', 'options');
 		$img_zoom = get_field('effect_img_zoom', 'options');
 		$button_hover = get_field('effect_button_hover', 'options');
-		$effect_load_heading = get_field('effect_load_heading', 'options');
-		if ($orbit_circle) {
-			$classes[] = 'bt-orbit-enable';
-		}
-
-		if ($bg_pattern) {
-			$classes[] = 'bt-bg-pattern-enable';
-		}
-
-		if ($bg_buble) {
-			$classes[] = 'bt-bg-buble-enable';
-		}
-
 		if ($bg_scroll) {
 			$classes[] = 'bt-bg-scroll-enable';
 		}
@@ -159,9 +142,6 @@ if (function_exists('get_field')) {
 		}
 		if ($button_hover) {
 			$classes[] = 'bt-button-hover-enable';
-		}
-		if ($effect_load_heading) {
-			$classes[] = 'bt-effect-heading-enable';
 		}
 		return $classes;
 	}
@@ -179,3 +159,12 @@ function bt_custom_posts_per_page($query) {
 		$query->set( 'posts_per_page', 6 );
 	}
 };
+/* Custom search posts */
+function bt_custom_search_filter( $query ) {
+    if ( $query->is_search() && !is_admin() ) {
+        if ( !is_post_type_archive( 'product' ) && !is_tax( 'product_cat' ) && !is_singular( 'product' ) ) {
+            $query->set( 'post_type', 'post' );
+        }
+    }
+}
+add_action( 'pre_get_posts', 'bt_custom_search_filter' );

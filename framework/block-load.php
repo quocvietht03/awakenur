@@ -26,17 +26,6 @@ function awakenur_acf_init()
             'icon'              => '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M19 13H5v-2h14v2z" /></svg>',
             'keywords'          => array('Recent Posts', 'Posts'),
         ));
-
-        acf_register_block(array(
-            'name'              => 'widget-make-appointment',
-            'title'             => __('Widget - Make Appointment', 'awakenur'),
-            'description'       => __('Widget - Make Appointment block.', 'awakenur'),
-            'render_callback'   => 'awakenur_acf_block_render_callback',
-            // 'enqueue_assets' => 'awakenur_acf_block_assets_callback',
-            'category'          => 'bt-custom-block',
-            'icon'              => '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M19 13H5v-2h14v2z" /></svg>',
-            'keywords'          => array('Make Appointment', 'Make', 'Appointment'),
-        ));
         acf_register_block(array(
             'name'              => 'widget-author',
             'title'             => __('Widget - Author', 'awakenur'),

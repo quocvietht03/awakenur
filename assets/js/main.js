@@ -58,49 +58,6 @@
 		});
 	}
 
-	/* Orbit effect */
-	function AwakenurOrbitEffect() {
-		if ($('.bt-orbit-enable').length > 0) {
-			var html = '<div class="bt-orbit-effect">' +
-				'<div class="bt-orbit-wrap">' +
-				'<div class="bt-orbit red"><span></span></div>' +
-				'<div class="bt-orbit blue"><span></span></div>' +
-				'<div class="bt-orbit yellow"><span></span></div>' +
-				'<div class="bt-orbit purple"><span></span></div>' +
-				'<div class="bt-orbit green"><span></span></div>' +
-				'</div>' +
-				'</div>';
-
-			$('.bt-site-main').append(html);
-		}
-	}
-
-	/* Cursor effect */
-	function AwakenurCursorEffect() {
-		if ($('.bt-bg-pattern-enable').length > 0) {
-			var html = '<div class="bt-bg-pattern-effect"></div>';
-
-			$('.bt-site-main').append(html);
-		}
-	}
-
-	/* Buble effect */
-	function AwakenurBubleEffect() {
-		if ($('.bt-bg-buble-enable').length > 0) {
-			var html = '<div class="bt-bg-buble-effect">' +
-				'<div class="bt-bubles-beblow"></div>' +
-				'<div class="bt-bubles-above"></div>'
-			'</div>';
-
-			$('.bt-social-mcn-ss').append(html);
-
-			for (let i = 0; i < 40; i++) {
-				$('.bt-bubles-beblow').append('<span class="buble"></span>');
-				$('.bt-bubles-above').append('<span class="buble"></span>');
-			}
-		}
-	}
-
 	/* Units custom */
 	function AwakenurUnitsCustom() {
 		if ($('.give-btn.give-btn-modal').length > 0) {
@@ -831,9 +788,6 @@
 		AwakenurSubmenuAuto();
 		AwakenurToggleMenuMobile();
 		AwakenurToggleSubMenuMobile();
-		AwakenurOrbitEffect();
-		AwakenurCursorEffect();
-		AwakenurBubleEffect();
 		AwakenurUnitsCustom();
 		AwakenurSermonFilter();
 		AwakenurMagnific();

@@ -91,7 +91,6 @@ function awakenur_event_loadmore()
     // Update Loop Post
     if (!empty($events)) {
         ob_start();
-        echo $date_filter;
         foreach ($events as $event) {
             get_template_part('framework/templates/event', 'style', array('event' => $event, 'image-size' => 'medium_large'));
         }

@@ -11,7 +11,7 @@ if (post_password_required()) {
 
 	<?php if (have_comments()) : ?>
 		<h6 class="bt-heading-comment"><?php printf(
-											esc_html__('%02d Comments', 'cleanira'),
+											esc_html__('%02d Comments', 'awakenur'),
 											get_comments_number()
 										);  ?></h6>
 

@@ -1,9 +1,16 @@
 <?php
 $post_id = get_the_ID();
-$video_type = get_field('video_type', $post_id);
-$video_mp4 = get_field('video_mp4', $post_id);
-$youtube = get_field('youtube', $post_id);
-$vimeo = get_field('vimeo', $post_id);
+if (function_exists('get_field')) {
+	$video_type = get_field('video_type', $post_id);
+	$video_mp4 = get_field('video_mp4', $post_id);
+	$youtube = get_field('youtube', $post_id);
+	$vimeo = get_field('vimeo', $post_id);
+} else {
+	$video_type = '';
+	$video_mp4 = '';
+	$youtube = '';
+	$vimeo = '';
+}
 if ($video_type == 'youtube') {
 	$video_source = $youtube;
 } elseif ($video_type == 'vimeo') {
@@ -38,7 +45,7 @@ if ($video_type == 'youtube') {
 			<?php } ?>
 			<div class="bt-post--reading-more">
 				<a href="<?php echo esc_url(get_permalink()) ?>">
-					<span> <?php echo esc_html__('Reading More','awakenur') ?> </span>
+					<span> <?php echo esc_html__('Reading More', 'awakenur') ?> </span>
 				</a>
 			</div>
 		</div>

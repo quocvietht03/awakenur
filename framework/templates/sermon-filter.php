@@ -71,11 +71,11 @@
                                 <?php foreach ( $list_pastor as $post ) { ?>
                                     <?php if ($post->ID == $field_value) { ?>
                                         <option value="<?php echo esc_attr($post->ID); ?>" selected="selected">
-                                            <?php echo $post->post_title; ?>
+                                            <?php echo esc_html($post->post_title); ?>
                                         </option>
                                     <?php } else { ?>
                                         <option value="<?php echo esc_attr($post->ID); ?>">
-                                            <?php echo $post->post_title;; ?>
+                                            <?php echo esc_html($post->post_title); ?>
                                         </option>
                                     <?php } ?>
                                 <?php } ?>

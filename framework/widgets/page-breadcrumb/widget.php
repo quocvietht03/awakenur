@@ -45,19 +45,6 @@ class Widget_PageBreadcrumb extends Widget_Base
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
-
-		$this->add_control(
-			'icon_color',
-			[
-				'label' => __('Icon Color', 'awakenur'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .bt-page-breadcrumb svg' => 'fill: {{VALUE}};',
-				],
-			]
-		);
-
 		$this->add_control(
 			'text_color',
 			[
@@ -65,19 +52,29 @@ class Widget_PageBreadcrumb extends Widget_Base
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-page-breadcrumb' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-page-breadcrumb > *' => 'color: {{VALUE}};',
 				],
 			]
 		);
-
 		$this->add_control(
-			'text_color_hover',
+			'link_color',
 			[
-				'label' => __('Text Color Hover', 'awakenur'),
+				'label' => __('link Color', 'awakenur'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .bt-page-breadcrumb' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .bt-page-breadcrumb a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'link_color_hover',
+			[
+				'label' => __('link Color Hover', 'awakenur'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .bt-page-breadcrumb a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
