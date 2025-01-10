@@ -82,7 +82,7 @@ class Widget_GiveForm extends Widget_Base
 
 		$form_id = $settings['form_id'];
 
-		if($form_id == '0') {
+		if ($form_id == '0') {
 			return;
 		}
 
@@ -90,13 +90,15 @@ class Widget_GiveForm extends Widget_Base
 		if (isset($meta_data['formBuilderSettings']) && !empty($meta_data['formBuilderSettings'][0])) {
 			echo do_shortcode('[give_form id="' . $form_id . '"]');
 		} else {
-		?>
+?>
 			<div class="bt-elwg-give-form">
 				<div class="bt-give-form">
 					<div class="bt-give-form--thumbnail">
-						<div class="bt-cover-image">
-							<?php echo get_the_post_thumbnail($form_id, 'medium-large'); ?>
-						</div>
+						<a href="<?php echo get_the_permalink($form_id); ?>">
+							<div class="bt-cover-image">
+								<?php echo get_the_post_thumbnail($form_id, 'medium-large'); ?>
+							</div>
+						</a>
 					</div>
 					<div class="bt-give-form--content">
 						<h3 class="bt-give-form--title">

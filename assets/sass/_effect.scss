@@ -331,6 +331,7 @@
 			position: relative;
 			overflow: hidden;
 			z-index: 1;
+			color: $color-primary;
 			&::before,
 			&::after {
 				content: "";
@@ -381,6 +382,7 @@
 			position: relative;
 			overflow: hidden;
 			z-index: 1;
+			color: $color-primary;
 			&::before,
 			&::after {
 				content: "";
@@ -392,6 +394,7 @@
 				box-sizing: border-box;
 				transition: 0.3s ease-in-out;
 				z-index: -1;
+				opacity: 0;
 			}
 			&::before {
 				right: -50px;
@@ -411,9 +414,11 @@
 				transition: 0.5s ease-in-out;
 				&::before {
 					transform: translateX(-49%);
+					opacity: 1;
 				}
 				&::after {
 					transform: translateX(49%);
+					opacity: 1;
 				}
 			}
 			> * {
@@ -427,6 +432,7 @@
 		position: relative;
 		overflow: hidden;
 		z-index: 1;
+		color: $color-primary;
 		&:focus {
 			background: $color-accent;
 			color: $color-primary;

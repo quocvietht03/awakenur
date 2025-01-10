@@ -139,6 +139,7 @@
 				@extend .__scrollbar_style;
 				@media (max-width: $break-sm) {
 					padding: 32px 24px;
+					max-height: 670px;
 				}
 				@media (max-width: $break-xs) {
 					padding: 24px 16px;
@@ -734,6 +735,12 @@ div[id*="give-form"] {
 			font-size: 24px;
 			font-weight: 600;
 			margin: 0;
+			a{
+				color: $color-primary;
+				&:hover{
+					color: $color-secondary;
+				}
+			}
 		}
 		&--excerpt {
 			font-size: 16px;

@@ -297,27 +297,11 @@
   .bt-post {
     &--inner {
       position: relative;
-
-      &:hover {
-        .bt-post {
-          &--featured {
-            .bt-cover-image {
-              img {
-                transform: scale(1.1);
-              }
-            }
-          }
-        }
-      }
     }
 
     &--featured {
       .bt-cover-image {
         border-radius: 0;
-        img {
-          transform: scale(1);
-          transition: all 3s cubic-bezier(0.11, 0.52, 0.53, 0.79) 0s;
-        }
       }
     }
     &--wrap-image {

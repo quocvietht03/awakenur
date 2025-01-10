@@ -12,9 +12,11 @@ echo get_post_meta('start_date');
 <article <?php post_class('bt-post'); ?>>
     <div class="bt-give-form">
         <div class="bt-give-form--thumbnail">
-            <div class="bt-cover-image">
-                <?php echo get_the_post_thumbnail($form_id, 'medium-large'); ?>
-            </div>
+            <a href="<?php echo get_the_permalink($form_id); ?>">
+                <div class="bt-cover-image">
+                    <?php echo get_the_post_thumbnail($form_id, 'medium-large'); ?>
+                </div>
+            </a>
         </div>
         <div class="bt-give-form--content">
             <h3 class="bt-give-form--title">
@@ -27,7 +29,7 @@ echo get_post_meta('start_date');
                     <?php echo get_the_excerpt($form_id); ?>
                 </div>
             <?php } ?>
-            <?php if ( give_is_setting_enabled( get_post_meta( $form_id, '_give_goal_option', true ) ) ) { ?>
+            <?php if (give_is_setting_enabled(get_post_meta($form_id, '_give_goal_option', true))) { ?>
                 <div class="bt-give-form--progress animation">
                     <?php
                     $args = array(

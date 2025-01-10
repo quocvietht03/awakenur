@@ -280,6 +280,19 @@
                 svg {
                     height: 35px;
                     width: 35px;
+                    display: none;
+                }
+                &::before{
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    border-top: 15px solid transparent;
+                    border-left: 24px solid #fff;
+                    border-bottom: 15px solid transparent;
+                    display: block;
+                    left: 10px;
+                    position: relative;
+                    top: 2px;
                 }
                 &.pause {
                     svg {
@@ -293,6 +306,7 @@
                         content: "";
                         height: 22px;
                         width: 5px;
+                        border: none;
                     }
                     &:after {
                         position: absolute;
