@@ -321,10 +321,10 @@
         > .e-con-inner {
           > .elementor-element {
             &:nth-child(1) {
-              width: 70%;
+              width: 60%;
             }
             &:nth-child(2) {
-              width: 30%;
+              width: 40%;
             }
           }
         }
@@ -333,22 +333,17 @@
           a {
             width: 35px;
             height: 35px;
-            display: none;
             svg {
               width: 16px;
-            }
-            &:nth-child(1),
-            &:nth-child(2) {
-              display: flex;
             }
           }
         }
       }
-      @media (max-width: 372px) {
+      @media (max-width: 370px) {
         .bt-elwg-site-infor {
           &--item {
             &.time {
-              font-size: 13px;
+              font-size: 12px;
             }
           }
         }
