@@ -124,6 +124,9 @@ require_once get_template_directory() . '/framework/templates/post-helper.php';
 /* Block Load */
 require_once get_template_directory() . '/framework/block-load.php';
 
+/* Cron Functions */
+require_once get_template_directory() . '/framework/cron-helper.php';
+
 /* Widgets Load */
 require_once get_template_directory() . '/framework/widget-load.php';
 

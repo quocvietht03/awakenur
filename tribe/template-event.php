@@ -16,7 +16,6 @@ $total_events = count($all_events);
 $total_pages = ceil($total_events / $limit);
 $next_page = 2;
 ?>
-
 <main id="bt_main" class="bt-site-main template-events">
     <div class="bt-main-content-ss">
         <div class="bt-container">

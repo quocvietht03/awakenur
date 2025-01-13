@@ -8192,7 +8192,7 @@ div[id*=give-form] #give-donation-level-radio-list li label:after {
   .mfp-wrap.give-modal .mfp-content div.give-form,
   .mfp-wrap.give-modal .mfp-content form.give-form {
     padding: 32px 24px;
-    max-height: 670px;
+    max-height: 620px;
   }
 }
 @media (max-width: 519.98px) {
