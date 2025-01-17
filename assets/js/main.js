@@ -784,6 +784,17 @@
 			AwakenurMagnific();
 		});
 	});
+
+	/* Copyright Current Year */
+	function AwakenurCopyrightCurrentYear() {
+		var searchTerm = '{Year}',
+			replaceWith = new Date().getFullYear();
+		
+		$('.bt-elwg-site-copyright').each( function() {
+			this.innerHTML = this.innerHTML.replace(searchTerm, replaceWith);
+		});
+	}
+	
 	jQuery(document).ready(function ($) {
 		AwakenurSubmenuAuto();
 		AwakenurToggleMenuMobile();
@@ -802,6 +813,7 @@
 		AwakenurEventLoadMore();
 		AwakenurMegaMenuAddClass();
 		AwakenurButtonGiveMobile();
+		AwakenurCopyrightCurrentYear();
 	});
 
 	jQuery(window).on('resize', function () {

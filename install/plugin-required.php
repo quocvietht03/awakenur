@@ -57,48 +57,53 @@ function awakenur_register_required_plugins() {
 	 */
 	$pathfile = 'https://download.beplusthemes.com/';
 
-  $plugin_includes = array(
-    array(
-		'name'     			=> 'Elementor Website Builder',
-		'slug'     			=> 'elementor',
-		'required'     	=> true,
-    ),
-    array(
-		'name'          => 'Elementor Pro',
-		'slug'          => 'elementor-pro',
-		'source'        => $pathfile . 'elementor-pro.zip',
-		'required'      => true,
-	),
-	array(
-		'name'          => 'Smart Slider 3 Pro',
-		'slug'          => 'nextend-smart-slider3-pro',
-		'source'        => $pathfile . 'nextend-smart-slider3-pro.zip',
-		'required'      => true,
-	),
-	array(
-		'name'          => 'Advanced Custom Fields PRO',
-		'slug'          => 'advanced-custom-fields-pro',
-		'source'        => $pathfile . 'advanced-custom-fields-pro.zip',
-		'required'      => true,
-    ),
-	array(
-		'name'          => 'Gravity Forms',
-		'slug'          => 'gravityforms',
-		'source'        => $pathfile . 'gravityforms.zip',
-		'required'      => true,
-	),
-	array(
-		'name'          => 'Newsletter',
-		'slug'          => 'newsletter',
-		'required'      => false,
-    ),
-    array(
-		'name'          => 'WooCommerce',
-		'slug'          => 'woocommerce',
-		'required'      => false,
-    ),
-
-  );
+	$plugin_includes = array(
+		array(
+			'name'     			=> __('Elementor Website Builder', 'awakenur'),
+			'slug'     			=> 'elementor',
+			'required'     	=> true,
+		),
+		array(
+			'name'          => __('Elementor Pro', 'awakenur'),
+			'slug'          => 'elementor-pro',
+			'source'        => $pathfile . 'elementor-pro.zip',
+			'required'      => true,
+		),
+		array(
+			'name'          => __('Smart Slider 3 Pro', 'awakenur'),
+			'slug'          => 'nextend-smart-slider3-pro',
+			'source'        => $pathfile . 'nextend-smart-slider3-pro.zip',
+			'required'      => true,
+		),
+		array(
+			'name'          => __('Advanced Custom Fields PRO', 'awakenur'),
+			'slug'          => 'advanced-custom-fields-pro',
+			'source'        => $pathfile . 'advanced-custom-fields-pro.zip',
+			'required'      => true,
+		),
+		array(
+			'name'          => __('Gravity Forms', 'awakenur'),
+			'slug'          => 'gravityforms',
+			'source'        => $pathfile . 'gravityforms.zip',
+			'required'      => true,
+		),
+		array(
+			'name'          => __('Give - Donation Plugin', 'awakenur'),
+			'slug'          => 'give',
+			'required'      => true,
+		),
+		array(
+			'name'          => __('The Events Calendar', 'awakenur'),
+			'slug'          => 'the-events-calendar',
+			'required'      => true,
+		),
+		array(
+			'name'          => __('Newsletter', 'awakenur'),
+			'slug'          => 'newsletter',
+			'required'      => false,
+		),
+	
+	);
 
 	/*
 	 * Array of configuration settings. Amend each line as needed.

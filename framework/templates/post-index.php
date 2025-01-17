@@ -19,6 +19,8 @@ if ($video_type == 'youtube') {
 	$video_source = $video_mp4;
 }
 
+$post_excerpt = get_the_excerpt($post_id);
+
 ?>
 <article <?php post_class('bt-post'); ?>>
 	<div class="bt-post--inner">
@@ -36,13 +38,11 @@ if ($video_type == 'youtube') {
 		</div>
 		<div class="bt-post--content">
 			<?php echo awakenur_post_title_render(); ?>
-			<?php if (has_excerpt($post_id)) { ?>
-				<div class="bt-post--excerpt">
-					<?php
-					echo get_the_excerpt($post_id);
-					?>
-				</div>
-			<?php } ?>
+			<?php
+				if (!empty($post_excerpt)) { 
+					echo '<div class="bt-post--excerpt">' . $post_excerpt . '</div>';
+				} 
+			?>
 			<div class="bt-post--reading-more">
 				<a href="<?php echo esc_url(get_permalink()) ?>">
 					<span> <?php echo esc_html__('Reading More', 'awakenur') ?> </span>

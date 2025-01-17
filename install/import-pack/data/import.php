@@ -29,12 +29,16 @@ $plugin_includes = array(
     'source'   => IMPORT_REMOTE_SERVER_PLUGIN_DOWNLOAD . 'gravityforms.zip',
   ),
   array(
+		'name'     => __('Give - Donation Plugin', 'awakenur'),
+		'slug'     => 'give',
+	),
+	array(
+		'name'     => __('The Events Calendar', 'awakenur'),
+		'slug'     => 'the-events-calendar',
+	),
+  array(
     'name'     => __( 'Newsletter', 'awakenur' ),
     'slug'     => 'newsletter',
-  ),
-  array(
-    'name'     => __( 'WooCommerce', 'awakenur' ),
-    'slug'     => 'woocommerce',
   ),
 
 );

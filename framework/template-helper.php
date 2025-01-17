@@ -38,6 +38,11 @@ if (! function_exists('awakenur_setup')) {
 			'caption'
 		));
 
+		add_theme_support('wp-block-styles');
+		add_theme_support('responsive-embeds');
+		add_theme_support('custom-header');
+		add_theme_support('align-wide');
+
 		/* This theme allows users to set a custom background. */
 		add_theme_support('custom-background', apply_filters('awakenur_custom_background_args', array(
 			'default-color' => 'f5f5f5',
