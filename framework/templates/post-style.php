@@ -33,7 +33,7 @@ $post_excerpt = get_the_excerpt($post_id);
 		<?php echo awakenur_post_title_render(); ?>
 		<?php
 			if (!empty($post_excerpt)) { 
-				echo '<div class="bt-post--excerpt">' . wp_trim_words( $post_excerpt , 20, '...' ) . '</div>';
+				echo '<div class="bt-post--excerpt">' . wp_trim_words( $post_excerpt , 22, '...' ) . '</div>';
 			} 
 		?>
     </div>
