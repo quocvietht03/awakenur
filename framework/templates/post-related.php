@@ -1,9 +1,17 @@
 <?php
 $post_id = get_the_ID();
-$video_type = get_field('video_type', $post_id);
-$video_mp4 = get_field('video_mp4', $post_id);
-$youtube = get_field('youtube', $post_id);
-$vimeo = get_field('vimeo', $post_id);
+if (function_exists('get_field')) {
+	$video_type = get_field('video_type', $post_id);
+	$video_mp4 = get_field('video_mp4', $post_id);
+	$youtube = get_field('youtube', $post_id);
+	$vimeo = get_field('vimeo', $post_id);
+} else {
+	$video_type = '';
+	$video_mp4 = '';
+	$youtube = '';
+	$vimeo = '';
+}
+
 if ($video_type == 'youtube') {
   $video_source = $youtube;
 } elseif ($video_type == 'vimeo') {
@@ -11,6 +19,9 @@ if ($video_type == 'youtube') {
 } else {
   $video_source = $video_mp4;
 }
+
+$post_excerpt = get_the_excerpt($post_id);
+
 ?>
 <article <?php post_class('bt-post'); ?>>
   <div class="bt-post--inner">
@@ -28,13 +39,11 @@ if ($video_type == 'youtube') {
     </div>
     <div class="bt-post--content">
       <?php echo awakenur_post_title_render(); ?>
-      <?php if (has_excerpt($post_id)) { ?>
-        <div class="bt-post--excerpt">
-          <?php
-          echo get_the_excerpt($post_id);
-          ?>
-        </div>
-      <?php } ?>
+      <?php
+				if (!empty($post_excerpt)) { 
+					echo '<div class="bt-post--excerpt">' . wp_trim_words( $post_excerpt , 20, '...' ) . '</div>';
+				} 
+			?>
     </div>
   </div>
 </article>
