@@ -623,10 +623,12 @@ div[id*="give-form"] {
 		[id^=give-user-login-submit]{
 			.give-submit {
 				line-height: 46px;
+				width: auto;
 			}
 			.give-cancel-login {
 				padding: 0 30px;
 				line-height: 44px;
+				width: auto;
 			}
 		}
 		.give_login_forgot_password {
