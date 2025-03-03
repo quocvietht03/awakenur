@@ -19,5 +19,5 @@ Text Domain: awakenur
 
 == Changelog ==
 = 1.0 =
-* Released: Jul 22, 2024
+* Released: Jan 22, 2025
 
