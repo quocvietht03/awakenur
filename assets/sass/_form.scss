@@ -68,7 +68,7 @@
     }
   }
   .gform_footer {
-    margin-block-start: 28px;
+    margin-block-start: 28px !important;
     position: relative;
     display: flex;
     overflow: hidden;
@@ -119,7 +119,7 @@
       }
     }
     @media (max-width: 767px) {
-      margin-block-start: 20px;
+      margin-block-start: 20px !important;
     }
     input[type="submit"] {
       display: inline-block !important;
@@ -141,12 +141,12 @@
     }
   }
   .gform-loader {
-    border-block-end-color: $color-accent;
-    border-inline-start-color: $color-accent;
-    position: absolute;
-    right: 18px;
-    border-block-start-color: $color-primary;
-    border-inline-end-color: $color-primary;
+    border-block-end-color: $color-accent !important;
+    border-inline-start-color: $color-accent !important;
+    position: absolute !important;
+    right: 18px !important;
+    border-block-start-color: $color-primary !important;
+    border-inline-end-color: $color-primary !important;
   }
   .gform_validation_errors {
     display: none !important;
