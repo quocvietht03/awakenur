@@ -4,6 +4,30 @@
 	 * @param $ The jQuery alias
 	**/
 
+	function SubmenuToggleHandler($scope) {
+		var hasChildren = $scope.find('.menu-item-has-children');
+
+		hasChildren.each(function () {
+			var $btnToggle = $('<span class="bt-toggle-icon"></span>');
+
+			$(this).append($btnToggle);
+
+			$btnToggle.on('click', function (e) {
+				e.preventDefault();
+
+				if($(this).parent().hasClass('bt-is-active')){
+					$(this).parent().removeClass('bt-is-active');
+					$(this).parent().children('ul').slideUp();
+				} else {
+					$(this).parent().addClass('bt-is-active');
+					$(this).parent().children('ul').slideDown();
+					$(this).parent().siblings().removeClass('bt-is-active').children('ul').slideUp();
+					$(this).parent().siblings().find('li').removeClass('bt-is-active').children('ul').slideUp();
+				}
+			});
+		});
+	}
+
 	function countDownHandler($scope) {
 		var countDown = $scope.find('.bt-countdown-js'),
 			countDownDate = new Date(countDown.data('time')).getTime(),
@@ -124,6 +148,7 @@
 	};
 	// Make sure you run this code under Elementor.
 	$(window).on('elementor/frontend/init', function () {
+		elementorFrontend.hooks.addAction('frontend/element_ready/bt-mobile-menu.default', SubmenuToggleHandler);
 		elementorFrontend.hooks.addAction('frontend/element_ready/bt-upcoming-event.default', countDownHandler);
 		elementorFrontend.hooks.addAction('frontend/element_ready/bt-upcoming-event-menu.default', countDownHandler);
 		elementorFrontend.hooks.addAction('frontend/element_ready/bt-heading-animation.default', headingAnimationHandler);
