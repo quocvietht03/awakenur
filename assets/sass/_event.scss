@@ -885,6 +885,11 @@
                 }
             }
             .tribe-events-calendar-month {
+                .tribe-events-calendar-month__week{
+                    &:first-child{
+                        border-top: 1px solid var(--tec-color-border-secondary-month-grid);
+                    }
+                }
                 .tribe-events-calendar-month__day-cell {
                     .tribe-events-calendar-month__day-date {
                         position: relative;
