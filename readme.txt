@@ -14,10 +14,16 @@ Text Domain: awakenur
 1. In your admin panel, go to Appearance -> Themes and click the 'Add New' button.
 2. Type in awakenur in the search form and press the 'Enter' key on your keyboard.
 3. Click on the 'Activate' button to use your new theme right away.
-4. Go to http://docs.bearsthemes.com/Awakenur/ for a guide on how to customize this theme.
+4. Go to https://docs.beplusthemes.com/awakenur/ for a guide on how to customize this theme.
 5. Navigate to Appearance > Theme Options in your admin panel and customize to taste.
 
 == Changelog ==
 = 1.0 =
-* Released: Jan 22, 2025
+* Release first version
+
+= 1.3 =
+* Release: Dec 11, 2025
+- Compatible WP 6.9 and Latest Plugins
+- Add verify Envato purchase code to active theme
+- Fixed many issues...
 
