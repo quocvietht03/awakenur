@@ -25,5 +25,6 @@ Text Domain: awakenur
 * Release: Dec 11, 2025
 - Compatible WP 6.9 and Latest Plugins
 - Add verify Envato purchase code to active theme
+- Fixed issue widgets load on child theme
 - Fixed many issues...
 

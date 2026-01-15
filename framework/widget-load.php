@@ -112,9 +112,9 @@ class ElementorWidgets
 	{
 
 		foreach ($this->widgets_list() as $widget) {
-			require_once(get_stylesheet_directory() . '/framework/widgets/' . $widget . '/widget.php');
+			require_once(get_template_directory() . '/framework/widgets/' . $widget . '/widget.php');
 
-			foreach (glob(get_stylesheet_directory() . '/framework/widgets/' . $widget . '/skins/*.php') as $filepath) {
+			foreach (glob(get_template_directory() . '/framework/widgets/' . $widget . '/skins/*.php') as $filepath) {
 				include $filepath;
 			}
 		}
