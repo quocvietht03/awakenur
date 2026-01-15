@@ -56,8 +56,8 @@ function awakenur_acf_block_render_callback($block)
     $slug = str_replace('acf/', '', $block['name']);
 
     // include a template part from within the "block-parts/block" folder
-    if (file_exists(get_stylesheet_directory() . "/framework/block-parts/{$slug}.php")) {
-        include get_stylesheet_directory() . "/framework/block-parts/{$slug}.php";
+    if (file_exists(get_template_directory() . "/framework/block-parts/{$slug}.php")) {
+        include get_template_directory() . "/framework/block-parts/{$slug}.php";
     }
 }
 
@@ -68,10 +68,10 @@ function awakenur_acf_block_assets_callback($block)
     $slug = str_replace('acf/', '', $block['name']);
 
     // include a template part from within the "block-parts/block" folder
-    if (file_exists(get_stylesheet_directory() . "/framework/block-parts/{$slug}.css")) {
-        wp_enqueue_style("block-{$slug}", get_stylesheet_directory_uri() . "/framework/block-parts/{$slug}.css");
+    if (file_exists(get_template_directory() . "/framework/block-parts/{$slug}.css")) {
+        wp_enqueue_style("block-{$slug}", get_template_directory_uri() . "/framework/block-parts/{$slug}.css");
     }
-    if (file_exists(get_stylesheet_directory() . "/framework/block-parts/{$slug}.js")) {
-        wp_enqueue_script("block-{$slug}", get_stylesheet_directory_uri() . "/framework/block-parts/{$slug}.js", array('jquery'), '', true);
+    if (file_exists(get_template_directory() . "/framework/block-parts/{$slug}.js")) {
+        wp_enqueue_script("block-{$slug}", get_template_directory_uri() . "/framework/block-parts/{$slug}.js", array('jquery'), '', true);
     }
 }
